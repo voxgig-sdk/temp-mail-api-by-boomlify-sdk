@@ -1,0 +1,28 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 3
+  metrics: count: path: 3
+  metrics: count: method: 3
+
+  entity: domain: {
+    path: "/domains": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: email: {
+    path: "/email/create": {
+      action: "create": {}
+      op: create: method: *POST
+    }
+  }
+
+  entity: inbox: {
+    path: "/inbox/{email}": {
+      rename: param: "email": *"id"
+      op: load: method: *GET
+    }
+  }
+
+}

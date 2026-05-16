@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "domain": {
+      "DOMAIN00": {
+        "data": {},
+        "success": false
+      },
+      "DOMAIN01": {
+        "data": {},
+        "success": false
+      },
+      "DOMAIN02": {
+        "data": {},
+        "success": false
+      }
+    }
+  },
+  "new": {
+    "domain": {
+      "domain_ref01": {
+        "data": {},
+        "success": false
+      }
+    }
+  }
+}

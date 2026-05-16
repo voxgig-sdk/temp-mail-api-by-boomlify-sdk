@@ -1,0 +1,18 @@
+# BasicEmailFlow
+
+main: kit: flow: BasicEmailFlow:
+{
+  entity: "email",
+  kind: "basic",
+  name: "BasicEmailFlow",
+  step: [
+    {
+      input: {
+        ref: "email_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicEmailFlow"
+}

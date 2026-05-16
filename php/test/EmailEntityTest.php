@@ -1,0 +1,113 @@
+<?php
+declare(strict_types=1);
+
+// Email entity test
+
+require_once __DIR__ . '/../tempmailapibyboomlify_sdk.php';
+require_once __DIR__ . '/Runner.php';
+
+use PHPUnit\Framework\TestCase;
+use Voxgig\Struct\Struct as Vs;
+
+class EmailEntityTest extends TestCase
+{
+    public function test_create_instance(): void
+    {
+        $testsdk = TempMailApiByBoomlifySDK::test(null, null);
+        $ent = $testsdk->Email(null);
+        $this->assertNotNull($ent);
+    }
+
+    public function test_basic_flow(): void
+    {
+        $setup = email_basic_setup(null);
+        // Per-op sdk-test-control.json skip.
+        $_live = !empty($setup["live"]);
+        foreach (["create"] as $_op) {
+            [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "email." . $_op, $_live ? "live" : "unit");
+            if ($_shouldSkip) {
+                $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
+                return;
+            }
+        }
+        // The basic flow consumes synthetic IDs from the fixture. In live mode
+        // without an *_ENTID env override, those IDs hit the live API and 4xx.
+        if (!empty($setup["synthetic_only"])) {
+            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set TEMPMAILAPIBYBOOMLIFY_TEST_EMAIL_ENTID JSON to run live");
+            return;
+        }
+        $client = $setup["client"];
+
+        // CREATE
+        $email_ref01_ent = $client->Email(null);
+        $email_ref01_data = Helpers::to_map(Vs::getprop(
+            Vs::getpath($setup["data"], "new.email"), "email_ref01"));
+
+        [$email_ref01_data_result, $err] = $email_ref01_ent->create($email_ref01_data, null);
+        $this->assertNull($err);
+        $email_ref01_data = Helpers::to_map($email_ref01_data_result);
+        $this->assertNotNull($email_ref01_data);
+
+    }
+}
+
+function email_basic_setup($extra)
+{
+    Runner::load_env_local();
+
+    $entity_data_file = __DIR__ . '/../../.sdk/test/entity/email/EmailTestData.json';
+    $entity_data_source = file_get_contents($entity_data_file);
+    $entity_data = json_decode($entity_data_source, true);
+
+    $options = [];
+    $options["entity"] = $entity_data["existing"];
+
+    $client = TempMailApiByBoomlifySDK::test($options, $extra);
+
+    // Generate idmap.
+    $idmap = [];
+    foreach (["email01", "email02", "email03"] as $k) {
+        $idmap[$k] = strtoupper($k);
+    }
+
+    // Detect ENTID env override before envOverride consumes it. When live
+    // mode is on without a real override, the basic test runs against synthetic
+    // IDs from the fixture and 4xx's. Surface this so the test can skip.
+    $entid_env_raw = getenv("TEMPMAILAPIBYBOOMLIFY_TEST_EMAIL_ENTID");
+    $idmap_overridden = $entid_env_raw !== false && str_starts_with(trim($entid_env_raw), "{");
+
+    $env = Runner::env_override([
+        "TEMPMAILAPIBYBOOMLIFY_TEST_EMAIL_ENTID" => $idmap,
+        "TEMPMAILAPIBYBOOMLIFY_TEST_LIVE" => "FALSE",
+        "TEMPMAILAPIBYBOOMLIFY_TEST_EXPLAIN" => "FALSE",
+        "TEMPMAILAPIBYBOOMLIFY_APIKEY" => "NONE",
+    ]);
+
+    $idmap_resolved = Helpers::to_map(
+        $env["TEMPMAILAPIBYBOOMLIFY_TEST_EMAIL_ENTID"]);
+    if ($idmap_resolved === null) {
+        $idmap_resolved = Helpers::to_map($idmap);
+    }
+
+    if ($env["TEMPMAILAPIBYBOOMLIFY_TEST_LIVE"] === "TRUE") {
+        $merged_opts = Vs::merge([
+            [
+                "apikey" => $env["TEMPMAILAPIBYBOOMLIFY_APIKEY"],
+            ],
+            $extra ?? [],
+        ]);
+        $client = new TempMailApiByBoomlifySDK(Helpers::to_map($merged_opts));
+    }
+
+    $live = $env["TEMPMAILAPIBYBOOMLIFY_TEST_LIVE"] === "TRUE";
+    return [
+        "client" => $client,
+        "data" => $entity_data,
+        "idmap" => $idmap_resolved,
+        "env" => $env,
+        "explain" => $env["TEMPMAILAPIBYBOOMLIFY_TEST_EXPLAIN"] === "TRUE",
+        "live" => $live,
+        "synthetic_only" => $live && !$idmap_overridden,
+        "now" => (int)(microtime(true) * 1000),
+    ];
+}

@@ -1,0 +1,38 @@
+{
+  "existing": {
+    "email": {
+      "EMAIL00": {
+        "data": {},
+        "domain": "s33",
+        "expiry": "s34",
+        "success": false,
+        "username": "s36"
+      },
+      "EMAIL01": {
+        "data": {},
+        "domain": "s65",
+        "expiry": "s66",
+        "success": false,
+        "username": "s68"
+      },
+      "EMAIL02": {
+        "data": {},
+        "domain": "s97",
+        "expiry": "s98",
+        "success": false,
+        "username": "s9a"
+      }
+    }
+  },
+  "new": {
+    "email": {
+      "email_ref01": {
+        "data": {},
+        "domain": "sc9",
+        "expiry": "sca",
+        "success": false,
+        "username": "scc"
+      }
+    }
+  }
+}

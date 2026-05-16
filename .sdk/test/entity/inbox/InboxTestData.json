@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "inbox": {
+      "INBOX00": {
+        "data": {},
+        "success": false
+      },
+      "INBOX01": {
+        "data": {},
+        "success": false
+      },
+      "INBOX02": {
+        "data": {},
+        "success": false
+      }
+    }
+  },
+  "new": {
+    "inbox": {
+      "inbox_ref01": {
+        "data": {},
+        "success": false
+      }
+    }
+  }
+}
