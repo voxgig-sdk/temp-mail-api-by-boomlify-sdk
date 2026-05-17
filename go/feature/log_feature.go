@@ -4,7 +4,7 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/core"
+	"github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/go/core"
 )
 
 type LogFeature struct {

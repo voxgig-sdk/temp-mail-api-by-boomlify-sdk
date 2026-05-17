@@ -6,21 +6,24 @@
         "domain": "s33",
         "expiry": "s34",
         "success": false,
-        "username": "s36"
+        "username": "s36",
+        "id": "EMAIL00"
       },
       "EMAIL01": {
         "data": {},
         "domain": "s65",
         "expiry": "s66",
         "success": false,
-        "username": "s68"
+        "username": "s68",
+        "id": "EMAIL01"
       },
       "EMAIL02": {
         "data": {},
         "domain": "s97",
         "expiry": "s98",
         "success": false,
-        "username": "s9a"
+        "username": "s9a",
+        "id": "EMAIL02"
       }
     }
   },

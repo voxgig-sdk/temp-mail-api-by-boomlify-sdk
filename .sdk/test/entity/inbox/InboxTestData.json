@@ -3,15 +3,18 @@
     "inbox": {
       "INBOX00": {
         "data": {},
-        "success": false
+        "success": false,
+        "id": "INBOX00"
       },
       "INBOX01": {
         "data": {},
-        "success": false
+        "success": false,
+        "id": "INBOX01"
       },
       "INBOX02": {
         "data": {},
-        "success": false
+        "success": false,
+        "id": "INBOX02"
       }
     }
   },

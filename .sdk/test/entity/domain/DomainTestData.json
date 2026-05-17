@@ -3,15 +3,18 @@
     "domain": {
       "DOMAIN00": {
         "data": {},
-        "success": false
+        "success": false,
+        "id": "DOMAIN00"
       },
       "DOMAIN01": {
         "data": {},
-        "success": false
+        "success": false,
+        "id": "DOMAIN01"
       },
       "DOMAIN02": {
         "data": {},
-        "success": false
+        "success": false,
+        "id": "DOMAIN02"
       }
     }
   },

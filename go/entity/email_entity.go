@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/core"
+	"github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/go/utility/struct"
 )
 
 type EmailEntity struct {

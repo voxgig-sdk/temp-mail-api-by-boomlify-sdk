@@ -1,9 +1,9 @@
 package utility
 
 import (
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/go/utility/struct"
 
-	"github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/core"
+	"github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/go/core"
 )
 
 func preparePathUtil(ctx *core.Context) string {

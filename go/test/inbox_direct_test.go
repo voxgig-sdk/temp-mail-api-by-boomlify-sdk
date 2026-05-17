@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk"
-	"github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/core"
+	sdk "github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/go"
+	"github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/go/core"
 )
 
 func TestInboxDirect(t *testing.T) {
