@@ -87,7 +87,6 @@ def _email_basic_setup(extra):
         "TEMPMAILAPIBYBOOMLIFY_TEST_EMAIL_ENTID": idmap,
         "TEMPMAILAPIBYBOOMLIFY_TEST_LIVE": "FALSE",
         "TEMPMAILAPIBYBOOMLIFY_TEST_EXPLAIN": "FALSE",
-        "TEMPMAILAPIBYBOOMLIFY_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -98,7 +97,6 @@ def _email_basic_setup(extra):
     if env.get("TEMPMAILAPIBYBOOMLIFY_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("TEMPMAILAPIBYBOOMLIFY_APIKEY"),
             },
             extra or {},
         ])

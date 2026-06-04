@@ -62,14 +62,12 @@ function domain_direct_setup(mockres)
   local env = runner.env_override({
     ["TEMPMAILAPIBYBOOMLIFY_TEST_DOMAIN_ENTID"] = {},
     ["TEMPMAILAPIBYBOOMLIFY_TEST_LIVE"] = "FALSE",
-    ["TEMPMAILAPIBYBOOMLIFY_APIKEY"] = "NONE",
   })
 
   local live = env["TEMPMAILAPIBYBOOMLIFY_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["TEMPMAILAPIBYBOOMLIFY_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

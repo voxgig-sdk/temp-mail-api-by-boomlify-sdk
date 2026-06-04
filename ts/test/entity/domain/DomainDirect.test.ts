@@ -74,14 +74,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'TEMPMAILAPIBYBOOMLIFY_TEST_DOMAIN_ENTID': {},
     'TEMPMAILAPIBYBOOMLIFY_TEST_LIVE': 'FALSE',
-    'TEMPMAILAPIBYBOOMLIFY_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.TEMPMAILAPIBYBOOMLIFY_TEST_LIVE
 
   if (live) {
     const client = new TempMailApiByBoomlifySDK({
-      apikey: env.TEMPMAILAPIBYBOOMLIFY_APIKEY,
     })
 
     let idmap: any = env['TEMPMAILAPIBYBOOMLIFY_TEST_DOMAIN_ENTID']

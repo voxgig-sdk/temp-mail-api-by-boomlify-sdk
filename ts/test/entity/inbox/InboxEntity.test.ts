@@ -111,7 +111,6 @@ function basicSetup(extra?: any) {
     'TEMP_MAIL_API_BY_BOOMLIFY_TEST_INBOX_ENTID': idmap,
     'TEMP_MAIL_API_BY_BOOMLIFY_TEST_LIVE': 'FALSE',
     'TEMP_MAIL_API_BY_BOOMLIFY_TEST_EXPLAIN': 'FALSE',
-    'TEMP_MAIL_API_BY_BOOMLIFY_APIKEY': 'NONE',
   })
 
   idmap = env['TEMP_MAIL_API_BY_BOOMLIFY_TEST_INBOX_ENTID']
@@ -121,7 +120,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new TempMailApiByBoomlifySDK(merge([
       {
-        apikey: env.TEMP_MAIL_API_BY_BOOMLIFY_APIKEY,
       },
       extra
     ]))

@@ -99,14 +99,12 @@ func domainDirectSetup(mockres any) *domainDirectSetupResult {
 	env := envOverride(map[string]any{
 		"TEMPMAILAPIBYBOOMLIFY_TEST_DOMAIN_ENTID": map[string]any{},
 		"TEMPMAILAPIBYBOOMLIFY_TEST_LIVE":    "FALSE",
-		"TEMPMAILAPIBYBOOMLIFY_APIKEY":       "NONE",
 	})
 
 	live := env["TEMPMAILAPIBYBOOMLIFY_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["TEMPMAILAPIBYBOOMLIFY_APIKEY"],
 		}
 		client := sdk.NewTempMailApiByBoomlifySDK(mergedOpts)
 

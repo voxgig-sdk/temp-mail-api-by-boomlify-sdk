@@ -67,14 +67,12 @@ def _inbox_direct_setup(mockres):
     env = runner.env_override({
         "TEMPMAILAPIBYBOOMLIFY_TEST_INBOX_ENTID": {},
         "TEMPMAILAPIBYBOOMLIFY_TEST_LIVE": "FALSE",
-        "TEMPMAILAPIBYBOOMLIFY_APIKEY": "NONE",
     })
 
     live = env.get("TEMPMAILAPIBYBOOMLIFY_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("TEMPMAILAPIBYBOOMLIFY_APIKEY"),
         }
         client = TempMailApiByBoomlifySDK(merged_opts)
         return {

@@ -111,14 +111,12 @@ func inboxDirectSetup(mockres any) *inboxDirectSetupResult {
 	env := envOverride(map[string]any{
 		"TEMPMAILAPIBYBOOMLIFY_TEST_INBOX_ENTID": map[string]any{},
 		"TEMPMAILAPIBYBOOMLIFY_TEST_LIVE":    "FALSE",
-		"TEMPMAILAPIBYBOOMLIFY_APIKEY":       "NONE",
 	})
 
 	live := env["TEMPMAILAPIBYBOOMLIFY_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["TEMPMAILAPIBYBOOMLIFY_APIKEY"],
 		}
 		client := sdk.NewTempMailApiByBoomlifySDK(mergedOpts)
 
