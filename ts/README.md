@@ -10,7 +10,7 @@ The TypeScript SDK for the TempMailApiByBoomlify API — a type-safe, entity-ori
 
 ## Install
 ```bash
-npm install temp-mail-api-by-boomlify
+npm install @voxgig-sdk/temp-mail-api-by-boomlify
 ```
 ## Tutorial: your first API call
 

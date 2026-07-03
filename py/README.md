@@ -10,7 +10,7 @@ The Python SDK for the TempMailApiByBoomlify API — an entity-oriented client f
 
 ## Install
 ```bash
-pip install temp-mail-api-by-boomlify-sdk
+pip install voxgig-sdk-temp-mail-api-by-boomlify
 ```
 
 Or install from source:

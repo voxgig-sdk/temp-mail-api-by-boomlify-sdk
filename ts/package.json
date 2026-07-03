@@ -1,7 +1,23 @@
 {
   "name": "@voxgig-sdk/temp-mail-api-by-boomlify",
   "version": "0.0.1",
-  "description": "DESCRIPTION",
+  "description": "Unofficial generated TypeScript SDK for the Temp Mail API by Boomlify public API. Not affiliated with or endorsed by the upstream API provider.",
+  "keywords": [
+    "voxgig",
+    "sdk",
+    "generated-sdk",
+    "openapi",
+    "api-client",
+    "temp-mail-api-by-boomlify"
+  ],
+  "homepage": "https://github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/issues"
+  },
   "main": "dist/TempMailApiByBoomlifySDK.js",
   "type": "commonjs",
   "types": "dist/TempMailApiByBoomlifySDK.d.ts",
@@ -14,7 +30,10 @@
     "clean": "rm -rf node_modules yarn.lock package-lock.json",
     "reset": "npm run clean && npm i && npm run build && npm test"
   },
-  "author": "TempMailApiByBoomlify",
+  "author": {
+    "name": "Voxgig",
+    "url": "https://voxgig.com"
+  },
   "license": "MIT",
   "dependencies": {},
   "peerDependencies": {},

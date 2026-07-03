@@ -10,7 +10,7 @@ The PHP SDK for the TempMailApiByBoomlify API — an entity-oriented client usin
 
 ## Install
 ```bash
-composer require voxgig/temp-mail-api-by-boomlify-sdk
+composer require voxgig-sdk/temp-mail-api-by-boomlify
 ```
 
 

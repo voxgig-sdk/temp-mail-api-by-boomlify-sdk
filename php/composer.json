@@ -1,8 +1,17 @@
 {
   "name": "voxgig-sdk/temp-mail-api-by-boomlify",
-  "description": "TempMailApiByBoomlify SDK for PHP",
+  "description": "Unofficial generated PHP SDK for the Temp Mail API by Boomlify public API. Not affiliated with or endorsed by the upstream API provider.",
   "type": "library",
+  "keywords": ["voxgig", "sdk", "generated-sdk", "openapi", "api-client", "temp-mail-api-by-boomlify"],
+  "homepage": "https://github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk",
   "license": "MIT",
+  "authors": [
+    { "name": "Voxgig", "homepage": "https://voxgig.com" }
+  ],
+  "support": {
+    "issues": "https://github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/issues",
+    "source": "https://github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk"
+  },
   "minimum-stability": "stable",
   "require": {
     "php": ">=8.2"

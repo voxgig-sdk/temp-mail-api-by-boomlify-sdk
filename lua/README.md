@@ -10,7 +10,7 @@ The Lua SDK for the TempMailApiByBoomlify API — an entity-oriented client usin
 
 ## Install
 ```bash
-luarocks install temp-mail-api-by-boomlify-sdk
+luarocks install voxgig-sdk-temp-mail-api-by-boomlify
 ```
 
 If the module is not yet published, add the source directory to

@@ -10,13 +10,13 @@ The Ruby SDK for the TempMailApiByBoomlify API — an entity-oriented client usi
 
 ## Install
 ```bash
-gem install temp-mail-api-by-boomlify-sdk
+gem install voxgig-sdk-temp-mail-api-by-boomlify
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "temp-mail-api-by-boomlify-sdk"
+gem "voxgig-sdk-temp-mail-api-by-boomlify"
 ```
 
 Then run:
