@@ -117,6 +117,7 @@ func domainBasicSetup(extra map[string]any) *entityTestSetup {
 		"TEMPMAILAPIBYBOOMLIFY_TEST_DOMAIN_ENTID": idmap,
 		"TEMPMAILAPIBYBOOMLIFY_TEST_LIVE":      "FALSE",
 		"TEMPMAILAPIBYBOOMLIFY_TEST_EXPLAIN":   "FALSE",
+		"TEMPMAILAPIBYBOOMLIFY_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["TEMPMAILAPIBYBOOMLIFY_TEST_DOMAIN_ENTID"])
@@ -127,6 +128,7 @@ func domainBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["TEMPMAILAPIBYBOOMLIFY_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["TEMPMAILAPIBYBOOMLIFY_APIKEY"],
 			},
 			extra,
 		})

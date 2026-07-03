@@ -67,12 +67,14 @@ function domain_direct_setup($mockres)
     $env = Runner::env_override([
         "TEMPMAILAPIBYBOOMLIFY_TEST_DOMAIN_ENTID" => [],
         "TEMPMAILAPIBYBOOMLIFY_TEST_LIVE" => "FALSE",
+        "TEMPMAILAPIBYBOOMLIFY_APIKEY" => "NONE",
     ]);
 
     $live = $env["TEMPMAILAPIBYBOOMLIFY_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
+            "apikey" => $env["TEMPMAILAPIBYBOOMLIFY_APIKEY"],
         ];
         $client = new TempMailApiByBoomlifySDK($merged_opts);
         return [
