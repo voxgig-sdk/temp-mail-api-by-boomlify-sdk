@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:domain():list() / client:domain():load({ id = ... })
-function TempMailApiByBoomlifySDK:domain(data)
+-- Idiomatic facade: client:Domain():list() / client:Domain():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function TempMailApiByBoomlifySDK:Domain(data)
   local EntityMod = require("entity.domain_entity")
   if data == nil then
     if self._domain == nil then
@@ -256,15 +257,10 @@ function TempMailApiByBoomlifySDK:domain(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:domain() instead.
-function TempMailApiByBoomlifySDK:Domain(data)
-  local EntityMod = require("entity.domain_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:email():list() / client:email():load({ id = ... })
-function TempMailApiByBoomlifySDK:email(data)
+-- Idiomatic facade: client:Email():list() / client:Email():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function TempMailApiByBoomlifySDK:Email(data)
   local EntityMod = require("entity.email_entity")
   if data == nil then
     if self._email == nil then
@@ -275,15 +271,10 @@ function TempMailApiByBoomlifySDK:email(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:email() instead.
-function TempMailApiByBoomlifySDK:Email(data)
-  local EntityMod = require("entity.email_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:inbox():list() / client:inbox():load({ id = ... })
-function TempMailApiByBoomlifySDK:inbox(data)
+-- Idiomatic facade: client:Inbox():list() / client:Inbox():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function TempMailApiByBoomlifySDK:Inbox(data)
   local EntityMod = require("entity.inbox_entity")
   if data == nil then
     if self._inbox == nil then
@@ -291,12 +282,6 @@ function TempMailApiByBoomlifySDK:inbox(data)
     end
     return self._inbox
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:inbox() instead.
-function TempMailApiByBoomlifySDK:Inbox(data)
-  local EntityMod = require("entity.inbox_entity")
   return EntityMod.new(self, data)
 end
 

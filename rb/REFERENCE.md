@@ -95,7 +95,7 @@ same parameters as `direct()`. Raises on error.
 ## DomainEntity
 
 ```ruby
-domain = client.domain
+domain = client.Domain
 ```
 
 ### Fields
@@ -112,7 +112,7 @@ domain = client.domain
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.domain.load({ "id" => "domain_id" })
+result = client.Domain.load({ "id" => "domain_id" })
 ```
 
 ### Common Methods
@@ -148,7 +148,7 @@ Return the entity name.
 ## EmailEntity
 
 ```ruby
-email = client.email
+email = client.Email
 ```
 
 ### Fields
@@ -168,7 +168,7 @@ email = client.email
 Create a new entity with the given data. Raises on error.
 
 ```ruby
-result = client.email.create({
+result = client.Email.create({
 })
 ```
 
@@ -205,7 +205,7 @@ Return the entity name.
 ## InboxEntity
 
 ```ruby
-inbox = client.inbox
+inbox = client.Inbox
 ```
 
 ### Fields
@@ -222,7 +222,7 @@ inbox = client.inbox
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.inbox.load({ "id" => "inbox_id" })
+result = client.Inbox.load({ "id" => "inbox_id" })
 ```
 
 ### Common Methods

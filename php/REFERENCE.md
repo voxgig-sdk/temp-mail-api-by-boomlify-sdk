@@ -94,7 +94,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## DomainEntity
 
 ```php
-$domain = $client->domain();
+$domain = $client->Domain();
 ```
 
 ### Fields
@@ -111,7 +111,7 @@ $domain = $client->domain();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->domain()->load(["id" => "domain_id"]);
+$result = $client->Domain()->load(["id" => "domain_id"]);
 ```
 
 ### Common Methods
@@ -147,7 +147,7 @@ Return the entity name.
 ## EmailEntity
 
 ```php
-$email = $client->email();
+$email = $client->Email();
 ```
 
 ### Fields
@@ -167,7 +167,7 @@ $email = $client->email();
 Create a new entity with the given data. Throws on error.
 
 ```php
-$result = $client->email()->create([
+$result = $client->Email()->create([
 ]);
 ```
 
@@ -204,7 +204,7 @@ Return the entity name.
 ## InboxEntity
 
 ```php
-$inbox = $client->inbox();
+$inbox = $client->Inbox();
 ```
 
 ### Fields
@@ -221,7 +221,7 @@ $inbox = $client->inbox();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->inbox()->load(["id" => "inbox_id"]);
+$result = $client->Inbox()->load(["id" => "inbox_id"]);
 ```
 
 ### Common Methods

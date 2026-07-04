@@ -36,10 +36,12 @@ client = TempMailApiByBoomlifySDK({
 
 ### 3. Load a domain
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.domain.load({"id": "example_id"})
-    print(result)
+    domain = client.Domain().load({"id": "example_id"})
+    print(domain)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -87,8 +89,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = TempMailApiByBoomlifySDK.test()
 
-result = client.domain.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+domain = client.Domain().load({"id": "test01"})
+# domain contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -167,8 +170,8 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
 | `Domain` | `(data) -> DomainEntity` | Create a Domain entity instance. |
-| `Email` | `(data) -> EmailEntity` | Create a Email entity instance. |
-| `Inbox` | `(data) -> InboxEntity` | Create a Inbox entity instance. |
+| `Email` | `(data) -> EmailEntity` | Create an Email entity instance. |
+| `Inbox` | `(data) -> InboxEntity` | Create an Inbox entity instance. |
 
 ### Entity interface
 
@@ -251,7 +254,7 @@ API path: `/inbox/{email}`
 
 ### Domain
 
-Create an instance: `const domain = client.domain`
+Create an instance: `domain = client.Domain()`
 
 #### Operations
 
@@ -268,14 +271,14 @@ Create an instance: `const domain = client.domain`
 
 #### Example: Load
 
-```ts
-const domain = await client.domain.load({ id: 'domain_id' })
+```python
+domain = client.Domain().load({"id": "domain_id"})
 ```
 
 
 ### Email
 
-Create an instance: `const email = client.email`
+Create an instance: `email = client.Email()`
 
 #### Operations
 
@@ -295,15 +298,15 @@ Create an instance: `const email = client.email`
 
 #### Example: Create
 
-```ts
-const email = await client.email.create({
+```python
+email = client.Email().create({
 })
 ```
 
 
 ### Inbox
 
-Create an instance: `const inbox = client.inbox`
+Create an instance: `inbox = client.Inbox()`
 
 #### Operations
 
@@ -320,8 +323,8 @@ Create an instance: `const inbox = client.inbox`
 
 #### Example: Load
 
-```ts
-const inbox = await client.inbox.load({ id: 'inbox_id' })
+```python
+inbox = client.Inbox().load({"id": "inbox_id"})
 ```
 
 
@@ -395,7 +398,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-domain = client.domain
+domain = client.Domain()
 domain.load({"id": "example_id"})
 
 # domain.data_get() now returns the loaded domain data

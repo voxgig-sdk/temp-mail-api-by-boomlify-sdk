@@ -4,50 +4,48 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Domain:
-    data: Optional[dict] = None
-    success: Optional[bool] = None
+class Domain(TypedDict, total=False):
+    data: dict
+    success: bool
 
 
-@dataclass
-class DomainLoadMatch:
-    data: Optional[dict] = None
-    success: Optional[bool] = None
+class DomainLoadMatch(TypedDict, total=False):
+    data: dict
+    success: bool
 
 
-@dataclass
-class Email:
-    data: Optional[dict] = None
-    domain: Optional[str] = None
-    expiry: Optional[str] = None
-    success: Optional[bool] = None
-    username: Optional[str] = None
+class Email(TypedDict, total=False):
+    data: dict
+    domain: str
+    expiry: str
+    success: bool
+    username: str
 
 
-@dataclass
-class EmailCreateData:
-    data: Optional[dict] = None
-    domain: Optional[str] = None
-    expiry: Optional[str] = None
-    success: Optional[bool] = None
-    username: Optional[str] = None
+class EmailCreateData(TypedDict, total=False):
+    data: dict
+    domain: str
+    expiry: str
+    success: bool
+    username: str
 
 
-@dataclass
-class Inbox:
-    data: Optional[dict] = None
-    success: Optional[bool] = None
+class Inbox(TypedDict, total=False):
+    data: dict
+    success: bool
 
 
-@dataclass
-class InboxLoadMatch:
+class InboxLoadMatch(TypedDict):
     id: str
-
