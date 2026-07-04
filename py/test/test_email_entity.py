@@ -44,9 +44,7 @@ class TestEmailEntity:
         email_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.email"), "email_ref01"))
 
-        email_ref01_data_result, err = email_ref01_ent.create(email_ref01_data, None)
-        assert err is None
-        email_ref01_data = helpers.to_map(email_ref01_data_result)
+        email_ref01_data = helpers.to_map(email_ref01_ent.create(email_ref01_data, None))
         assert email_ref01_data is not None
 
 

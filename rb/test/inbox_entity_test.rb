@@ -42,8 +42,7 @@ class InboxEntityTest < Minitest::Test
     # LOAD
     inbox_ref01_ent = client.Inbox(nil)
     inbox_ref01_match_dt0 = {}
-    inbox_ref01_data_dt0_loaded, err = inbox_ref01_ent.load(inbox_ref01_match_dt0, nil)
-    assert_nil err
+    inbox_ref01_data_dt0_loaded = inbox_ref01_ent.load(inbox_ref01_match_dt0, nil)
     assert !inbox_ref01_data_dt0_loaded.nil?
 
   end

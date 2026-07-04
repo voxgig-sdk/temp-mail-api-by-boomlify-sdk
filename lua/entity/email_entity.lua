@@ -83,6 +83,10 @@ end
 
 
 
+---@param reqdata EmailCreateData
+---@param ctrl? table
+---@return Email
+---@return string? err
 function EmailEntity:create(reqdata, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

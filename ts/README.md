@@ -9,9 +9,12 @@ The TypeScript SDK for the TempMailApiByBoomlify API — a type-safe, entity-ori
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/temp-mail-api-by-boomlify
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/releases](https://github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,17 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { TempMailApiByBoomlifySDK } from 'temp-mail-api-by-boomlify'
+import { TempMailApiByBoomlifySDK } from '@voxgig-sdk/temp-mail-api-by-boomlify'
 
 const client = new TempMailApiByBoomlifySDK({
-  apikey: process.env.TEMP-MAIL-API-BY-BOOMLIFY_APIKEY,
+  apikey: process.env.TEMP_MAIL_API_BY_BOOMLIFY_APIKEY,
 })
 ```
 
 ### 3. Load a domain
 
 ```ts
-const result = await client.Domain().load({ id: 'example_id' })
+const result = await client.domain.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -79,7 +82,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = TempMailApiByBoomlifySDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.domain.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -96,7 +99,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.domain
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -133,8 +136,8 @@ const client = new TempMailApiByBoomlifySDK({
 Create a `.env.local` file at the project root:
 
 ```
-TEMP-MAIL-API-BY-BOOMLIFY_TEST_LIVE=TRUE
-TEMP-MAIL-API-BY-BOOMLIFY_APIKEY=<your-key>
+TEMP_MAIL_API_BY_BOOMLIFY_TEST_LIVE=TRUE
+TEMP_MAIL_API_BY_BOOMLIFY_APIKEY=<your-key>
 ```
 
 Then run:
@@ -294,7 +297,7 @@ API path: `/inbox/{email}`
 
 ### Domain
 
-Create an instance: `const domain = client.Domain()`
+Create an instance: `const domain = client.domain`
 
 #### Operations
 
@@ -312,13 +315,13 @@ Create an instance: `const domain = client.Domain()`
 #### Example: Load
 
 ```ts
-const domain = await client.Domain().load({ id: 'domain_id' })
+const domain = await client.domain.load({ id: 'domain_id' })
 ```
 
 
 ### Email
 
-Create an instance: `const email = client.Email()`
+Create an instance: `const email = client.email`
 
 #### Operations
 
@@ -339,14 +342,14 @@ Create an instance: `const email = client.Email()`
 #### Example: Create
 
 ```ts
-const email = await client.Email().create({
+const email = await client.email.create({
 })
 ```
 
 
 ### Inbox
 
-Create an instance: `const inbox = client.Inbox()`
+Create an instance: `const inbox = client.inbox`
 
 #### Operations
 
@@ -364,7 +367,7 @@ Create an instance: `const inbox = client.Inbox()`
 #### Example: Load
 
 ```ts
-const inbox = await client.Inbox().load({ id: 'inbox_id' })
+const inbox = await client.inbox.load({ id: 'inbox_id' })
 ```
 
 
@@ -425,7 +428,7 @@ temp-mail-api-by-boomlify/
 Import the SDK from the package root:
 
 ```ts
-import { TempMailApiByBoomlifySDK } from 'temp-mail-api-by-boomlify'
+import { TempMailApiByBoomlifySDK } from '@voxgig-sdk/temp-mail-api-by-boomlify'
 ```
 
 ### Entity state
@@ -435,11 +438,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const domain = client.domain
+await domain.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// domain.data() now returns the loaded domain data
+// domain.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

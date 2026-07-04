@@ -212,7 +212,8 @@ class Config {
                     "name": "id",
                     "orig": "email",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ],
                 "query": [

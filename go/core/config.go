@@ -178,6 +178,7 @@ func MakeConfig() map[string]any {
 											"orig": "email",
 											"reqd": true,
 											"type": "`$STRING`",
+											"index$": 0,
 										},
 									},
 									"query": []any{

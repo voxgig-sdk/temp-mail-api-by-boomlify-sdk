@@ -92,7 +92,7 @@ same parameters as `direct()`.
 ## DomainEntity
 
 ```lua
-local domain = client:Domain(nil)
+local domain = client:domain(nil)
 ```
 
 ### Fields
@@ -109,7 +109,7 @@ local domain = client:Domain(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Domain():load({ id = "domain_id" })
+local result, err = client:domain():load({ id = "domain_id" })
 ```
 
 ### Common Methods
@@ -145,7 +145,7 @@ Return the entity name.
 ## EmailEntity
 
 ```lua
-local email = client:Email(nil)
+local email = client:email(nil)
 ```
 
 ### Fields
@@ -165,7 +165,7 @@ local email = client:Email(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:Email():create({
+local result, err = client:email():create({
 })
 ```
 
@@ -202,7 +202,7 @@ Return the entity name.
 ## InboxEntity
 
 ```lua
-local inbox = client:Inbox(nil)
+local inbox = client:inbox(nil)
 ```
 
 ### Fields
@@ -219,7 +219,7 @@ local inbox = client:Inbox(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Inbox():load({ id = "inbox_id" })
+local result, err = client:inbox():load({ id = "inbox_id" })
 ```
 
 ### Common Methods

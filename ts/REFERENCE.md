@@ -134,7 +134,7 @@ Alias for `TempMailApiByBoomlifySDK.test()`.
 ## DomainEntity
 
 ```ts
-const domain = client.Domain()
+const domain = client.domain
 ```
 
 ### Fields
@@ -151,7 +151,7 @@ const domain = client.Domain()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Domain().load({ id: 'domain_id' })
+const result = await client.domain.load({ id: 'domain_id' })
 ```
 
 ### Common Methods
@@ -185,7 +185,7 @@ Return a copy of the entity options.
 ## EmailEntity
 
 ```ts
-const email = client.Email()
+const email = client.email
 ```
 
 ### Fields
@@ -205,7 +205,7 @@ const email = client.Email()
 Create a new entity with the given data.
 
 ```ts
-const result = await client.Email().create({
+const result = await client.email.create({
 })
 ```
 
@@ -240,7 +240,7 @@ Return a copy of the entity options.
 ## InboxEntity
 
 ```ts
-const inbox = client.Inbox()
+const inbox = client.inbox
 ```
 
 ### Fields
@@ -257,7 +257,7 @@ const inbox = client.Inbox()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Inbox().load({ id: 'inbox_id' })
+const result = await client.inbox.load({ id: 'inbox_id' })
 ```
 
 ### Common Methods

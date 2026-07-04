@@ -36,8 +36,7 @@ class EmailEntityTest < Minitest::Test
     email_ref01_data = Helpers.to_map(Vs.getprop(
       Vs.getpath(setup[:data], "new.email"), "email_ref01"))
 
-    email_ref01_data_result, err = email_ref01_ent.create(email_ref01_data, nil)
-    assert_nil err
+    email_ref01_data_result = email_ref01_ent.create(email_ref01_data, nil)
     email_ref01_data = Helpers.to_map(email_ref01_data_result)
     assert !email_ref01_data.nil?
 

@@ -179,6 +179,7 @@ module TempMailApiByBoomlifyConfig
                         "orig" => "email",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                     "query" => [

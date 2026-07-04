@@ -49,8 +49,7 @@ class TestInboxEntity:
         # LOAD
         inbox_ref01_ent = client.Inbox(None)
         inbox_ref01_match_dt0 = {}
-        inbox_ref01_data_dt0_loaded, err = inbox_ref01_ent.load(inbox_ref01_match_dt0, None)
-        assert err is None
+        inbox_ref01_data_dt0_loaded = inbox_ref01_ent.load(inbox_ref01_match_dt0, None)
         assert inbox_ref01_data_dt0_loaded is not None
 
 

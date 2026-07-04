@@ -179,6 +179,7 @@ def make_config():
                       "orig": "email",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                   "query": [

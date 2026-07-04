@@ -178,6 +178,7 @@ local function make_config()
                       ["orig"] = "email",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {

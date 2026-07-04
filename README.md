@@ -10,26 +10,26 @@ This is an unofficial SDK for the Temp Mail API by Boomlify public API, generate
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/temp-mail-api-by-boomlify` | `npm install @voxgig-sdk/temp-mail-api-by-boomlify` |
-| Python | `voxgig-sdk-temp-mail-api-by-boomlify` | `pip install voxgig-sdk-temp-mail-api-by-boomlify` |
-| PHP | `voxgig-sdk/temp-mail-api-by-boomlify` | `composer require voxgig-sdk/temp-mail-api-by-boomlify` |
-| Golang | `github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/go` | `go get github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/go` |
-| Ruby | `voxgig-sdk-temp-mail-api-by-boomlify` | `gem install voxgig-sdk-temp-mail-api-by-boomlify` |
-| Lua | `voxgig-sdk-temp-mail-api-by-boomlify` | `luarocks install voxgig-sdk-temp-mail-api-by-boomlify` |
+| TypeScript | `@voxgig-sdk/temp-mail-api-by-boomlify` | publish pending — [install from git tag](https://github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/releases) |
+| Python | `voxgig-sdk-temp-mail-api-by-boomlify` | publish pending — [install from git tag](https://github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/releases) |
+| PHP | `voxgig-sdk/temp-mail-api-by-boomlify` | publish pending — [install from git tag](https://github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/releases) |
+| Golang | `github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/go` | `go get github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/go@latest` |
+| Ruby | `voxgig-sdk-temp-mail-api-by-boomlify` | publish pending — [install from git tag](https://github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/releases) |
+| Lua | `voxgig-sdk-temp-mail-api-by-boomlify` | publish pending — [install from git tag](https://github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/releases) |
 
 ## Quickstart
 
 ### TypeScript
 
 ```ts
-import { TempMailApiByBoomlifySDK } from 'temp-mail-api-by-boomlify'
+import { TempMailApiByBoomlifySDK } from '@voxgig-sdk/temp-mail-api-by-boomlify'
 
 const client = new TempMailApiByBoomlifySDK({
-  apikey: process.env.TEMP-MAIL-API-BY-BOOMLIFY_APIKEY,
+  apikey: process.env.TEMP_MAIL_API_BY_BOOMLIFY_APIKEY,
 })
 
 // Load domain data
-const domain = await client.Domain().load({})
+const domain = await client.domain.load({})
 console.log(domain.data)
 ```
 
@@ -71,9 +71,9 @@ The API exposes 3 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Domain** |  | `/domains` |
-| **Email** |  | `/email/create` |
-| **Inbox** |  | `/inbox/{email}` |
+| **Domain** | The Domain entity (load). | `/domains` |
+| **Email** | The Email entity (create). | `/email/create` |
+| **Inbox** | The Inbox entity (load). | `/inbox/{email}` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -87,12 +87,12 @@ import os
 from tempmailapibyboomlify_sdk import TempMailApiByBoomlifySDK
 
 client = TempMailApiByBoomlifySDK({
-    "apikey": os.environ.get("TEMP-MAIL-API-BY-BOOMLIFY_APIKEY"),
+    "apikey": os.environ.get("TEMP_MAIL_API_BY_BOOMLIFY_APIKEY"),
 })
 
 
 # Load a specific domain
-domain, err = client.Domain().load({"id": "example_id"})
+domain = client.domain.load({"id": "example_id"})
 print(domain)
 ```
 
@@ -103,12 +103,12 @@ print(domain)
 require_once 'tempmailapibyboomlify_sdk.php';
 
 $client = new TempMailApiByBoomlifySDK([
-    "apikey" => getenv("TEMP-MAIL-API-BY-BOOMLIFY_APIKEY"),
+    "apikey" => getenv("TEMP_MAIL_API_BY_BOOMLIFY_APIKEY"),
 ]);
 
 
 // Load a specific domain
-[$domain, $err] = $client->Domain()->load(["id" => "example_id"]);
+$domain = $client->domain()->load(["id" => "example_id"]);
 print_r($domain);
 ```
 
@@ -118,7 +118,7 @@ print_r($domain);
 import sdk "github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/go"
 
 client := sdk.NewTempMailApiByBoomlifySDK(map[string]any{
-    "apikey": os.Getenv("TEMP-MAIL-API-BY-BOOMLIFY_APIKEY"),
+    "apikey": os.Getenv("TEMP_MAIL_API_BY_BOOMLIFY_APIKEY"),
 })
 
 // Load domain data
@@ -132,12 +132,12 @@ fmt.Println(domain)
 require_relative "TempMailApiByBoomlify_sdk"
 
 client = TempMailApiByBoomlifySDK.new({
-  "apikey" => ENV["TEMP-MAIL-API-BY-BOOMLIFY_APIKEY"],
+  "apikey" => ENV["TEMP_MAIL_API_BY_BOOMLIFY_APIKEY"],
 })
 
 
 # Load a specific domain
-domain, err = client.Domain().load({ "id" => "example_id" })
+domain = client.domain.load({ "id" => "example_id" })
 puts domain
 ```
 
@@ -147,12 +147,12 @@ puts domain
 local sdk = require("temp-mail-api-by-boomlify_sdk")
 
 local client = sdk.new({
-  apikey = os.getenv("TEMP-MAIL-API-BY-BOOMLIFY_APIKEY"),
+  apikey = os.getenv("TEMP_MAIL_API_BY_BOOMLIFY_APIKEY"),
 })
 
 
 -- Load a specific domain
-local domain, err = client:Domain():load({ id = "example_id" })
+local domain, err = client:domain():load({ id = "example_id" })
 print(domain)
 ```
 
@@ -165,7 +165,7 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = TempMailApiByBoomlifySDK.test()
-const result = await client.Domain().load({ id: 'test01' })
+const result = await client.domain.load({ id: 'test01' })
 // result.ok === true, result.data contains mock data
 ```
 
@@ -173,14 +173,14 @@ const result = await client.Domain().load({ id: 'test01' })
 
 ```python
 client = TempMailApiByBoomlifySDK.test()
-result, err = client.Domain().load({"id": "test01"})
+result = client.domain.load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
 $client = TempMailApiByBoomlifySDK::test();
-[$result, $err] = $client->Domain()->load(["id" => "test01"]);
+$result = $client->domain()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -196,14 +196,14 @@ result, err := client.Domain(nil).Load(
 
 ```ruby
 client = TempMailApiByBoomlifySDK.test
-result, err = client.Domain().load({ "id" => "test01" })
+result = client.domain.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:Domain():load({ id = "test01" })
+local result, err = client:domain():load({ id = "test01" })
 ```
 
 ## How it works
@@ -256,7 +256,7 @@ console.log(result.data)
 
 **Python:**
 ```python
-result, err = client.direct({
+result = client.direct({
     "path": "/api/resource/{id}",
     "method": "GET",
     "params": {"id": "example"},
@@ -265,7 +265,7 @@ result, err = client.direct({
 
 **PHP:**
 ```php
-[$result, $err] = $client->direct([
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
@@ -283,7 +283,7 @@ result, err := client.Direct(map[string]any{
 
 **Ruby:**
 ```ruby
-result, err = client.direct({
+result = client.direct({
   "path" => "/api/resource/{id}",
   "method" => "GET",
   "params" => { "id" => "example" },

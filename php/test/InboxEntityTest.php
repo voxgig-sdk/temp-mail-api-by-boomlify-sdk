@@ -49,8 +49,7 @@ class InboxEntityTest extends TestCase
         // LOAD
         $inbox_ref01_ent = $client->Inbox(null);
         $inbox_ref01_match_dt0 = [];
-        [$inbox_ref01_data_dt0_loaded, $err] = $inbox_ref01_ent->load($inbox_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $inbox_ref01_data_dt0_loaded = $inbox_ref01_ent->load($inbox_ref01_match_dt0, null);
         $this->assertNotNull($inbox_ref01_data_dt0_loaded);
 
     }
