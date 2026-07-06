@@ -21,7 +21,7 @@ Domain = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Domain#load (any subset of Domain fields).
+# Request payload for Domain#load.
 #
 # @!attribute [rw] data
 #   @return [Hash, nil]
@@ -59,7 +59,7 @@ Email = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Email#create (any subset of Email fields).
+# Request payload for Email#create.
 #
 # @!attribute [rw] data
 #   @return [Hash, nil]

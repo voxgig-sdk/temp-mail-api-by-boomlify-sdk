@@ -8,7 +8,7 @@ Complete API reference for the TempMailApiByBoomlify Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'temp-mail-api-by-boomlify_sdk'
+require_relative 'TempMailApiByBoomlify_sdk'
 
 client = TempMailApiByBoomlifySDK.new(options)
 ```
@@ -102,8 +102,8 @@ domain = client.Domain
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
+| `data` | `Hash` | No |  |
+| `success` | `Boolean` | No |  |
 
 ### Operations
 
@@ -112,7 +112,7 @@ domain = client.Domain
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Domain.load({ "id" => "domain_id" })
+result = client.Domain.load()
 ```
 
 ### Common Methods
@@ -155,11 +155,11 @@ email = client.Email
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `domain` | ``$STRING`` | No |  |
-| `expiry` | ``$STRING`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
-| `username` | ``$STRING`` | No |  |
+| `data` | `Hash` | No |  |
+| `domain` | `String` | No |  |
+| `expiry` | `String` | No |  |
+| `success` | `Boolean` | No |  |
+| `username` | `String` | No |  |
 
 ### Operations
 
@@ -212,8 +212,8 @@ inbox = client.Inbox
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
+| `data` | `Hash` | No |  |
+| `success` | `Boolean` | No |  |
 
 ### Operations
 

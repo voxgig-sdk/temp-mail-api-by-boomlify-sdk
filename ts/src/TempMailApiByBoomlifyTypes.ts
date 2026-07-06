@@ -10,7 +10,10 @@ export interface Domain {
   success?: boolean
 }
 
-export type DomainLoadMatch = Partial<Domain>
+export interface DomainLoadMatch {
+  data?: Record<string, any>
+  success?: boolean
+}
 
 export interface Email {
   data?: Record<string, any>
@@ -20,7 +23,13 @@ export interface Email {
   username?: string
 }
 
-export type EmailCreateData = Partial<Email>
+export interface EmailCreateData {
+  data?: Record<string, any>
+  domain?: string
+  expiry?: string
+  success?: boolean
+  username?: string
+}
 
 export interface Inbox {
   data?: Record<string, any>

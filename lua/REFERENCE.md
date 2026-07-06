@@ -99,8 +99,8 @@ local domain = client:Domain(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
+| `data` | `table` | No |  |
+| `success` | `boolean` | No |  |
 
 ### Operations
 
@@ -109,7 +109,7 @@ local domain = client:Domain(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Domain():load({ id = "domain_id" })
+local result, err = client:Domain():load()
 ```
 
 ### Common Methods
@@ -152,11 +152,11 @@ local email = client:Email(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `domain` | ``$STRING`` | No |  |
-| `expiry` | ``$STRING`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
-| `username` | ``$STRING`` | No |  |
+| `data` | `table` | No |  |
+| `domain` | `string` | No |  |
+| `expiry` | `string` | No |  |
+| `success` | `boolean` | No |  |
+| `username` | `string` | No |  |
 
 ### Operations
 
@@ -209,8 +209,8 @@ local inbox = client:Inbox(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
+| `data` | `table` | No |  |
+| `success` | `boolean` | No |  |
 
 ### Operations
 

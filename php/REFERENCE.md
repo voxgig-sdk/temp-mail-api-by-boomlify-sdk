@@ -8,7 +8,7 @@ Complete API reference for the TempMailApiByBoomlify PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/temp-mail-api-by-boomlify_sdk.php';
+require_once __DIR__ . '/tempmailapibyboomlify_sdk.php';
 
 $client = new TempMailApiByBoomlifySDK($options);
 ```
@@ -54,11 +54,11 @@ Create a new `EmailEntity` instance. Pass `null` for no initial data.
 
 Create a new `InboxEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): TempMailApiByBoomlifyUtility`
 
 Return a copy of the SDK utility object.
 
@@ -101,8 +101,8 @@ $domain = $client->Domain();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
+| `data` | `array` | No |  |
+| `success` | `bool` | No |  |
 
 ### Operations
 
@@ -111,24 +111,24 @@ $domain = $client->Domain();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Domain()->load(["id" => "domain_id"]);
+$result = $client->Domain()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -137,7 +137,7 @@ Set the entity match criteria.
 Create a new `DomainEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -154,11 +154,11 @@ $email = $client->Email();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `domain` | ``$STRING`` | No |  |
-| `expiry` | ``$STRING`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
-| `username` | ``$STRING`` | No |  |
+| `data` | `array` | No |  |
+| `domain` | `string` | No |  |
+| `expiry` | `string` | No |  |
+| `success` | `bool` | No |  |
+| `username` | `string` | No |  |
 
 ### Operations
 
@@ -173,19 +173,19 @@ $result = $client->Email()->create([
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -194,7 +194,7 @@ Set the entity match criteria.
 Create a new `EmailEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -211,8 +211,8 @@ $inbox = $client->Inbox();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
+| `data` | `array` | No |  |
+| `success` | `bool` | No |  |
 
 ### Operations
 
@@ -226,19 +226,19 @@ $result = $client->Inbox()->load(["id" => "inbox_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -247,7 +247,7 @@ Set the entity match criteria.
 Create a new `InboxEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

@@ -11,6 +11,8 @@
 ---@field success? boolean
 
 ---@class DomainLoadMatch
+---@field data? table
+---@field success? boolean
 
 ---@class Email
 ---@field data? table
@@ -20,6 +22,11 @@
 ---@field username? string
 
 ---@class EmailCreateData
+---@field data? table
+---@field domain? string
+---@field expiry? string
+---@field success? boolean
+---@field username? string
 
 ---@class Inbox
 ---@field data? table

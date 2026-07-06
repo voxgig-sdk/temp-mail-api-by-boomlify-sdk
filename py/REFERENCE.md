@@ -8,7 +8,7 @@ Complete API reference for the TempMailApiByBoomlify Python SDK.
 ### Constructor
 
 ```python
-from temp-mail-api-by-boomlify_sdk import TempMailApiByBoomlifySDK
+from tempmailapibyboomlify_sdk import TempMailApiByBoomlifySDK
 
 client = TempMailApiByBoomlifySDK(options)
 ```
@@ -96,8 +96,8 @@ domain = client.Domain()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
+| `data` | `dict` | No |  |
+| `success` | `bool` | No |  |
 
 ### Operations
 
@@ -106,7 +106,7 @@ domain = client.Domain()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Domain().load({"id": "domain_id"})
+result = client.Domain().load()
 ```
 
 ### Common Methods
@@ -148,11 +148,11 @@ email = client.Email()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `domain` | ``$STRING`` | No |  |
-| `expiry` | ``$STRING`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
-| `username` | ``$STRING`` | No |  |
+| `data` | `dict` | No |  |
+| `domain` | `str` | No |  |
+| `expiry` | `str` | No |  |
+| `success` | `bool` | No |  |
+| `username` | `str` | No |  |
 
 ### Operations
 
@@ -204,8 +204,8 @@ inbox = client.Inbox()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
+| `data` | `dict` | No |  |
+| `success` | `bool` | No |  |
 
 ### Operations
 

@@ -14,8 +14,7 @@ type Domain struct {
 	Success *bool `json:"success,omitempty"`
 }
 
-// DomainLoadMatch mirrors the domain fields as an all-optional match
-// filter (Go analog of Partial<Domain>).
+// DomainLoadMatch is the typed request payload for Domain.LoadTyped.
 type DomainLoadMatch struct {
 	Data *map[string]any `json:"data,omitempty"`
 	Success *bool `json:"success,omitempty"`
@@ -30,8 +29,7 @@ type Email struct {
 	Username *string `json:"username,omitempty"`
 }
 
-// EmailCreateData mirrors the email fields as an all-optional match
-// filter (Go analog of Partial<Email>).
+// EmailCreateData is the typed request payload for Email.CreateTyped.
 type EmailCreateData struct {
 	Data *map[string]any `json:"data,omitempty"`
 	Domain *string `json:"domain,omitempty"`

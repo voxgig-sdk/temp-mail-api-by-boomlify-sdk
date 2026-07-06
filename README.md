@@ -6,6 +6,21 @@ This is an unofficial SDK for the Temp Mail API by Boomlify public API, generate
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
+## Entities, not endpoints
+
+This SDK exposes the API as a small set of **semantic entities** — Domain, Email and Inbox — that you
+call directly, instead of assembling URL paths and query strings. Entities are
+**Capitalised** to mark them as the primary surface, each with the operations they
+support (`load`, `create`):
+
+```ts
+const client = new TempMailApiByBoomlifySDK()
+const domain = await client.Domain().load()
+```
+
+Thinking in entities keeps the mental model small — for people and AI agents alike —
+rather than reasoning about raw HTTP routes and query parameters.
+
 ## Packages
 
 | Language | Package | Install |
@@ -75,8 +90,8 @@ The API exposes 3 entities:
 | **Email** | The Email entity (create). | `/email/create` |
 | **Inbox** | The Inbox entity (load). | `/inbox/{email}` |
 
-Each entity supports the following operations where available: **load**,
-**list**, **create**, **update**, and **remove**.
+The operations available across these entities are **load**, **create** — see each entity's
+own list above for exactly which it supports.
 
 ## Quickstart in other languages
 
@@ -92,7 +107,7 @@ client = TempMailApiByBoomlifySDK({
 
 
 # Load a specific domain (returns the record, raises on error)
-domain = client.Domain().load({"id": "example_id"})
+domain = client.Domain().load()
 print(domain)
 ```
 
@@ -108,7 +123,7 @@ $client = new TempMailApiByBoomlifySDK([
 
 
 // Load a specific domain (returns the bare record; throws on error)
-$domain = $client->Domain()->load(["id" => "example_id"]);
+$domain = $client->Domain()->load();
 print_r($domain);
 ```
 
@@ -137,7 +152,7 @@ client = TempMailApiByBoomlifySDK.new({
 
 
 # Load a specific domain (returns the bare record; raises on error)
-domain = client.Domain.load({ "id" => "example_id" })
+domain = client.Domain.load()
 puts domain
 ```
 
@@ -152,7 +167,7 @@ local client = sdk.new({
 
 
 -- Load a specific domain
-local domain, err = client:Domain():load({ id = "example_id" })
+local domain, err = client:Domain():load()
 print(domain)
 ```
 
@@ -165,7 +180,7 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = TempMailApiByBoomlifySDK.test()
-const domain = await client.Domain().load({ id: 'test01' })
+const domain = await client.Domain().load()
 // domain is a bare Domain populated with mock data
 console.log(domain)
 ```
@@ -174,7 +189,7 @@ console.log(domain)
 
 ```python
 client = TempMailApiByBoomlifySDK.test()
-domain = client.Domain().load({"id": "test01"})
+domain = client.Domain().load()
 print(domain)
 ```
 
@@ -183,9 +198,9 @@ print(domain)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = TempMailApiByBoomlifySDK::test([
-    "entity" => ["domain" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["domain" => ["test01" => []]],
 ]);
-$domain = $client->Domain()->load(["id" => "test01"]);
+$domain = $client->Domain()->load();
 ```
 
 ### Golang
@@ -193,7 +208,7 @@ $domain = $client->Domain()->load(["id" => "test01"]);
 ```go
 client := sdk.Test()
 result, err := client.Domain(nil).Load(
-    map[string]any{"id": "test01"}, nil,
+    nil, nil,
 )
 ```
 
@@ -202,41 +217,19 @@ result, err := client.Domain(nil).Load(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = TempMailApiByBoomlifySDK.test({
-  "entity" => { "domain" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "domain" => { "test01" => {} } },
 })
-domain = client.Domain.load({ "id" => "test01" })
+domain = client.Domain.load()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:Domain():load({ id = "test01" })
+local result, err = client:Domain():load()
 ```
 
-## How it works
-
-Every SDK call runs the same five-stage pipeline:
-
-1. **Point** — resolve the API endpoint from the operation definition.
-2. **Spec** — build the HTTP specification (URL, method, headers, body).
-3. **Request** — send the HTTP request.
-4. **Response** — receive and parse the response.
-5. **Result** — extract the result data for the caller.
-
-A feature hook fires at each stage (e.g. `PrePoint`, `PreSpec`,
-`PreRequest`), so features can inspect or modify the pipeline without
-forking the SDK.
-
-### Features
-
-| Feature | Purpose |
-| --- | --- |
-| **TestFeature** | In-memory mock transport for testing without a live server |
-
-Pass custom features via the `extend` option at construction time.
-
-### Direct and Prepare
+## Direct and prepare
 
 For endpoints the entity model doesn't cover, use the low-level methods:
 
@@ -309,6 +302,31 @@ local result, err = client:direct({
   params = { id = "example" },
 })
 ```
+
+## Advanced
+
+> Everyday use only needs the sections above. This explains the internals
+> behind every call — relevant when writing custom features.
+
+Every SDK call runs the same five-stage pipeline:
+
+1. **Point** — resolve the API endpoint from the operation definition.
+2. **Spec** — build the HTTP specification (URL, method, headers, body).
+3. **Request** — send the HTTP request.
+4. **Response** — receive and parse the response.
+5. **Result** — extract the result data for the caller.
+
+A feature hook fires at each stage (e.g. `PrePoint`, `PreSpec`,
+`PreRequest`), so features can inspect or modify the pipeline without
+forking the SDK.
+
+### Features
+
+| Feature | Purpose |
+| --- | --- |
+| **TestFeature** | In-memory mock transport for testing without a live server |
+
+Pass custom features via the `extend` option at construction time.
 
 ## Per-language documentation
 

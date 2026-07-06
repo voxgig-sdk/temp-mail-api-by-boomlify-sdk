@@ -106,8 +106,8 @@ domain := client.Domain(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
+| `data` | `map[string]any` | No |  |
+| `success` | `bool` | No |  |
 
 ### Operations
 
@@ -116,7 +116,7 @@ domain := client.Domain(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Domain(nil).Load(map[string]any{"id": "domain_id"}, nil)
+result, err := client.Domain(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -153,11 +153,11 @@ email := client.Email(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `domain` | ``$STRING`` | No |  |
-| `expiry` | ``$STRING`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
-| `username` | ``$STRING`` | No |  |
+| `data` | `map[string]any` | No |  |
+| `domain` | `string` | No |  |
+| `expiry` | `string` | No |  |
+| `success` | `bool` | No |  |
+| `username` | `string` | No |  |
 
 ### Operations
 
@@ -204,8 +204,8 @@ inbox := client.Inbox(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
+| `data` | `map[string]any` | No |  |
+| `success` | `bool` | No |  |
 
 ### Operations
 

@@ -19,7 +19,7 @@ class Domain
     public ?bool $success = null;
 }
 
-/** Match filter for Domain#load (any subset of Domain fields). */
+/** Request payload for Domain#load. */
 class DomainLoadMatch
 {
     public ?array $data = null;
@@ -36,7 +36,7 @@ class Email
     public ?string $username = null;
 }
 
-/** Match filter for Email#create (any subset of Email fields). */
+/** Request payload for Email#create. */
 class EmailCreateData
 {
     public ?array $data = null;

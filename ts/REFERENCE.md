@@ -141,8 +141,8 @@ const domain = client.Domain()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
+| `data` | `Record<string, any>` | No |  |
+| `success` | `boolean` | No |  |
 
 ### Operations
 
@@ -151,7 +151,7 @@ const domain = client.Domain()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Domain().load({ id: 'domain_id' })
+const result = await client.Domain().load()
 ```
 
 ### Common Methods
@@ -192,11 +192,11 @@ const email = client.Email()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `domain` | ``$STRING`` | No |  |
-| `expiry` | ``$STRING`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
-| `username` | ``$STRING`` | No |  |
+| `data` | `Record<string, any>` | No |  |
+| `domain` | `string` | No |  |
+| `expiry` | `string` | No |  |
+| `success` | `boolean` | No |  |
+| `username` | `string` | No |  |
 
 ### Operations
 
@@ -247,8 +247,8 @@ const inbox = client.Inbox()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
+| `data` | `Record<string, any>` | No |  |
+| `success` | `boolean` | No |  |
 
 ### Operations
 
