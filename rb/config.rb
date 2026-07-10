@@ -16,7 +16,7 @@ module TempMailApiByBoomlifyConfig
       "options" => {
         "base" => "https://boomlify.com/api/v1",
         "auth" => {
-          "prefix" => "Bearer",
+          "prefix" => "",
         },
         "headers" => {
           "content-type" => "application/json",

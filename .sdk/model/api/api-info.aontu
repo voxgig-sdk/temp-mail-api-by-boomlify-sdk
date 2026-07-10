@@ -21,19 +21,26 @@ Key Features:
 - Extended Expiry Options (10 minutes to months)
 - Privacy & Security
 - Cross-Device Access`
+      security: {
+        in: "header"
+        name: "X-API-Key"
+        prefix: ""
+        scheme: "ApiKeyAuth"
+        type: "apiKey"
+      }
       servers: [
         {
           description: "Production API Server"
           url: "https://boomlify.com/api/v1"
         }
       ]
+      summary: "Boomlify is a powerful temporary email service that goes beyond ordinary temp mail tools."
       termsOfService: "https://boomlify.com/terms"
       title: "Temp Mail API by Boomlify"
       version: "1.0.0"
+      website: "https://boomlify.com"
       "x-logo": {
         url: "https://boomlify.com/logo.png"
       }
     }
   }
-}
-

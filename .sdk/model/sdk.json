@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -420,15 +417,25 @@
           "url": "https://boomlify.com"
         },
         "description": "Boomlify is a powerful temporary email service that goes beyond ordinary temp mail tools. It offers unlimited free temporary emails, custom domain support, and a free Temp Mail API, making it perfect for individuals, developers, and businesses who want full control over email creation and management.\n\nWith Boomlify's API, you can automate the creation and management of temporary emails, integrate them into apps or websites, and handle email workflows efficiently—all without restrictions. Its custom domain feature allows users to generate temp emails under their own domain or choose from Boomlify's domains, offering complete flexibility and professionalism.\n\nKey Features:\n- Unlimited Free Temporary Emails\n- Custom Domain Support\n- Free Temp Mail API\n- Centralized Dashboard\n- Smart Inbox Preview\n- Extended Expiry Options (10 minutes to months)\n- Privacy & Security\n- Cross-Device Access",
+        "meta_source": "https://www.freepublicapis.com",
+        "security": {
+          "in": "header",
+          "name": "X-API-Key",
+          "prefix": "",
+          "scheme": "ApiKeyAuth",
+          "type": "apiKey"
+        },
         "servers": [
           {
             "description": "Production API Server",
             "url": "https://boomlify.com/api/v1"
           }
         ],
+        "summary": "Boomlify is a powerful temporary email service that goes beyond ordinary temp mail tools.",
         "termsOfService": "https://boomlify.com/terms",
         "title": "Temp Mail API by Boomlify",
         "version": "1.0.0",
+        "website": "https://boomlify.com",
         "x-logo": {
           "url": "https://boomlify.com/logo.png"
         }
@@ -484,6 +491,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -534,6 +544,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
