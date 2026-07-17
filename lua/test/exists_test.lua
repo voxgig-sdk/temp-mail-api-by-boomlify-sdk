@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- TempMailApiByBoomlify SDK exists test
 
 local sdk = require("temp-mail-api-by-boomlify_sdk")
 
