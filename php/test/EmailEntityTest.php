@@ -33,7 +33,7 @@ class EmailEntityTest extends TestCase
         // The basic flow consumes synthetic IDs from the fixture. In live mode
         // without an *_ENTID env override, those IDs hit the live API and 4xx.
         if (!empty($setup["synthetic_only"])) {
-            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set TEMPMAILAPIBYBOOMLIFY_TEST_EMAIL_ENTID JSON to run live");
+            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set TEMP_MAIL_API_BY_BOOMLIFY_TEST_EMAIL_ENTID JSON to run live");
             return;
         }
         $client = $setup["client"];
@@ -44,7 +44,7 @@ class EmailEntityTest extends TestCase
             Vs::getpath($setup["data"], "new.email"), "email_ref01"));
 
         $email_ref01_data_result = $email_ref01_ent->create($email_ref01_data, null);
-        $email_ref01_data = Helpers::to_map($email_ref01_data_result);
+        $email_ref01_data = Helpers::to_map(is_object($email_ref01_data_result) && method_exists($email_ref01_data_result, 'data_get') ? $email_ref01_data_result->data_get() : $email_ref01_data_result);
         $this->assertNotNull($email_ref01_data);
 
     }
@@ -72,39 +72,39 @@ function email_basic_setup($extra)
     // Detect ENTID env override before envOverride consumes it. When live
     // mode is on without a real override, the basic test runs against synthetic
     // IDs from the fixture and 4xx's. Surface this so the test can skip.
-    $entid_env_raw = getenv("TEMPMAILAPIBYBOOMLIFY_TEST_EMAIL_ENTID");
+    $entid_env_raw = getenv("TEMP_MAIL_API_BY_BOOMLIFY_TEST_EMAIL_ENTID");
     $idmap_overridden = $entid_env_raw !== false && str_starts_with(trim($entid_env_raw), "{");
 
     $env = Runner::env_override([
-        "TEMPMAILAPIBYBOOMLIFY_TEST_EMAIL_ENTID" => $idmap,
-        "TEMPMAILAPIBYBOOMLIFY_TEST_LIVE" => "FALSE",
-        "TEMPMAILAPIBYBOOMLIFY_TEST_EXPLAIN" => "FALSE",
-        "TEMPMAILAPIBYBOOMLIFY_APIKEY" => "NONE",
+        "TEMP_MAIL_API_BY_BOOMLIFY_TEST_EMAIL_ENTID" => $idmap,
+        "TEMP_MAIL_API_BY_BOOMLIFY_TEST_LIVE" => "FALSE",
+        "TEMP_MAIL_API_BY_BOOMLIFY_TEST_EXPLAIN" => "FALSE",
+        "TEMP_MAIL_API_BY_BOOMLIFY_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
-        $env["TEMPMAILAPIBYBOOMLIFY_TEST_EMAIL_ENTID"]);
+        $env["TEMP_MAIL_API_BY_BOOMLIFY_TEST_EMAIL_ENTID"]);
     if ($idmap_resolved === null) {
         $idmap_resolved = Helpers::to_map($idmap);
     }
 
-    if ($env["TEMPMAILAPIBYBOOMLIFY_TEST_LIVE"] === "TRUE") {
+    if ($env["TEMP_MAIL_API_BY_BOOMLIFY_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["TEMPMAILAPIBYBOOMLIFY_APIKEY"],
+                "apikey" => $env["TEMP_MAIL_API_BY_BOOMLIFY_APIKEY"],
             ],
             $extra ?? [],
         ]);
         $client = new TempMailApiByBoomlifySDK(Helpers::to_map($merged_opts));
     }
 
-    $live = $env["TEMPMAILAPIBYBOOMLIFY_TEST_LIVE"] === "TRUE";
+    $live = $env["TEMP_MAIL_API_BY_BOOMLIFY_TEST_LIVE"] === "TRUE";
     return [
         "client" => $client,
         "data" => $entity_data,
         "idmap" => $idmap_resolved,
         "env" => $env,
-        "explain" => $env["TEMPMAILAPIBYBOOMLIFY_TEST_EXPLAIN"] === "TRUE",
+        "explain" => $env["TEMP_MAIL_API_BY_BOOMLIFY_TEST_EXPLAIN"] === "TRUE",
         "live" => $live,
         "synthetic_only" => $live && !$idmap_overridden,
         "now" => (int)(microtime(true) * 1000),

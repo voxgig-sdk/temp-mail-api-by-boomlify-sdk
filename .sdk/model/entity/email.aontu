@@ -6,12 +6,22 @@ main: kit: entity: email: {
 
   fields: [
     {
-      name: "data"
+      name: "createdAt"
       req: false
-      type: "`$OBJECT`"
+      type: "`$STRING`"
     }
     {
       name: "domain"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "email"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "expiresAt"
       req: false
       type: "`$STRING`"
     }
@@ -21,9 +31,9 @@ main: kit: entity: email: {
       type: "`$STRING`"
     }
     {
-      name: "success"
+      name: "token"
       req: false
-      type: "`$BOOLEAN`"
+      type: "`$STRING`"
     }
     {
       name: "username"
@@ -49,7 +59,7 @@ main: kit: entity: email: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.data`"
           }
         }
       ]

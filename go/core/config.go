@@ -31,17 +31,10 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "data",
+						"name": "domains",
 						"req": false,
-						"type": "`$OBJECT`",
+						"type": "`$ARRAY`",
 						"index$": 0,
-					},
-					map[string]any{
-						"active": true,
-						"name": "success",
-						"req": false,
-						"type": "`$BOOLEAN`",
-						"index$": 1,
 					},
 				},
 				"name": "domain",
@@ -53,6 +46,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/domains",
 								"parts": []any{
@@ -61,12 +55,11 @@ func MakeConfig() map[string]any {
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.data`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -77,9 +70,9 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "data",
+						"name": "createdAt",
 						"req": false,
-						"type": "`$OBJECT`",
+						"type": "`$STRING`",
 						"index$": 0,
 					},
 					map[string]any{
@@ -91,24 +84,38 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "expiry",
+						"name": "email",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 2,
 					},
 					map[string]any{
 						"active": true,
-						"name": "success",
+						"name": "expiresAt",
 						"req": false,
-						"type": "`$BOOLEAN`",
+						"type": "`$STRING`",
 						"index$": 3,
+					},
+					map[string]any{
+						"active": true,
+						"name": "expiry",
+						"req": false,
+						"type": "`$STRING`",
+						"index$": 4,
+					},
+					map[string]any{
+						"active": true,
+						"name": "token",
+						"req": false,
+						"type": "`$STRING`",
+						"index$": 5,
 					},
 					map[string]any{
 						"active": true,
 						"name": "username",
 						"req": false,
 						"type": "`$STRING`",
-						"index$": 4,
+						"index$": 6,
 					},
 				},
 				"name": "email",
@@ -120,6 +127,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "POST",
 								"orig": "/email/create",
 								"parts": []any{
@@ -131,12 +139,11 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.data`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "create",
 					},
 				},
 				"relations": map[string]any{
@@ -147,17 +154,24 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "data",
+						"name": "email",
 						"req": false,
-						"type": "`$OBJECT`",
+						"type": "`$STRING`",
 						"index$": 0,
 					},
 					map[string]any{
 						"active": true,
-						"name": "success",
+						"name": "messageCount",
 						"req": false,
-						"type": "`$BOOLEAN`",
+						"type": "`$INTEGER`",
 						"index$": 1,
+					},
+					map[string]any{
+						"active": true,
+						"name": "messages",
+						"req": false,
+						"type": "`$ARRAY`",
+						"index$": 2,
 					},
 				},
 				"name": "inbox",
@@ -211,6 +225,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/inbox/{email}",
 								"parts": []any{
@@ -232,12 +247,11 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.data`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{

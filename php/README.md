@@ -37,7 +37,7 @@ $client = new TempMailApiByBoomlifySDK([
 
 ```php
 try {
-    // load() returns the bare Domain record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Domain record (throws on error).
     $domain = $client->Domain()->load();
     print_r($domain);
 } catch (\Throwable $err) {
@@ -125,7 +125,8 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = TempMailApiByBoomlifySDK::test();
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $domain = $client->Domain()->load();
 print_r($domain);
 ```
@@ -229,7 +230,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -251,8 +252,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
-| `success` |  |
+| `domains` |  |
 
 Operations: Load.
 
@@ -262,10 +262,12 @@ API path: `/domains`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
+| `createdAt` |  |
 | `domain` |  |
+| `email` |  |
+| `expiresAt` |  |
 | `expiry` |  |
-| `success` |  |
+| `token` |  |
 | `username` |  |
 
 Operations: Create.
@@ -276,8 +278,9 @@ API path: `/email/create`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
-| `success` |  |
+| `email` |  |
+| `messageCount` |  |
+| `messages` |  |
 
 Operations: Load.
 
@@ -302,13 +305,12 @@ Create an instance: `$domain = $client->Domain();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `array` |  |
-| `success` | `bool` |  |
+| `domains` | `array` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Domain record (throws on error).
+// load() returns the ENTITY — call data_get() for the Domain record (throws on error).
 $domain = $client->Domain()->load();
 ```
 
@@ -327,10 +329,12 @@ Create an instance: `$email = $client->Email();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `array` |  |
+| `createdAt` | `string` |  |
 | `domain` | `string` |  |
+| `email` | `string` |  |
+| `expiresAt` | `string` |  |
 | `expiry` | `string` |  |
-| `success` | `bool` |  |
+| `token` | `string` |  |
 | `username` | `string` |  |
 
 #### Example: Create
@@ -355,13 +359,14 @@ Create an instance: `$inbox = $client->Inbox();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `array` |  |
-| `success` | `bool` |  |
+| `email` | `string` |  |
+| `messageCount` | `int` |  |
+| `messages` | `array` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Inbox record (throws on error).
+// load() returns the ENTITY — call data_get() for the Inbox record (throws on error).
 $inbox = $client->Inbox()->load(["id" => "inbox_id"]);
 ```
 

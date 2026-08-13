@@ -101,8 +101,7 @@ $domain = $client->Domain();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `array` | No |  |
-| `success` | `bool` | No |  |
+| `domains` | `array` | No |  |
 
 ### Operations
 
@@ -154,10 +153,12 @@ $email = $client->Email();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `array` | No |  |
+| `createdAt` | `string` | No |  |
 | `domain` | `string` | No |  |
+| `email` | `string` | No |  |
+| `expiresAt` | `string` | No |  |
 | `expiry` | `string` | No |  |
-| `success` | `bool` | No |  |
+| `token` | `string` | No |  |
 | `username` | `string` | No |  |
 
 ### Operations
@@ -211,8 +212,9 @@ $inbox = $client->Inbox();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `array` | No |  |
-| `success` | `bool` | No |  |
+| `email` | `string` | No |  |
+| `messageCount` | `int` | No |  |
+| `messages` | `array` | No |  |
 
 ### Operations
 

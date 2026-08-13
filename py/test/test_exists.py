@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# TempMailApiByBoomlify SDK exists test
 
 import pytest
 from tempmailapibyboomlify_sdk import TempMailApiByBoomlifySDK

@@ -2,18 +2,15 @@
   "existing": {
     "domain": {
       "DOMAIN00": {
-        "data": {},
-        "success": false,
+        "domains": [],
         "id": "DOMAIN00"
       },
       "DOMAIN01": {
-        "data": {},
-        "success": false,
+        "domains": [],
         "id": "DOMAIN01"
       },
       "DOMAIN02": {
-        "data": {},
-        "success": false,
+        "domains": [],
         "id": "DOMAIN02"
       }
     }
@@ -21,8 +18,7 @@
   "new": {
     "domain": {
       "domain_ref01": {
-        "data": {},
-        "success": false
+        "domains": []
       }
     }
   }

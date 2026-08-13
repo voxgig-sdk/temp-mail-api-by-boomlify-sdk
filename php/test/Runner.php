@@ -43,8 +43,8 @@ class TempMailApiByBoomlifyTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('TEMPMAILAPIBYBOOMLIFY_TEST_LIVE');
-        $override = self::getenv('TEMPMAILAPIBYBOOMLIFY_TEST_OVERRIDE');
+        $live = self::getenv('TEMP_MAIL_API_BY_BOOMLIFY_TEST_LIVE');
+        $override = self::getenv('TEMP_MAIL_API_BY_BOOMLIFY_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class TempMailApiByBoomlifyTestRunner
             }
         }
 
-        $explain = self::getenv('TEMPMAILAPIBYBOOMLIFY_TEST_EXPLAIN');
+        $explain = self::getenv('TEMP_MAIL_API_BY_BOOMLIFY_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['TEMPMAILAPIBYBOOMLIFY_TEST_EXPLAIN'] = $explain;
+            $m['TEMP_MAIL_API_BY_BOOMLIFY_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

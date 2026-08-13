@@ -23,8 +23,8 @@ module TempMailApiByBoomlifyTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("TEMPMAILAPIBYBOOMLIFY_TEST_LIVE")
-    override = getenv("TEMPMAILAPIBYBOOMLIFY_TEST_OVERRIDE")
+    live = getenv("TEMP_MAIL_API_BY_BOOMLIFY_TEST_LIVE")
+    override = getenv("TEMP_MAIL_API_BY_BOOMLIFY_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module TempMailApiByBoomlifyTestRunner
       end
     end
 
-    explain = getenv("TEMPMAILAPIBYBOOMLIFY_TEST_EXPLAIN")
-    m["TEMPMAILAPIBYBOOMLIFY_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("TEMP_MAIL_API_BY_BOOMLIFY_TEST_EXPLAIN")
+    m["TEMP_MAIL_API_BY_BOOMLIFY_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

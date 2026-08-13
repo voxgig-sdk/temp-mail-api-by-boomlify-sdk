@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ TempMailApiByBoomlifyUtility.registrar = ->(u) {
   u.prepare_params = TempMailApiByBoomlifyUtilities::PrepareParams
   u.prepare_path = TempMailApiByBoomlifyUtilities::PreparePath
   u.prepare_query = TempMailApiByBoomlifyUtilities::PrepareQuery
+  u.graphql_body = TempMailApiByBoomlifyUtilities::GraphqlBody
+  u.graphql_errors = TempMailApiByBoomlifyUtilities::GraphqlErrors
   u.result_basic = TempMailApiByBoomlifyUtilities::ResultBasic
   u.result_body = TempMailApiByBoomlifyUtilities::ResultBody
   u.result_headers = TempMailApiByBoomlifyUtilities::ResultHeaders

@@ -232,8 +232,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
-| `success` |  |
+| `domains` |  |
 
 Operations: Load.
 
@@ -243,10 +242,12 @@ API path: `/domains`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
+| `createdAt` |  |
 | `domain` |  |
+| `email` |  |
+| `expiresAt` |  |
 | `expiry` |  |
-| `success` |  |
+| `token` |  |
 | `username` |  |
 
 Operations: Create.
@@ -257,8 +258,9 @@ API path: `/email/create`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
-| `success` |  |
+| `email` |  |
+| `messageCount` |  |
+| `messages` |  |
 
 Operations: Load.
 
@@ -283,8 +285,7 @@ Create an instance: `local domain = client:Domain(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `table` |  |
-| `success` | `boolean` |  |
+| `domains` | `table` |  |
 
 #### Example: Load
 
@@ -307,10 +308,12 @@ Create an instance: `local email = client:Email(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `table` |  |
+| `createdAt` | `string` |  |
 | `domain` | `string` |  |
+| `email` | `string` |  |
+| `expiresAt` | `string` |  |
 | `expiry` | `string` |  |
-| `success` | `boolean` |  |
+| `token` | `string` |  |
 | `username` | `string` |  |
 
 #### Example: Create
@@ -335,8 +338,9 @@ Create an instance: `local inbox = client:Inbox(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `table` |  |
-| `success` | `boolean` |  |
+| `email` | `string` |  |
+| `messageCount` | `number` |  |
+| `messages` | `table` |  |
 
 #### Example: Load
 

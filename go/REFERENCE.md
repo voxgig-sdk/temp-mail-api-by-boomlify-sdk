@@ -107,8 +107,7 @@ fmt.Println(domain.GetName()) // "domain"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `map[string]any` | No |  |
-| `success` | `bool` | No |  |
+| `domains` | `[]any` | No |  |
 
 ### Operations
 
@@ -159,10 +158,12 @@ fmt.Println(email.GetName()) // "email"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `map[string]any` | No |  |
+| `createdAt` | `string` | No |  |
 | `domain` | `string` | No |  |
+| `email` | `string` | No |  |
+| `expiresAt` | `string` | No |  |
 | `expiry` | `string` | No |  |
-| `success` | `bool` | No |  |
+| `token` | `string` | No |  |
 | `username` | `string` | No |  |
 
 ### Operations
@@ -215,8 +216,9 @@ fmt.Println(inbox.GetName()) // "inbox"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `map[string]any` | No |  |
-| `success` | `bool` | No |  |
+| `email` | `string` | No |  |
+| `messageCount` | `int` | No |  |
+| `messages` | `[]any` | No |  |
 
 ### Operations
 

@@ -6,14 +6,9 @@ main: kit: entity: domain: {
 
   fields: [
     {
-      name: "data"
+      name: "domains"
       req: false
-      type: "`$OBJECT`"
-    }
-    {
-      name: "success"
-      req: false
-      type: "`$BOOLEAN`"
+      type: "`$ARRAY`"
     }
   ]
 
@@ -30,7 +25,7 @@ main: kit: entity: domain: {
           ]
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.data`"
           }
         }
       ]

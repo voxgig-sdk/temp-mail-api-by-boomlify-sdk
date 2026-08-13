@@ -2,27 +2,33 @@
   "existing": {
     "email": {
       "EMAIL00": {
-        "data": {},
-        "domain": "s33",
-        "expiry": "s34",
-        "success": false,
-        "username": "s36",
+        "createdAt": "s46",
+        "domain": "s47",
+        "email": "s48",
+        "expiresAt": "s49",
+        "expiry": "s4a",
+        "token": "s4b",
+        "username": "s4c",
         "id": "EMAIL00"
       },
       "EMAIL01": {
-        "data": {},
-        "domain": "s65",
-        "expiry": "s66",
-        "success": false,
-        "username": "s68",
+        "createdAt": "s8c",
+        "domain": "s8d",
+        "email": "s8e",
+        "expiresAt": "s8f",
+        "expiry": "s90",
+        "token": "s91",
+        "username": "s92",
         "id": "EMAIL01"
       },
       "EMAIL02": {
-        "data": {},
-        "domain": "s97",
-        "expiry": "s98",
-        "success": false,
-        "username": "s9a",
+        "createdAt": "sd2",
+        "domain": "sd3",
+        "email": "sd4",
+        "expiresAt": "sd5",
+        "expiry": "sd6",
+        "token": "sd7",
+        "username": "sd8",
         "id": "EMAIL02"
       }
     }
@@ -30,11 +36,13 @@
   "new": {
     "email": {
       "email_ref01": {
-        "data": {},
-        "domain": "sc9",
-        "expiry": "sca",
-        "success": false,
-        "username": "scc"
+        "createdAt": "s118",
+        "domain": "s119",
+        "email": "s11a",
+        "expiresAt": "s11b",
+        "expiry": "s11c",
+        "token": "s11d",
+        "username": "s11e"
       }
     }
   }

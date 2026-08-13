@@ -69,16 +69,16 @@ function inbox_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["TEMPMAILAPIBYBOOMLIFY_TEST_INBOX_ENTID"] = {},
-    ["TEMPMAILAPIBYBOOMLIFY_TEST_LIVE"] = "FALSE",
-    ["TEMPMAILAPIBYBOOMLIFY_APIKEY"] = "NONE",
+    ["TEMP_MAIL_API_BY_BOOMLIFY_TEST_INBOX_ENTID"] = {},
+    ["TEMP_MAIL_API_BY_BOOMLIFY_TEST_LIVE"] = "FALSE",
+    ["TEMP_MAIL_API_BY_BOOMLIFY_APIKEY"] = "NONE",
   })
 
-  local live = env["TEMPMAILAPIBYBOOMLIFY_TEST_LIVE"] == "TRUE"
+  local live = env["TEMP_MAIL_API_BY_BOOMLIFY_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["TEMPMAILAPIBYBOOMLIFY_APIKEY"],
+      apikey = env["TEMP_MAIL_API_BY_BOOMLIFY_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

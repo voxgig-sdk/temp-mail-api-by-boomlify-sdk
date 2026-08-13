@@ -26,8 +26,8 @@ import {
 describe('EmailEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when TEMPMAILAPIBYBOOMLIFY_TEST_LIVE=TRUE.
-  afterEach(liveDelay('TEMPMAILAPIBYBOOMLIFY_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when TEMP_MAIL_API_BY_BOOMLIFY_TEST_LIVE=TRUE.
+  afterEach(liveDelay('TEMP_MAIL_API_BY_BOOMLIFY_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = TempMailApiByBoomlifySDK.test()
@@ -62,7 +62,7 @@ describe('EmailEntity', async () => {
     const email_ref01_ent = client.Email()
     let email_ref01_data = setup.data.new.email['email_ref01']
 
-    email_ref01_data = await email_ref01_ent.create(email_ref01_data)
+    email_ref01_data = (await email_ref01_ent.create(email_ref01_data)).data()
     assert(null != email_ref01_data)
 
 

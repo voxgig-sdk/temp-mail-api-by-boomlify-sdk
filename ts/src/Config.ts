@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'TempMailApiByBoomlify',
   }
 
 
@@ -66,17 +66,10 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "data",
+          "name": "domains",
           "req": false,
-          "type": "`$OBJECT`",
+          "type": "`$ARRAY`",
           "index$": 0
-        },
-        {
-          "active": true,
-          "name": "success",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 1
         }
       ],
       "name": "domain",
@@ -88,6 +81,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/domains",
               "parts": [
@@ -96,7 +90,7 @@ class Config {
               "select": {},
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.data`"
               },
               "index$": 0
             }
@@ -112,9 +106,9 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "data",
+          "name": "createdAt",
           "req": false,
-          "type": "`$OBJECT`",
+          "type": "`$STRING`",
           "index$": 0
         },
         {
@@ -126,24 +120,38 @@ class Config {
         },
         {
           "active": true,
-          "name": "expiry",
+          "name": "email",
           "req": false,
           "type": "`$STRING`",
           "index$": 2
         },
         {
           "active": true,
-          "name": "success",
+          "name": "expiresAt",
           "req": false,
-          "type": "`$BOOLEAN`",
+          "type": "`$STRING`",
           "index$": 3
+        },
+        {
+          "active": true,
+          "name": "expiry",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 4
+        },
+        {
+          "active": true,
+          "name": "token",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 5
         },
         {
           "active": true,
           "name": "username",
           "req": false,
           "type": "`$STRING`",
-          "index$": 4
+          "index$": 6
         }
       ],
       "name": "email",
@@ -155,6 +163,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "POST",
               "orig": "/email/create",
               "parts": [
@@ -166,7 +175,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.data`"
               },
               "index$": 0
             }
@@ -182,17 +191,24 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "data",
+          "name": "email",
           "req": false,
-          "type": "`$OBJECT`",
+          "type": "`$STRING`",
           "index$": 0
         },
         {
           "active": true,
-          "name": "success",
+          "name": "messageCount",
           "req": false,
-          "type": "`$BOOLEAN`",
+          "type": "`$INTEGER`",
           "index$": 1
+        },
+        {
+          "active": true,
+          "name": "messages",
+          "req": false,
+          "type": "`$ARRAY`",
+          "index$": 2
         }
       ],
       "name": "inbox",
@@ -246,6 +262,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/inbox/{email}",
               "parts": [
@@ -267,7 +284,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.data`"
               },
               "index$": 0
             }

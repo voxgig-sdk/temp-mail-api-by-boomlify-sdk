@@ -15,42 +15,45 @@ declare(strict_types=1);
 /** Domain entity data model. */
 class Domain
 {
-    public ?array $data = null;
-    public ?bool $success = null;
+    public ?array $domains = null;
 }
 
 /** Request payload for Domain#load. */
 class DomainLoadMatch
 {
-    public ?array $data = null;
-    public ?bool $success = null;
+    public ?array $domains = null;
 }
 
 /** Email entity data model. */
 class Email
 {
-    public ?array $data = null;
+    public ?string $createdAt = null;
     public ?string $domain = null;
+    public ?string $email = null;
+    public ?string $expiresAt = null;
     public ?string $expiry = null;
-    public ?bool $success = null;
+    public ?string $token = null;
     public ?string $username = null;
 }
 
 /** Request payload for Email#create. */
 class EmailCreateData
 {
-    public ?array $data = null;
+    public ?string $createdAt = null;
     public ?string $domain = null;
+    public ?string $email = null;
+    public ?string $expiresAt = null;
     public ?string $expiry = null;
-    public ?bool $success = null;
+    public ?string $token = null;
     public ?string $username = null;
 }
 
 /** Inbox entity data model. */
 class Inbox
 {
-    public ?array $data = null;
-    public ?bool $success = null;
+    public ?string $email = null;
+    public ?int $messageCount = null;
+    public ?array $messages = null;
 }
 
 /** Request payload for Inbox#load. */

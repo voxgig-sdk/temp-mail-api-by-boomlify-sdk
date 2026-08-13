@@ -99,8 +99,7 @@ local domain = client:Domain(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `table` | No |  |
-| `success` | `boolean` | No |  |
+| `domains` | `table` | No |  |
 
 ### Operations
 
@@ -152,10 +151,12 @@ local email = client:Email(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `table` | No |  |
+| `createdAt` | `string` | No |  |
 | `domain` | `string` | No |  |
+| `email` | `string` | No |  |
+| `expiresAt` | `string` | No |  |
 | `expiry` | `string` | No |  |
-| `success` | `boolean` | No |  |
+| `token` | `string` | No |  |
 | `username` | `string` | No |  |
 
 ### Operations
@@ -209,8 +210,9 @@ local inbox = client:Inbox(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `table` | No |  |
-| `success` | `boolean` | No |  |
+| `email` | `string` | No |  |
+| `messageCount` | `number` | No |  |
+| `messages` | `table` | No |  |
 
 ### Operations
 

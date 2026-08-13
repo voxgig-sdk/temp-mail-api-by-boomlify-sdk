@@ -7,30 +7,33 @@
 -- edit by hand.
 
 ---@class Domain
----@field data? table
----@field success? boolean
+---@field domains? table
 
 ---@class DomainLoadMatch
----@field data? table
----@field success? boolean
+---@field domains? table
 
 ---@class Email
----@field data? table
+---@field createdAt? string
 ---@field domain? string
+---@field email? string
+---@field expiresAt? string
 ---@field expiry? string
----@field success? boolean
+---@field token? string
 ---@field username? string
 
 ---@class EmailCreateData
----@field data? table
+---@field createdAt? string
 ---@field domain? string
+---@field email? string
+---@field expiresAt? string
 ---@field expiry? string
----@field success? boolean
+---@field token? string
 ---@field username? string
 
 ---@class Inbox
----@field data? table
----@field success? boolean
+---@field email? string
+---@field messageCount? number
+---@field messages? table
 
 ---@class InboxLoadMatch
 ---@field id string

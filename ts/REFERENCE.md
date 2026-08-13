@@ -141,8 +141,7 @@ const domain = client.Domain()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `Record<string, any>` | No |  |
-| `success` | `boolean` | No |  |
+| `domains` | `any[]` | No |  |
 
 ### Operations
 
@@ -192,11 +191,33 @@ const email = client.Email()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `Record<string, any>` | No |  |
+| `createdAt` | `string` | No |  |
 | `domain` | `string` | No |  |
+| `email` | `string` | No |  |
+| `expiresAt` | `string` | No |  |
 | `expiry` | `string` | No |  |
-| `success` | `boolean` | No |  |
+| `token` | `string` | No |  |
 | `username` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `create` | `/email/create` | `client.Email().create({ $action: 'create', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Email record — check the API definition for its shape.
+
+```ts
+const result = await client.Email().create({
+  $action: 'create',
+  /* ...the action's own arguments */
+})
+```
 
 ### Operations
 
@@ -247,8 +268,9 @@ const inbox = client.Inbox()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `Record<string, any>` | No |  |
-| `success` | `boolean` | No |  |
+| `email` | `string` | No |  |
+| `messageCount` | `number` | No |  |
+| `messages` | `any[]` | No |  |
 
 ### Operations
 

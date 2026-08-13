@@ -6,34 +6,43 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface Domain {
-  data?: Record<string, any>
-  success?: boolean
+  domains?: any[]
 }
 
 export interface DomainLoadMatch {
-  data?: Record<string, any>
-  success?: boolean
+  domains?: any[]
 }
 
 export interface Email {
-  data?: Record<string, any>
+  createdAt?: string
   domain?: string
+  email?: string
+  expiresAt?: string
   expiry?: string
-  success?: boolean
+  token?: string
   username?: string
 }
 
 export interface EmailCreateData {
-  data?: Record<string, any>
+  createdAt?: string
   domain?: string
+  email?: string
+  expiresAt?: string
   expiry?: string
-  success?: boolean
+  token?: string
   username?: string
+
+  // Selects a custom action instead of the plain create:
+  //   'create'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface Inbox {
-  data?: Record<string, any>
-  success?: boolean
+  email?: string
+  messageCount?: number
+  messages?: any[]
 }
 
 export interface InboxLoadMatch {

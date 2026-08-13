@@ -26,8 +26,8 @@ import {
 describe('InboxEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when TEMPMAILAPIBYBOOMLIFY_TEST_LIVE=TRUE.
-  afterEach(liveDelay('TEMPMAILAPIBYBOOMLIFY_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when TEMP_MAIL_API_BY_BOOMLIFY_TEST_LIVE=TRUE.
+  afterEach(liveDelay('TEMP_MAIL_API_BY_BOOMLIFY_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = TempMailApiByBoomlifySDK.test()

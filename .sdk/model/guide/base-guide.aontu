@@ -8,6 +8,7 @@ guide: {
   entity: domain: {
     path: "/domains": {
       op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
     }
   }
 
@@ -15,6 +16,7 @@ guide: {
     path: "/email/create": {
       action: "create": {}
       op: create: method: *POST
+      op: create: transform: res: *("`body.data`")|top
     }
   }
 
@@ -22,6 +24,7 @@ guide: {
     path: "/inbox/{email}": {
       rename: param: "email": *"id"
       op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
     }
   }
 

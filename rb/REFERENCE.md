@@ -102,8 +102,7 @@ domain = client.Domain
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `Hash` | No |  |
-| `success` | `Boolean` | No |  |
+| `domains` | `Array` | No |  |
 
 ### Operations
 
@@ -155,10 +154,12 @@ email = client.Email
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `Hash` | No |  |
+| `createdAt` | `String` | No |  |
 | `domain` | `String` | No |  |
+| `email` | `String` | No |  |
+| `expiresAt` | `String` | No |  |
 | `expiry` | `String` | No |  |
-| `success` | `Boolean` | No |  |
+| `token` | `String` | No |  |
 | `username` | `String` | No |  |
 
 ### Operations
@@ -212,8 +213,9 @@ inbox = client.Inbox
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `Hash` | No |  |
-| `success` | `Boolean` | No |  |
+| `email` | `String` | No |  |
+| `messageCount` | `Integer` | No |  |
+| `messages` | `Array` | No |  |
 
 ### Operations
 

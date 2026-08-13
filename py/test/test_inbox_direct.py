@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from tempmailapibyboomlify_sdk.utility.voxgig_struct import voxgig_struct as vs
 from tempmailapibyboomlify_sdk import TempMailApiByBoomlifySDK
-from core import helpers
+from tempmailapibyboomlify_sdk.core import helpers
 from test import runner
 
 
@@ -64,16 +64,16 @@ def _inbox_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "TEMPMAILAPIBYBOOMLIFY_TEST_INBOX_ENTID": {},
-        "TEMPMAILAPIBYBOOMLIFY_TEST_LIVE": "FALSE",
-        "TEMPMAILAPIBYBOOMLIFY_APIKEY": "NONE",
+        "TEMP_MAIL_API_BY_BOOMLIFY_TEST_INBOX_ENTID": {},
+        "TEMP_MAIL_API_BY_BOOMLIFY_TEST_LIVE": "FALSE",
+        "TEMP_MAIL_API_BY_BOOMLIFY_APIKEY": "NONE",
     })
 
-    live = env.get("TEMPMAILAPIBYBOOMLIFY_TEST_LIVE") == "TRUE"
+    live = env.get("TEMP_MAIL_API_BY_BOOMLIFY_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("TEMPMAILAPIBYBOOMLIFY_APIKEY"),
+            "apikey": env.get("TEMP_MAIL_API_BY_BOOMLIFY_APIKEY"),
         }
         client = TempMailApiByBoomlifySDK(merged_opts)
         return {

@@ -96,8 +96,7 @@ domain = client.Domain()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `dict` | No |  |
-| `success` | `bool` | No |  |
+| `domains` | `list` | No |  |
 
 ### Operations
 
@@ -148,10 +147,12 @@ email = client.Email()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `dict` | No |  |
+| `createdAt` | `str` | No |  |
 | `domain` | `str` | No |  |
+| `email` | `str` | No |  |
+| `expiresAt` | `str` | No |  |
 | `expiry` | `str` | No |  |
-| `success` | `bool` | No |  |
+| `token` | `str` | No |  |
 | `username` | `str` | No |  |
 
 ### Operations
@@ -204,8 +205,9 @@ inbox = client.Inbox()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `dict` | No |  |
-| `success` | `bool` | No |  |
+| `email` | `str` | No |  |
+| `messageCount` | `int` | No |  |
+| `messages` | `list` | No |  |
 
 ### Operations
 

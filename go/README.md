@@ -266,8 +266,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"data"` |  |
-| `"success"` |  |
+| `"domains"` |  |
 
 Operations: Load.
 
@@ -277,10 +276,12 @@ API path: `/domains`
 
 | Field | Description |
 | --- | --- |
-| `"data"` |  |
+| `"createdAt"` |  |
 | `"domain"` |  |
+| `"email"` |  |
+| `"expiresAt"` |  |
 | `"expiry"` |  |
-| `"success"` |  |
+| `"token"` |  |
 | `"username"` |  |
 
 Operations: Create.
@@ -291,8 +292,9 @@ API path: `/email/create`
 
 | Field | Description |
 | --- | --- |
-| `"data"` |  |
-| `"success"` |  |
+| `"email"` |  |
+| `"messageCount"` |  |
+| `"messages"` |  |
 
 Operations: Load.
 
@@ -317,8 +319,7 @@ Create an instance: `domain := client.Domain(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `map[string]any` |  |
-| `success` | `bool` |  |
+| `domains` | `[]any` |  |
 
 #### Example: Load
 
@@ -345,10 +346,12 @@ Create an instance: `email := client.Email(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `map[string]any` |  |
+| `createdAt` | `string` |  |
 | `domain` | `string` |  |
+| `email` | `string` |  |
+| `expiresAt` | `string` |  |
 | `expiry` | `string` |  |
-| `success` | `bool` |  |
+| `token` | `string` |  |
 | `username` | `string` |  |
 
 #### Example: Create
@@ -377,8 +380,9 @@ Create an instance: `inbox := client.Inbox(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `map[string]any` |  |
-| `success` | `bool` |  |
+| `email` | `string` |  |
+| `messageCount` | `int` |  |
+| `messages` | `[]any` |  |
 
 #### Example: Load
 

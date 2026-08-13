@@ -2,18 +2,21 @@
   "existing": {
     "inbox": {
       "INBOX00": {
-        "data": {},
-        "success": false,
+        "email": "s1e",
+        "messageCount": "s1f",
+        "messages": [],
         "id": "INBOX00"
       },
       "INBOX01": {
-        "data": {},
-        "success": false,
+        "email": "s3c",
+        "messageCount": "s3d",
+        "messages": [],
         "id": "INBOX01"
       },
       "INBOX02": {
-        "data": {},
-        "success": false,
+        "email": "s5a",
+        "messageCount": "s5b",
+        "messages": [],
         "id": "INBOX02"
       }
     }
@@ -21,8 +24,9 @@
   "new": {
     "inbox": {
       "inbox_ref01": {
-        "data": {},
-        "success": false
+        "email": "s78",
+        "messageCount": "s79",
+        "messages": []
       }
     }
   }

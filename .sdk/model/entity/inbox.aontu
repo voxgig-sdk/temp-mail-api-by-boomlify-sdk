@@ -6,14 +6,19 @@ main: kit: entity: inbox: {
 
   fields: [
     {
-      name: "data"
+      name: "email"
       req: false
-      type: "`$OBJECT`"
+      type: "`$STRING`"
     }
     {
-      name: "success"
+      name: "messageCount"
       req: false
-      type: "`$BOOLEAN`"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "messages"
+      req: false
+      type: "`$ARRAY`"
     }
   ]
 
@@ -82,7 +87,7 @@ main: kit: entity: inbox: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.data`"
           }
         }
       ]

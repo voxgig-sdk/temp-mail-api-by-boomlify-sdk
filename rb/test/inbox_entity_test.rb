@@ -26,7 +26,7 @@ class InboxEntityTest < Minitest::Test
     # The basic flow consumes synthetic IDs from the fixture. In live mode
     # without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup[:synthetic_only]
-      skip "live entity test uses synthetic IDs from fixture — set TEMPMAILAPIBYBOOMLIFY_TEST_INBOX_ENTID JSON to run live"
+      skip "live entity test uses synthetic IDs from fixture — set TEMP_MAIL_API_BY_BOOMLIFY_TEST_INBOX_ENTID JSON to run live"
       return
     end
     client = setup[:client]
@@ -74,39 +74,39 @@ def inbox_basic_setup(extra)
   # Detect ENTID env override before envOverride consumes it. When live
   # mode is on without a real override, the basic test runs against synthetic
   # IDs from the fixture and 4xx's. Surface this so the test can skip.
-  entid_env_raw = ENV["TEMPMAILAPIBYBOOMLIFY_TEST_INBOX_ENTID"]
+  entid_env_raw = ENV["TEMP_MAIL_API_BY_BOOMLIFY_TEST_INBOX_ENTID"]
   idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
 
   env = Runner.env_override({
-    "TEMPMAILAPIBYBOOMLIFY_TEST_INBOX_ENTID" => idmap,
-    "TEMPMAILAPIBYBOOMLIFY_TEST_LIVE" => "FALSE",
-    "TEMPMAILAPIBYBOOMLIFY_TEST_EXPLAIN" => "FALSE",
-    "TEMPMAILAPIBYBOOMLIFY_APIKEY" => "NONE",
+    "TEMP_MAIL_API_BY_BOOMLIFY_TEST_INBOX_ENTID" => idmap,
+    "TEMP_MAIL_API_BY_BOOMLIFY_TEST_LIVE" => "FALSE",
+    "TEMP_MAIL_API_BY_BOOMLIFY_TEST_EXPLAIN" => "FALSE",
+    "TEMP_MAIL_API_BY_BOOMLIFY_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
-    env["TEMPMAILAPIBYBOOMLIFY_TEST_INBOX_ENTID"])
+    env["TEMP_MAIL_API_BY_BOOMLIFY_TEST_INBOX_ENTID"])
   if idmap_resolved.nil?
     idmap_resolved = Helpers.to_map(idmap)
   end
 
-  if env["TEMPMAILAPIBYBOOMLIFY_TEST_LIVE"] == "TRUE"
+  if env["TEMP_MAIL_API_BY_BOOMLIFY_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["TEMPMAILAPIBYBOOMLIFY_APIKEY"],
+        "apikey" => env["TEMP_MAIL_API_BY_BOOMLIFY_APIKEY"],
       },
       extra || {},
     ])
     client = TempMailApiByBoomlifySDK.new(Helpers.to_map(merged_opts))
   end
 
-  live = env["TEMPMAILAPIBYBOOMLIFY_TEST_LIVE"] == "TRUE"
+  live = env["TEMP_MAIL_API_BY_BOOMLIFY_TEST_LIVE"] == "TRUE"
   {
     client: client,
     data: entity_data,
     idmap: idmap_resolved,
     env: env,
-    explain: env["TEMPMAILAPIBYBOOMLIFY_TEST_EXPLAIN"] == "TRUE",
+    explain: env["TEMP_MAIL_API_BY_BOOMLIFY_TEST_EXPLAIN"] == "TRUE",
     live: live,
     synthetic_only: live && !idmap_overridden,
     now: (Time.now.to_f * 1000).to_i,

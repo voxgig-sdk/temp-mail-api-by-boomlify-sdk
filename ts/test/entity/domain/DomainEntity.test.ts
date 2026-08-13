@@ -26,8 +26,8 @@ import {
 describe('DomainEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when TEMPMAILAPIBYBOOMLIFY_TEST_LIVE=TRUE.
-  afterEach(liveDelay('TEMPMAILAPIBYBOOMLIFY_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when TEMP_MAIL_API_BY_BOOMLIFY_TEST_LIVE=TRUE.
+  afterEach(liveDelay('TEMP_MAIL_API_BY_BOOMLIFY_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = TempMailApiByBoomlifySDK.test()
@@ -62,7 +62,7 @@ describe('DomainEntity', async () => {
     // LOAD
     const domain_ref01_ent = client.Domain()
     const domain_ref01_match_dt0: any = {}
-    const domain_ref01_data_dt0 = await domain_ref01_ent.load(domain_ref01_match_dt0)
+    const domain_ref01_data_dt0 = (await domain_ref01_ent.load(domain_ref01_match_dt0)).data()
     assert(null != domain_ref01_data_dt0)
 
 

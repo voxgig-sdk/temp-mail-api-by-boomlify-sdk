@@ -36,7 +36,7 @@ client = TempMailApiByBoomlifySDK.new({
 
 ```ruby
 begin
-  # load returns the bare Domain record (raises on error).
+  # load returns the ENTITY — call data_get for the Domain record (raises on error).
   domain = client.Domain.load()
   puts domain
 rescue => err
@@ -119,7 +119,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = TempMailApiByBoomlifySDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 domain = client.Domain.load()
 puts domain
 ```
@@ -241,8 +242,7 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
-| `success` |  |
+| `domains` |  |
 
 Operations: Load.
 
@@ -252,10 +252,12 @@ API path: `/domains`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
+| `createdAt` |  |
 | `domain` |  |
+| `email` |  |
+| `expiresAt` |  |
 | `expiry` |  |
-| `success` |  |
+| `token` |  |
 | `username` |  |
 
 Operations: Create.
@@ -266,8 +268,9 @@ API path: `/email/create`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
-| `success` |  |
+| `email` |  |
+| `messageCount` |  |
+| `messages` |  |
 
 Operations: Load.
 
@@ -292,13 +295,12 @@ Create an instance: `domain = client.Domain`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `Hash` |  |
-| `success` | `Boolean` |  |
+| `domains` | `Array` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Domain record (raises on error).
+# load returns the ENTITY — call data_get for the Domain record (raises on error).
 domain = client.Domain.load()
 ```
 
@@ -317,10 +319,12 @@ Create an instance: `email = client.Email`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `Hash` |  |
+| `createdAt` | `String` |  |
 | `domain` | `String` |  |
+| `email` | `String` |  |
+| `expiresAt` | `String` |  |
 | `expiry` | `String` |  |
-| `success` | `Boolean` |  |
+| `token` | `String` |  |
 | `username` | `String` |  |
 
 #### Example: Create
@@ -345,13 +349,14 @@ Create an instance: `inbox = client.Inbox`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `Hash` |  |
-| `success` | `Boolean` |  |
+| `email` | `String` |  |
+| `messageCount` | `Integer` |  |
+| `messages` | `Array` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Inbox record (raises on error).
+# load returns the ENTITY — call data_get for the Inbox record (raises on error).
 inbox = client.Inbox.load({ "id" => "inbox_id" })
 ```
 

@@ -123,7 +123,8 @@ Create a mock client for unit testing — no server required:
 const client = TempMailApiByBoomlifySDK.test()
 
 const domain = await client.Domain().load()
-// domain is a bare entity populated with mock response data
+// domain is the entity, populated with mock response data
+// — call domain.data() for the record itself
 console.log(domain)
 ```
 
@@ -293,8 +294,7 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
-| `success` |  |
+| `domains` |  |
 
 Operations: load.
 
@@ -304,10 +304,12 @@ API path: `/domains`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
+| `createdAt` |  |
 | `domain` |  |
+| `email` |  |
+| `expiresAt` |  |
 | `expiry` |  |
-| `success` |  |
+| `token` |  |
 | `username` |  |
 
 Operations: create.
@@ -318,8 +320,9 @@ API path: `/email/create`
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
-| `success` |  |
+| `email` |  |
+| `messageCount` |  |
+| `messages` |  |
 
 Operations: load.
 
@@ -344,8 +347,7 @@ Create an instance: `const domain = client.Domain()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `Record<string, any>` |  |
-| `success` | `boolean` |  |
+| `domains` | `any[]` |  |
 
 #### Example: Load
 
@@ -368,10 +370,12 @@ Create an instance: `const email = client.Email()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `Record<string, any>` |  |
+| `createdAt` | `string` |  |
 | `domain` | `string` |  |
+| `email` | `string` |  |
+| `expiresAt` | `string` |  |
 | `expiry` | `string` |  |
-| `success` | `boolean` |  |
+| `token` | `string` |  |
 | `username` | `string` |  |
 
 #### Example: Create
@@ -396,8 +400,9 @@ Create an instance: `const inbox = client.Inbox()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `Record<string, any>` |  |
-| `success` | `boolean` |  |
+| `email` | `string` |  |
+| `messageCount` | `number` |  |
+| `messages` | `any[]` |  |
 
 #### Example: Load
 

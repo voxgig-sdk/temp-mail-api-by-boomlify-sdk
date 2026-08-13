@@ -16,11 +16,11 @@
 import pytest
 
 from tempmailapibyboomlify_sdk import TempMailApiByBoomlifySDK
-from core.error import TempMailApiByBoomlifyError
-from core.result import TempMailApiByBoomlifyResult
-from core.response import TempMailApiByBoomlifyResponse
-from core.spec import TempMailApiByBoomlifySpec
-from feature.base_feature import TempMailApiByBoomlifyBaseFeature
+from tempmailapibyboomlify_sdk.core.error import TempMailApiByBoomlifyError
+from tempmailapibyboomlify_sdk.core.result import TempMailApiByBoomlifyResult
+from tempmailapibyboomlify_sdk.core.response import TempMailApiByBoomlifyResponse
+from tempmailapibyboomlify_sdk.core.spec import TempMailApiByBoomlifySpec
+from tempmailapibyboomlify_sdk.feature.base_feature import TempMailApiByBoomlifyBaseFeature
 
 
 def _client():

@@ -10,90 +10,102 @@
 
 # Domain entity data model.
 #
-# @!attribute [rw] data
-#   @return [Hash, nil]
-#
-# @!attribute [rw] success
-#   @return [Boolean, nil]
+# @!attribute [rw] domains
+#   @return [Array, nil]
 Domain = Struct.new(
-  :data,
-  :success,
+  :domains,
   keyword_init: true
 )
 
 # Request payload for Domain#load.
 #
-# @!attribute [rw] data
-#   @return [Hash, nil]
-#
-# @!attribute [rw] success
-#   @return [Boolean, nil]
+# @!attribute [rw] domains
+#   @return [Array, nil]
 DomainLoadMatch = Struct.new(
-  :data,
-  :success,
+  :domains,
   keyword_init: true
 )
 
 # Email entity data model.
 #
-# @!attribute [rw] data
-#   @return [Hash, nil]
+# @!attribute [rw] createdAt
+#   @return [String, nil]
 #
 # @!attribute [rw] domain
+#   @return [String, nil]
+#
+# @!attribute [rw] email
+#   @return [String, nil]
+#
+# @!attribute [rw] expiresAt
 #   @return [String, nil]
 #
 # @!attribute [rw] expiry
 #   @return [String, nil]
 #
-# @!attribute [rw] success
-#   @return [Boolean, nil]
+# @!attribute [rw] token
+#   @return [String, nil]
 #
 # @!attribute [rw] username
 #   @return [String, nil]
 Email = Struct.new(
-  :data,
+  :createdAt,
   :domain,
+  :email,
+  :expiresAt,
   :expiry,
-  :success,
+  :token,
   :username,
   keyword_init: true
 )
 
 # Request payload for Email#create.
 #
-# @!attribute [rw] data
-#   @return [Hash, nil]
+# @!attribute [rw] createdAt
+#   @return [String, nil]
 #
 # @!attribute [rw] domain
+#   @return [String, nil]
+#
+# @!attribute [rw] email
+#   @return [String, nil]
+#
+# @!attribute [rw] expiresAt
 #   @return [String, nil]
 #
 # @!attribute [rw] expiry
 #   @return [String, nil]
 #
-# @!attribute [rw] success
-#   @return [Boolean, nil]
+# @!attribute [rw] token
+#   @return [String, nil]
 #
 # @!attribute [rw] username
 #   @return [String, nil]
 EmailCreateData = Struct.new(
-  :data,
+  :createdAt,
   :domain,
+  :email,
+  :expiresAt,
   :expiry,
-  :success,
+  :token,
   :username,
   keyword_init: true
 )
 
 # Inbox entity data model.
 #
-# @!attribute [rw] data
-#   @return [Hash, nil]
+# @!attribute [rw] email
+#   @return [String, nil]
 #
-# @!attribute [rw] success
-#   @return [Boolean, nil]
+# @!attribute [rw] messageCount
+#   @return [Integer, nil]
+#
+# @!attribute [rw] messages
+#   @return [Array, nil]
 Inbox = Struct.new(
-  :data,
-  :success,
+  :email,
+  :messageCount,
+  :messages,
   keyword_init: true
 )
 

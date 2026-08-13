@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import TempMailApiByBoomlifyControl
-from core.error import TempMailApiByBoomlifyError
-from core.result import TempMailApiByBoomlifyResult
-from core.spec import TempMailApiByBoomlifySpec
+from tempmailapibyboomlify_sdk.config import make_config
+from tempmailapibyboomlify_sdk.features import _make_feature
+from tempmailapibyboomlify_sdk.core.control import TempMailApiByBoomlifyControl
+from tempmailapibyboomlify_sdk.core.error import TempMailApiByBoomlifyError
+from tempmailapibyboomlify_sdk.core.result import TempMailApiByBoomlifyResult
+from tempmailapibyboomlify_sdk.core.spec import TempMailApiByBoomlifySpec
 
 
 # True when this SDK was generated with the named feature.
