@@ -15,7 +15,7 @@ require_relative "../TempMailApiByBoomlify_sdk"
 module TempMailApiByBoomlifyFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = TempMailApiByBoomlifyConfig.make_config["feature"]
+    f = TempMailApiByBoomlifyConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

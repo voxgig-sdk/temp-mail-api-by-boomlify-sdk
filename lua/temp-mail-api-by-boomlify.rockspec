@@ -23,6 +23,7 @@ build = {
   modules = {
     ["temp-mail-api-by-boomlify_sdk"] = "temp-mail-api-by-boomlify_sdk.lua",
     ["config"] = "config.lua",
+    ["config_shared"] = "config_shared.lua",
     ["features"] = "features.lua",
   }
 }

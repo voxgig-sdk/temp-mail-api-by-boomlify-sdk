@@ -40,7 +40,7 @@ class TempMailApiByBoomlifySDK
         $utility = new TempMailApiByBoomlifyUtility();
         $this->_utility = $utility;
 
-        $config = TempMailApiByBoomlifyConfig::make_config();
+        $config = TempMailApiByBoomlifyConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

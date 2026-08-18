@@ -28,7 +28,7 @@ class TempMailApiByBoomlifySDK
     utility = TempMailApiByBoomlifyUtility.new
     @_utility = utility
 
-    config = TempMailApiByBoomlifyConfig.make_config
+    config = TempMailApiByBoomlifyConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,
