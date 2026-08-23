@@ -147,13 +147,13 @@ email = client.Email()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `createdAt` | `str` | No |  |
-| `domain` | `str` | No |  |
-| `email` | `str` | No |  |
-| `expiresAt` | `str` | No |  |
-| `expiry` | `str` | No |  |
-| `token` | `str` | No |  |
-| `username` | `str` | No |  |
+| `createdAt` | `str` | No | Creation timestamp |
+| `domain` | `str` | No | Domain to use for the email address. |
+| `email` | `str` | No | The generated temporary email address |
+| `expiresAt` | `str` | No | Expiration timestamp of the email address |
+| `expiry` | `str` | No | Expiry duration for the email address |
+| `token` | `str` | No | Access token for managing this email address |
+| `username` | `str` | No | Desired username for the email address. |
 
 ### Operations
 

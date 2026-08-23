@@ -191,13 +191,13 @@ const email = client.Email()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `createdAt` | `string` | No |  |
-| `domain` | `string` | No |  |
-| `email` | `string` | No |  |
-| `expiresAt` | `string` | No |  |
-| `expiry` | `string` | No |  |
-| `token` | `string` | No |  |
-| `username` | `string` | No |  |
+| `createdAt` | `string` | No | Creation timestamp |
+| `domain` | `string` | No | Domain to use for the email address. |
+| `email` | `string` | No | The generated temporary email address |
+| `expiresAt` | `string` | No | Expiration timestamp of the email address |
+| `expiry` | `string` | No | Expiry duration for the email address |
+| `token` | `string` | No | Access token for managing this email address |
+| `username` | `string` | No | Desired username for the email address. |
 
 ### Actions
 

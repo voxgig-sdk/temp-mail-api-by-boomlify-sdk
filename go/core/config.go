@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "TempMailApiByBoomlify",
+			"slug": "temp-mail-api-by-boomlify",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -72,30 +75,37 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "createdAt",
+						"short": "Creation timestamp",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "domain",
+						"short": "Domain to use for the email address.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "email",
+						"short": "The generated temporary email address",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "expiresAt",
+						"short": "Expiration timestamp of the email address",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "expiry",
+						"short": "Expiry duration for the email address",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "token",
+						"short": "Access token for managing this email address",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "username",
+						"short": "Desired username for the email address.",
 						"type": "`$STRING`",
 					},
 				},

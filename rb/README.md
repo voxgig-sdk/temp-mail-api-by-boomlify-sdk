@@ -252,13 +252,13 @@ API path: `/domains`
 
 | Field | Description |
 | --- | --- |
-| `createdAt` |  |
-| `domain` |  |
-| `email` |  |
-| `expiresAt` |  |
-| `expiry` |  |
-| `token` |  |
-| `username` |  |
+| `createdAt` | Creation timestamp |
+| `domain` | Domain to use for the email address. |
+| `email` | The generated temporary email address |
+| `expiresAt` | Expiration timestamp of the email address |
+| `expiry` | Expiry duration for the email address |
+| `token` | Access token for managing this email address |
+| `username` | Desired username for the email address. |
 
 Operations: Create.
 
@@ -319,13 +319,13 @@ Create an instance: `email = client.Email`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `createdAt` | `String` |  |
-| `domain` | `String` |  |
-| `email` | `String` |  |
-| `expiresAt` | `String` |  |
-| `expiry` | `String` |  |
-| `token` | `String` |  |
-| `username` | `String` |  |
+| `createdAt` | `String` | Creation timestamp |
+| `domain` | `String` | Domain to use for the email address. |
+| `email` | `String` | The generated temporary email address |
+| `expiresAt` | `String` | Expiration timestamp of the email address |
+| `expiry` | `String` | Expiry duration for the email address |
+| `token` | `String` | Access token for managing this email address |
+| `username` | `String` | Desired username for the email address. |
 
 #### Example: Create
 

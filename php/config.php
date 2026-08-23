@@ -33,6 +33,9 @@ class TempMailApiByBoomlifyConfig
         return [
             "main" => [
                 "name" => "TempMailApiByBoomlify",
+                "slug" => "temp-mail-api-by-boomlify",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
@@ -94,30 +97,37 @@ class TempMailApiByBoomlifyConfig
           'fields' => [
             [
               'name' => 'createdAt',
+              'short' => 'Creation timestamp',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'domain',
+              'short' => 'Domain to use for the email address.',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'email',
+              'short' => 'The generated temporary email address',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'expiresAt',
+              'short' => 'Expiration timestamp of the email address',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'expiry',
+              'short' => 'Expiry duration for the email address',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'token',
+              'short' => 'Access token for managing this email address',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'username',
+              'short' => 'Desired username for the email address.',
               'type' => '`$STRING`',
             ],
           ],
