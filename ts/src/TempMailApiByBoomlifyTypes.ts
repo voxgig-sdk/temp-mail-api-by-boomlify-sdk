@@ -41,6 +41,7 @@ export interface EmailCreateData {
 
 export interface Inbox {
   email?: string
+  id?: string
   messageCount?: number
   messages?: any[]
 }

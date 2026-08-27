@@ -2,30 +2,30 @@
   "existing": {
     "inbox": {
       "INBOX00": {
-        "email": "s1e",
-        "messageCount": "s1f",
-        "messages": [],
-        "id": "INBOX00"
+        "email": "s28",
+        "id": "INBOX00",
+        "messageCount": "s2a",
+        "messages": []
       },
       "INBOX01": {
-        "email": "s3c",
-        "messageCount": "s3d",
-        "messages": [],
-        "id": "INBOX01"
+        "email": "s50",
+        "id": "INBOX01",
+        "messageCount": "s52",
+        "messages": []
       },
       "INBOX02": {
-        "email": "s5a",
-        "messageCount": "s5b",
-        "messages": [],
-        "id": "INBOX02"
+        "email": "s78",
+        "id": "INBOX02",
+        "messageCount": "s7a",
+        "messages": []
       }
     }
   },
   "new": {
     "inbox": {
       "inbox_ref01": {
-        "email": "s78",
-        "messageCount": "s79",
+        "email": "sa0",
+        "messageCount": "sa2",
         "messages": []
       }
     }

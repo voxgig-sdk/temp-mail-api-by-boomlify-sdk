@@ -42,6 +42,7 @@ class TempMailApiByBoomlifyConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
@@ -165,6 +166,10 @@ class TempMailApiByBoomlifyConfig
           'fields' => [
             [
               'name' => 'email',
+              'type' => '`$STRING`',
+            ],
+            [
+              'name' => 'id',
               'type' => '`$STRING`',
             ],
             [

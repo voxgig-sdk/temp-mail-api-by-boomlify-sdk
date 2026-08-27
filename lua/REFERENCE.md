@@ -211,6 +211,7 @@ local inbox = client:Inbox(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `email` | `string` | No |  |
+| `id` | `string` | No |  |
 | `messageCount` | `number` | No |  |
 | `messages` | `table` | No |  |
 

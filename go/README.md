@@ -293,6 +293,7 @@ API path: `/email/create`
 | Field | Description |
 | --- | --- |
 | `"email"` |  |
+| `"id"` |  |
 | `"messageCount"` |  |
 | `"messages"` |  |
 
@@ -381,6 +382,7 @@ Create an instance: `inbox := client.Inbox(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `email` | `string` |  |
+| `id` | `string` |  |
 | `messageCount` | `int` |  |
 | `messages` | `[]any` |  |
 

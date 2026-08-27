@@ -214,6 +214,7 @@ inbox = client.Inbox
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `email` | `String` | No |  |
+| `id` | `String` | No |  |
 | `messageCount` | `Integer` | No |  |
 | `messages` | `Array` | No |  |
 

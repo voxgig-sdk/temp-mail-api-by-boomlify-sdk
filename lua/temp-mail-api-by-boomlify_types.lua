@@ -32,6 +32,7 @@
 
 ---@class Inbox
 ---@field email? string
+---@field id? string
 ---@field messageCount? number
 ---@field messages? table
 

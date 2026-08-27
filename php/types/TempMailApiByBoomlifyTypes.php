@@ -52,6 +52,7 @@ class EmailCreateData
 class Inbox
 {
     public ?string $email = null;
+    public ?string $id = null;
     public ?int $messageCount = null;
     public ?array $messages = null;
 }

@@ -97,6 +97,9 @@ EmailCreateData = Struct.new(
 # @!attribute [rw] email
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] messageCount
 #   @return [Integer, nil]
 #
@@ -104,6 +107,7 @@ EmailCreateData = Struct.new(
 #   @return [Array, nil]
 Inbox = Struct.new(
   :email,
+  :id,
   :messageCount,
   :messages,
   keyword_init: true

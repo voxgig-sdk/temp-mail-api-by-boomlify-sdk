@@ -206,6 +206,7 @@ inbox = client.Inbox()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `email` | `str` | No |  |
+| `id` | `str` | No |  |
 | `messageCount` | `int` | No |  |
 | `messages` | `list` | No |  |
 

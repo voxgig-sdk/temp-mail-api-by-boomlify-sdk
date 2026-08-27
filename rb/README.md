@@ -269,6 +269,7 @@ API path: `/email/create`
 | Field | Description |
 | --- | --- |
 | `email` |  |
+| `id` |  |
 | `messageCount` |  |
 | `messages` |  |
 
@@ -350,6 +351,7 @@ Create an instance: `inbox = client.Inbox`
 | Field | Type | Description |
 | --- | --- | --- |
 | `email` | `String` |  |
+| `id` | `String` |  |
 | `messageCount` | `Integer` |  |
 | `messages` | `Array` |  |
 

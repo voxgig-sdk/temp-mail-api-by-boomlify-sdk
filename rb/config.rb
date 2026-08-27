@@ -28,6 +28,7 @@ module TempMailApiByBoomlifyConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
@@ -151,6 +152,10 @@ module TempMailApiByBoomlifyConfig
           "fields" => [
             {
               "name" => "email",
+              "type" => "`$STRING`",
+            },
+            {
+              "name" => "id",
               "type" => "`$STRING`",
             },
             {

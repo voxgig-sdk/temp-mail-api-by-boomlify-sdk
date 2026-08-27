@@ -46,6 +46,7 @@ class EmailCreateData(TypedDict, total=False):
 
 class Inbox(TypedDict, total=False):
     email: str
+    id: str
     messageCount: int
     messages: list
 

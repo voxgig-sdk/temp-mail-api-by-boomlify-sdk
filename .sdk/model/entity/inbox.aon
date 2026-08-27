@@ -11,6 +11,11 @@ main: kit: entity: inbox: {
       type: "`$STRING`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "messageCount"
       req: false
       type: "`$INTEGER`"
@@ -21,6 +26,11 @@ main: kit: entity: inbox: {
       type: "`$ARRAY`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "inbox"
   op: {

@@ -47,6 +47,7 @@ type EmailCreateData struct {
 // Inbox is the typed data model for the inbox entity.
 type Inbox struct {
 	Email *string `json:"email,omitempty"`
+	Id *string `json:"id,omitempty"`
 	MessageCount *int `json:"messageCount,omitempty"`
 	Messages *[]any `json:"messages,omitempty"`
 }

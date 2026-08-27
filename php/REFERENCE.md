@@ -213,6 +213,7 @@ $inbox = $client->Inbox();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `email` | `string` | No |  |
+| `id` | `string` | No |  |
 | `messageCount` | `int` | No |  |
 | `messages` | `array` | No |  |
 
