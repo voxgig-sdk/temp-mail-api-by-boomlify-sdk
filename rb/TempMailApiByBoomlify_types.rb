@@ -117,8 +117,20 @@ Inbox = Struct.new(
 #
 # @!attribute [rw] id
 #   @return [String]
+#
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
+# @!attribute [rw] preview
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] token
+#   @return [String]
 InboxLoadMatch = Struct.new(
   :id,
+  :limit,
+  :preview,
+  :token,
   keyword_init: true
 )
 

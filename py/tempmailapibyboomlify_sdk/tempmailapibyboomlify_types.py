@@ -51,5 +51,11 @@ class Inbox(TypedDict, total=False):
     messages: list
 
 
-class InboxLoadMatch(TypedDict):
+class InboxLoadMatchRequired(TypedDict):
     id: str
+    token: str
+
+
+class InboxLoadMatch(InboxLoadMatchRequired, total=False):
+    limit: int
+    preview: bool

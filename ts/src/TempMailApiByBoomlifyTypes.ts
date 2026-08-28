@@ -48,5 +48,8 @@ export interface Inbox {
 
 export interface InboxLoadMatch {
   id: string
+  limit?: number
+  preview?: boolean
+  token: string
 }
 

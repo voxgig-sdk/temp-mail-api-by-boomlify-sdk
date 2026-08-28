@@ -61,5 +61,8 @@ class Inbox
 class InboxLoadMatch
 {
     public string $id;
+    public ?int $limit = null;
+    public ?bool $preview = null;
+    public string $token;
 }
 

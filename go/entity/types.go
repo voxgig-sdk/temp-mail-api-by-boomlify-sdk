@@ -55,6 +55,9 @@ type Inbox struct {
 // InboxLoadMatch is the typed request payload for Inbox.LoadTyped.
 type InboxLoadMatch struct {
 	Id string `json:"id"`
+	Limit *int `json:"limit,omitempty"`
+	Preview *bool `json:"preview,omitempty"`
+	Token string `json:"token"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

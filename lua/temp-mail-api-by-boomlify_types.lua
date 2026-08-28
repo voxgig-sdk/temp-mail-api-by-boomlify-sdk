@@ -38,6 +38,9 @@
 
 ---@class InboxLoadMatch
 ---@field id string
+---@field limit? number
+---@field preview? boolean
+---@field token string
 
 local M = {}
 
