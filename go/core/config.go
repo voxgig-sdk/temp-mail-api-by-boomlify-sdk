@@ -56,13 +56,18 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/domains",
-								"parts": []any{
-									"domains",
+								"segments": []any{
+									map[string]any{
+										"lit": "domains",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.data`",
+								},
+								"parts": []any{
+									"domains",
 								},
 							},
 						},
@@ -75,6 +80,7 @@ func MakeConfig() map[string]any {
 			"email": map[string]any{
 				"fields": []any{
 					map[string]any{
+						"format": "date-time",
 						"name": "createdAt",
 						"short": "Creation timestamp",
 						"type": "`$STRING`",
@@ -85,11 +91,13 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "email",
 						"name": "email",
 						"short": "The generated temporary email address",
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "date-time",
 						"name": "expiresAt",
 						"short": "Expiration timestamp of the email address",
 						"type": "`$STRING`",
@@ -121,9 +129,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/email/create",
-								"parts": []any{
-									"email",
-									"create",
+								"segments": []any{
+									map[string]any{
+										"lit": "email",
+									},
+									map[string]any{
+										"lit": "create",
+									},
 								},
 								"select": map[string]any{
 									"$action": "create",
@@ -131,6 +143,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.data`",
+								},
+								"parts": []any{
+									"email",
+									"create",
 								},
 							},
 						},
@@ -143,6 +159,7 @@ func MakeConfig() map[string]any {
 			"inbox": map[string]any{
 				"fields": []any{
 					map[string]any{
+						"format": "email",
 						"name": "email",
 						"type": "`$STRING`",
 					},
@@ -158,6 +175,10 @@ func MakeConfig() map[string]any {
 						"name": "messages",
 						"type": "`$ARRAY`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "inbox",
 				"op": map[string]any{
@@ -205,13 +226,17 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/inbox/{email}",
-								"parts": []any{
-									"inbox",
-									"{id}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"email": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "inbox",
+									},
+									map[string]any{
+										"var": "id",
 									},
 								},
 								"select": map[string]any{
@@ -226,6 +251,10 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body.data`",
 								},
+								"parts": []any{
+									"inbox",
+									"{id}",
+								},
 							},
 						},
 					},
@@ -236,6 +265,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

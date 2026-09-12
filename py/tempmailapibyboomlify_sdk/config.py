@@ -1,6 +1,14 @@
 # TempMailApiByBoomlify SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -73,14 +81,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/domains",
-                "parts": [
-                  "domains",
+                "segments": [
+                  {
+                    "lit": "domains",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.data`",
                 },
+                "parts": [
+                  "domains",
+                ],
               },
             ],
           },
@@ -92,6 +105,7 @@ def make_config():
       "email": {
         "fields": [
           {
+            "format": "date-time",
             "name": "createdAt",
             "short": "Creation timestamp",
             "type": "`$STRING`",
@@ -102,11 +116,13 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "email",
             "name": "email",
             "short": "The generated temporary email address",
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "expiresAt",
             "short": "Expiration timestamp of the email address",
             "type": "`$STRING`",
@@ -138,9 +154,13 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/email/create",
-                "parts": [
-                  "email",
-                  "create",
+                "segments": [
+                  {
+                    "lit": "email",
+                  },
+                  {
+                    "lit": "create",
+                  },
                 ],
                 "select": {
                   "$action": "create",
@@ -149,6 +169,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.data`",
                 },
+                "parts": [
+                  "email",
+                  "create",
+                ],
               },
             ],
           },
@@ -160,6 +184,7 @@ def make_config():
       "inbox": {
         "fields": [
           {
+            "format": "email",
             "name": "email",
             "type": "`$STRING`",
           },
@@ -176,6 +201,10 @@ def make_config():
             "type": "`$ARRAY`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "inbox",
         "op": {
           "load": {
@@ -222,15 +251,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/inbox/{email}",
-                "parts": [
-                  "inbox",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "email": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "inbox",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -243,6 +276,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.data`",
                 },
+                "parts": [
+                  "inbox",
+                  "{id}",
+                ],
               },
             ],
           },

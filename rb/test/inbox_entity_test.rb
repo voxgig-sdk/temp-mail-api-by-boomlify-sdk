@@ -85,7 +85,7 @@ def inbox_basic_setup(extra)
     "TEMP_MAIL_API_BY_BOOMLIFY_TEST_INBOX_ENTID" => idmap,
     "TEMP_MAIL_API_BY_BOOMLIFY_TEST_LIVE" => "FALSE",
     "TEMP_MAIL_API_BY_BOOMLIFY_TEST_EXPLAIN" => "FALSE",
-    "TEMP_MAIL_API_BY_BOOMLIFY_APIKEY" => "NONE",
+    "TEMP_MAIL_API_BY_BOOMLIFY_APIKEY" => "",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -96,6 +96,9 @@ def inbox_basic_setup(extra)
 
   if env["TEMP_MAIL_API_BY_BOOMLIFY_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
+      # FIRST, so the generated fields below win: sdk-test-control.json's
+      # test.client.options adds to the live client, it does not redirect it.
+      Runner.live_client_options,
       {
         "apikey" => env["TEMP_MAIL_API_BY_BOOMLIFY_APIKEY"],
       },

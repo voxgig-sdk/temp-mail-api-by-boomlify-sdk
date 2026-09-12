@@ -6,6 +6,7 @@ main: kit: entity: inbox: {
 
   fields: [
     {
+      format: "email"
       name: "email"
       req: false
       type: "`$STRING`"
@@ -78,15 +79,19 @@ main: kit: entity: inbox: {
           }
           method: "GET"
           orig: "/inbox/{email}"
-          parts: [
-            "inbox"
-            "{id}"
-          ]
           rename: {
             param: {
               email: "id"
             }
           }
+          segments: [
+            {
+              lit: "inbox"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

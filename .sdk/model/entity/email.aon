@@ -6,6 +6,7 @@ main: kit: entity: email: {
 
   fields: [
     {
+      format: "date-time"
       name: "createdAt"
       req: false
       short: "Creation timestamp"
@@ -18,12 +19,14 @@ main: kit: entity: email: {
       type: "`$STRING`"
     }
     {
+      format: "email"
       name: "email"
       req: false
       short: "The generated temporary email address"
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "expiresAt"
       req: false
       short: "Expiration timestamp of the email address"
@@ -57,9 +60,13 @@ main: kit: entity: email: {
         {
           method: "POST"
           orig: "/email/create"
-          parts: [
-            "email"
-            "create"
+          segments: [
+            {
+              lit: "email"
+            }
+            {
+              lit: "create"
+            }
           ]
           select: {
             "$action": "create"

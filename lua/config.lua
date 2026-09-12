@@ -52,13 +52,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/domains",
-                ["parts"] = {
-                  "domains",
+                ["segments"] = {
+                  {
+                    ["lit"] = "domains",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.data`",
+                },
+                ["parts"] = {
+                  "domains",
                 },
               },
             },
@@ -71,6 +76,7 @@ local function make_config()
       ["email"] = {
         ["fields"] = {
           {
+            ["format"] = "date-time",
             ["name"] = "createdAt",
             ["short"] = "Creation timestamp",
             ["type"] = "`$STRING`",
@@ -81,11 +87,13 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "email",
             ["name"] = "email",
             ["short"] = "The generated temporary email address",
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "expiresAt",
             ["short"] = "Expiration timestamp of the email address",
             ["type"] = "`$STRING`",
@@ -117,9 +125,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/email/create",
-                ["parts"] = {
-                  "email",
-                  "create",
+                ["segments"] = {
+                  {
+                    ["lit"] = "email",
+                  },
+                  {
+                    ["lit"] = "create",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "create",
@@ -127,6 +139,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.data`",
+                },
+                ["parts"] = {
+                  "email",
+                  "create",
                 },
               },
             },
@@ -139,6 +155,7 @@ local function make_config()
       ["inbox"] = {
         ["fields"] = {
           {
+            ["format"] = "email",
             ["name"] = "email",
             ["type"] = "`$STRING`",
           },
@@ -154,6 +171,10 @@ local function make_config()
             ["name"] = "messages",
             ["type"] = "`$ARRAY`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "inbox",
         ["op"] = {
@@ -201,13 +222,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/inbox/{email}",
-                ["parts"] = {
-                  "inbox",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["email"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "inbox",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -221,6 +246,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.data`",
+                },
+                ["parts"] = {
+                  "inbox",
+                  "{id}",
                 },
               },
             },
