@@ -105,7 +105,7 @@ local result, err = client:Domain():load()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/temp-mail-api-by-boomlify` | publish pending — [install from git tag](https://github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/releases) |
+| TypeScript | `@voxgig-sdk/temp-mail-api-by-boomlify-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/releases) |
 | Python | `voxgig-sdk-temp-mail-api-by-boomlify` | publish pending — [install from git tag](https://github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/releases) |
 | PHP | `voxgig-sdk/temp-mail-api-by-boomlify` | publish pending — [install from git tag](https://github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/go` | `go get github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:Domain():load()
 ### TypeScript
 
 ```ts
-import { TempMailApiByBoomlifySDK } from '@voxgig-sdk/temp-mail-api-by-boomlify'
+import { TempMailApiByBoomlifySDK } from '@voxgig-sdk/temp-mail-api-by-boomlify-sdk'
 
 const client = new TempMailApiByBoomlifySDK({
   apikey: process.env.TEMP_MAIL_API_BY_BOOMLIFY_APIKEY,

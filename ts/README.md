@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { TempMailApiByBoomlifySDK } from '@voxgig-sdk/temp-mail-api-by-boomlify'
+import { TempMailApiByBoomlifySDK } from '@voxgig-sdk/temp-mail-api-by-boomlify-sdk'
 
 const client = new TempMailApiByBoomlifySDK({
   apikey: process.env.TEMP_MAIL_API_BY_BOOMLIFY_APIKEY,
@@ -495,7 +495,7 @@ temp-mail-api-by-boomlify/
 Import the SDK from the package root:
 
 ```ts
-import { TempMailApiByBoomlifySDK } from '@voxgig-sdk/temp-mail-api-by-boomlify'
+import { TempMailApiByBoomlifySDK } from '@voxgig-sdk/temp-mail-api-by-boomlify-sdk'
 ```
 
 ### Entity state
