@@ -45,5 +45,179 @@
         "username": "s11e"
       }
     }
+  },
+  "requests": {
+    "POST /email/create": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "createTempEmail",
+        "parameters": [],
+        "protocol": "http",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "domain": {
+                    "description": "Domain to use for the email address. If not provided, a default Boomlify domain will be used.",
+                    "example": "boomlify.com",
+                    "type": "string"
+                  },
+                  "expiry": {
+                    "description": "Expiry duration for the email address",
+                    "enum": [
+                      "10m",
+                      "1h",
+                      "24h",
+                      "7d",
+                      "30d",
+                      "60d"
+                    ],
+                    "example": "24h",
+                    "type": "string"
+                  },
+                  "username": {
+                    "description": "Desired username for the email address. If not provided, a random one will be generated.",
+                    "example": "user123",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          },
+          "description": "Configuration for the temporary email to be created",
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "properties": {
+                        "createdAt": {
+                          "description": "Creation timestamp",
+                          "example": "2024-01-19T12:00:00Z",
+                          "format": "date-time",
+                          "type": "string"
+                        },
+                        "email": {
+                          "description": "The generated temporary email address",
+                          "example": "user123@boomlify.com",
+                          "format": "email",
+                          "type": "string"
+                        },
+                        "expiresAt": {
+                          "description": "Expiration timestamp of the email address",
+                          "example": "2024-01-20T12:00:00Z",
+                          "format": "date-time",
+                          "type": "string"
+                        },
+                        "token": {
+                          "description": "Access token for managing this email address",
+                          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "success": {
+                      "example": true,
+                      "type": "boolean"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Temporary email address created successfully"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "properties": {
+                        "code": {
+                          "description": "Error code",
+                          "example": "INVALID_TOKEN",
+                          "type": "string"
+                        },
+                        "message": {
+                          "description": "Human-readable error message",
+                          "example": "The provided token is invalid or has expired",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "success": {
+                      "example": false,
+                      "type": "boolean"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Invalid request parameters"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "properties": {
+                        "code": {
+                          "description": "Error code",
+                          "example": "INVALID_TOKEN",
+                          "type": "string"
+                        },
+                        "message": {
+                          "description": "Human-readable error message",
+                          "example": "The provided token is invalid or has expired",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "success": {
+                      "example": false,
+                      "type": "boolean"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Rate limit exceeded"
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "securitySchemes": {
+          "ApiKeyAuth": {
+            "description": "API key for authentication (optional for free tier)",
+            "in": "header",
+            "name": "X-API-Key",
+            "type": "apiKey"
+          },
+          "TokenAuth": {
+            "description": "Email-specific access token obtained when creating a temporary email",
+            "in": "query",
+            "name": "token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "definition"
+      }
+    }
   }
 }

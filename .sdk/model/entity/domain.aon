@@ -18,6 +18,12 @@ main: kit: entity: domain: {
       name: "load"
       points: [
         {
+          contract: {
+            id: "GET /domains"
+            json: "{\"operationId\":\"getAvailableDomains\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"data\":{\"properties\":{\"domains\":{\"items\":{\"properties\":{\"active\":{\"description\":\"Whether the domain is currently active\",\"example\":true,\"type\":\"boolean\"},\"domain\":{\"description\":\"Domain name\",\"example\":\"boomlify.com\",\"type\":\"string\"},\"type\":{\"description\":\"Type of domain\",\"enum\":[\"default\",\"custom\"],\"example\":\"default\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"success\":{\"example\":true,\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Available domains retrieved successfully\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"description\":\"Error code\",\"example\":\"INVALID_TOKEN\",\"type\":\"string\"},\"message\":{\"description\":\"Human-readable error message\",\"example\":\"The provided token is invalid or has expired\",\"type\":\"string\"}},\"type\":\"object\"},\"success\":{\"example\":false,\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"security\":[{\"ApiKeyAuth\":[]}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication (optional for free tier)\",\"in\":\"header\",\"name\":\"X-API-Key\",\"type\":\"apiKey\"},\"TokenAuth\":{\"description\":\"Email-specific access token obtained when creating a temporary email\",\"in\":\"query\",\"name\":\"token\",\"type\":\"apiKey\"}},\"securitySource\":\"definition\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/domains"
           segments: [

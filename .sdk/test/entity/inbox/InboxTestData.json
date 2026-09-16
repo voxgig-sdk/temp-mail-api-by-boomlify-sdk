@@ -4,19 +4,19 @@
       "INBOX00": {
         "email": "s28",
         "id": "INBOX00",
-        "messageCount": "s2a",
+        "messageCount": 42,
         "messages": []
       },
       "INBOX01": {
         "email": "s50",
         "id": "INBOX01",
-        "messageCount": "s52",
+        "messageCount": 82,
         "messages": []
       },
       "INBOX02": {
         "email": "s78",
         "id": "INBOX02",
-        "messageCount": "s7a",
+        "messageCount": 122,
         "messages": []
       }
     }
@@ -25,8 +25,261 @@
     "inbox": {
       "inbox_ref01": {
         "email": "sa0",
-        "messageCount": "sa2",
+        "messageCount": 162,
         "messages": []
+      }
+    }
+  },
+  "requests": {
+    "GET /inbox/{email}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getInboxMessages",
+        "parameters": [
+          {
+            "description": "The temporary email address to retrieve messages for",
+            "in": "path",
+            "name": "email",
+            "required": true,
+            "schema": {
+              "example": "user123@boomlify.com",
+              "format": "email",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Access token for the email address",
+            "in": "query",
+            "name": "token",
+            "required": true,
+            "schema": {
+              "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Maximum number of messages to return",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 50,
+              "example": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Enable smart inbox preview mode for quick content viewing",
+            "in": "query",
+            "name": "preview",
+            "required": false,
+            "schema": {
+              "default": false,
+              "example": true,
+              "type": "boolean"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "properties": {
+                        "email": {
+                          "example": "user123@boomlify.com",
+                          "format": "email",
+                          "type": "string"
+                        },
+                        "messageCount": {
+                          "example": 5,
+                          "type": "integer"
+                        },
+                        "messages": {
+                          "items": {
+                            "properties": {
+                              "attachments": {
+                                "description": "List of email attachments",
+                                "items": {
+                                  "properties": {
+                                    "contentType": {
+                                      "example": "application/pdf",
+                                      "type": "string"
+                                    },
+                                    "filename": {
+                                      "example": "document.pdf",
+                                      "type": "string"
+                                    },
+                                    "size": {
+                                      "description": "Size in bytes",
+                                      "example": 12345,
+                                      "type": "integer"
+                                    }
+                                  },
+                                  "type": "object"
+                                },
+                                "type": "array"
+                              },
+                              "body": {
+                                "description": "Full email body content",
+                                "example": "Click here to verify: https://example.com/verify?token=abc123",
+                                "type": "string"
+                              },
+                              "from": {
+                                "description": "Sender's email address",
+                                "example": "noreply@service.com",
+                                "format": "email",
+                                "type": "string"
+                              },
+                              "fromName": {
+                                "description": "Sender's display name",
+                                "example": "Service Notifications",
+                                "type": "string"
+                              },
+                              "html": {
+                                "description": "HTML version of the email body",
+                                "example": "<html><body><p>Click here to verify...</p></body></html>",
+                                "type": "string"
+                              },
+                              "id": {
+                                "description": "Unique identifier for the message",
+                                "example": "msg_abc123xyz",
+                                "type": "string"
+                              },
+                              "preview": {
+                                "description": "Smart preview excerpt of the email content",
+                                "example": "Click here to verify: https://example.com/verify?...",
+                                "type": "string"
+                              },
+                              "read": {
+                                "description": "Whether the message has been read",
+                                "example": false,
+                                "type": "boolean"
+                              },
+                              "receivedAt": {
+                                "description": "Timestamp when the email was received",
+                                "example": "2024-01-19T12:30:00Z",
+                                "format": "date-time",
+                                "type": "string"
+                              },
+                              "subject": {
+                                "description": "Email subject line",
+                                "example": "Verify your account",
+                                "type": "string"
+                              },
+                              "to": {
+                                "description": "Recipient's email address",
+                                "example": "user123@boomlify.com",
+                                "format": "email",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "success": {
+                      "example": true,
+                      "type": "boolean"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Inbox messages retrieved successfully"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "properties": {
+                        "code": {
+                          "description": "Error code",
+                          "example": "INVALID_TOKEN",
+                          "type": "string"
+                        },
+                        "message": {
+                          "description": "Human-readable error message",
+                          "example": "The provided token is invalid or has expired",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "success": {
+                      "example": false,
+                      "type": "boolean"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Invalid or missing access token"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "properties": {
+                        "code": {
+                          "description": "Error code",
+                          "example": "INVALID_TOKEN",
+                          "type": "string"
+                        },
+                        "message": {
+                          "description": "Human-readable error message",
+                          "example": "The provided token is invalid or has expired",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "success": {
+                      "example": false,
+                      "type": "boolean"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Email address not found or expired"
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "securitySchemes": {
+          "ApiKeyAuth": {
+            "description": "API key for authentication (optional for free tier)",
+            "in": "header",
+            "name": "X-API-Key",
+            "type": "apiKey"
+          },
+          "TokenAuth": {
+            "description": "Email-specific access token obtained when creating a temporary email",
+            "in": "query",
+            "name": "token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "definition"
       }
     }
   }

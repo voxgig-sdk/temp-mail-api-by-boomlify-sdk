@@ -4,7 +4,10 @@ declare(strict_types=1);
 // TempMailApiByBoomlify SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class TempMailApiByBoomlifyFeatures
@@ -14,8 +17,14 @@ class TempMailApiByBoomlifyFeatures
         switch ($name) {
             case "base":
                 return new TempMailApiByBoomlifyBaseFeature();
+            case "ratelimit":
+                return new TempMailApiByBoomlifyRatelimitFeature();
+            case "retry":
+                return new TempMailApiByBoomlifyRetryFeature();
             case "test":
                 return new TempMailApiByBoomlifyTestFeature();
+            case "timeout":
+                return new TempMailApiByBoomlifyTimeoutFeature();
             default:
                 return new TempMailApiByBoomlifyBaseFeature();
         }
@@ -31,7 +40,10 @@ class TempMailApiByBoomlifyFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;
