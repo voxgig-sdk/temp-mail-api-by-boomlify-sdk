@@ -14,23 +14,9 @@ export interface DomainLoadMatch {
 }
 
 export interface Email {
-  createdAt?: string
-  domain?: string
-  email?: string
-  expiresAt?: string
-  expiry?: string
-  token?: string
-  username?: string
 }
 
 export interface EmailCreateData {
-  createdAt?: string
-  domain?: string
-  email?: string
-  expiresAt?: string
-  expiry?: string
-  token?: string
-  username?: string
 
   // Selects a custom action instead of the plain create:
   //   'create'

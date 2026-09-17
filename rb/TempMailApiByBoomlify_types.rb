@@ -27,70 +27,12 @@ DomainLoadMatch = Struct.new(
 )
 
 # Email entity data model.
-#
-# @!attribute [rw] createdAt
-#   @return [String, nil]
-#
-# @!attribute [rw] domain
-#   @return [String, nil]
-#
-# @!attribute [rw] email
-#   @return [String, nil]
-#
-# @!attribute [rw] expiresAt
-#   @return [String, nil]
-#
-# @!attribute [rw] expiry
-#   @return [String, nil]
-#
-# @!attribute [rw] token
-#   @return [String, nil]
-#
-# @!attribute [rw] username
-#   @return [String, nil]
-Email = Struct.new(
-  :createdAt,
-  :domain,
-  :email,
-  :expiresAt,
-  :expiry,
-  :token,
-  :username,
-  keyword_init: true
-)
+class Email
+end
 
 # Request payload for Email#create.
-#
-# @!attribute [rw] createdAt
-#   @return [String, nil]
-#
-# @!attribute [rw] domain
-#   @return [String, nil]
-#
-# @!attribute [rw] email
-#   @return [String, nil]
-#
-# @!attribute [rw] expiresAt
-#   @return [String, nil]
-#
-# @!attribute [rw] expiry
-#   @return [String, nil]
-#
-# @!attribute [rw] token
-#   @return [String, nil]
-#
-# @!attribute [rw] username
-#   @return [String, nil]
-EmailCreateData = Struct.new(
-  :createdAt,
-  :domain,
-  :email,
-  :expiresAt,
-  :expiry,
-  :token,
-  :username,
-  keyword_init: true
-)
+class EmailCreateData
+end
 
 # Inbox entity data model.
 #

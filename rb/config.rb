@@ -89,6 +89,7 @@ module TempMailApiByBoomlifyConfig
         "base" => "https://boomlify.com/api/v1",
         "auth" => {
           "prefix" => "",
+          "name" => "X-API-Key",
         },
         "headers" => {
           "content-type" => "application/json",
@@ -140,46 +141,7 @@ module TempMailApiByBoomlifyConfig
           },
         },
         "email" => {
-          "fields" => [
-            {
-              "format" => "date-time",
-              "name" => "createdAt",
-              "short" => "Creation timestamp",
-              "type" => "`$STRING`",
-            },
-            {
-              "name" => "domain",
-              "short" => "Domain to use for the email address.",
-              "type" => "`$STRING`",
-            },
-            {
-              "format" => "email",
-              "name" => "email",
-              "short" => "The generated temporary email address",
-              "type" => "`$STRING`",
-            },
-            {
-              "format" => "date-time",
-              "name" => "expiresAt",
-              "short" => "Expiration timestamp of the email address",
-              "type" => "`$STRING`",
-            },
-            {
-              "name" => "expiry",
-              "short" => "Expiry duration for the email address",
-              "type" => "`$STRING`",
-            },
-            {
-              "name" => "token",
-              "short" => "Access token for managing this email address",
-              "type" => "`$STRING`",
-            },
-            {
-              "name" => "username",
-              "short" => "Desired username for the email address.",
-              "type" => "`$STRING`",
-            },
-          ],
+          "fields" => [],
           "name" => "email",
           "op" => {
             "create" => {

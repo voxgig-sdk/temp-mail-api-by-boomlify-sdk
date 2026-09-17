@@ -5,22 +5,8 @@ export interface DomainLoadMatch {
     domains?: any[];
 }
 export interface Email {
-    createdAt?: string;
-    domain?: string;
-    email?: string;
-    expiresAt?: string;
-    expiry?: string;
-    token?: string;
-    username?: string;
 }
 export interface EmailCreateData {
-    createdAt?: string;
-    domain?: string;
-    email?: string;
-    expiresAt?: string;
-    expiry?: string;
-    token?: string;
-    username?: string;
     $action?: string;
     [action: string]: any;
 }

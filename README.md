@@ -105,12 +105,12 @@ local result, err = client:Domain():load()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/temp-mail-api-by-boomlify-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/releases) |
-| Python | `voxgig-sdk-temp-mail-api-by-boomlify` | publish pending — [install from git tag](https://github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/releases) |
-| PHP | `voxgig-sdk/temp-mail-api-by-boomlify` | publish pending — [install from git tag](https://github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/releases) |
+| TypeScript | `@voxgig-sdk/temp-mail-api-by-boomlify-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/tags) |
+| Python | `voxgig-sdk-temp-mail-api-by-boomlify` | publish pending — [install from git tag](https://github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/tags) |
+| PHP | `voxgig-sdk/temp-mail-api-by-boomlify` | publish pending — [install from git tag](https://github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/go` | `go get github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/go@latest` |
-| Ruby | `voxgig-sdk-temp-mail-api-by-boomlify` | publish pending — [install from git tag](https://github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/releases) |
-| Lua | `voxgig-sdk-temp-mail-api-by-boomlify` | publish pending — [install from git tag](https://github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/releases) |
+| Ruby | `voxgig-sdk-temp-mail-api-by-boomlify` | publish pending — [install from git tag](https://github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/tags) |
+| Lua | `voxgig-sdk-temp-mail-api-by-boomlify` | publish pending — [install from git tag](https://github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/go-cli` | `go install github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/go-cli/cmd/temp-mail-api-by-boomlify@latest` |
 | Go MCP server | `github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/go-mcp` | `go get github.com/voxgig-sdk/temp-mail-api-by-boomlify-sdk/go-mcp@latest` |
 

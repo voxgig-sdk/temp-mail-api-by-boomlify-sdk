@@ -309,13 +309,6 @@ API path: `/domains`
 
 | Field | Description |
 | --- | --- |
-| `createdAt` | Creation timestamp |
-| `domain` | Domain to use for the email address. |
-| `email` | The generated temporary email address |
-| `expiresAt` | Expiration timestamp of the email address |
-| `expiry` | Expiry duration for the email address |
-| `token` | Access token for managing this email address |
-| `username` | Desired username for the email address. |
 
 Operations: create.
 
@@ -371,18 +364,6 @@ Create an instance: `const email = client.Email()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `createdAt` | `string` | Creation timestamp |
-| `domain` | `string` | Domain to use for the email address. |
-| `email` | `string` | The generated temporary email address |
-| `expiresAt` | `string` | Expiration timestamp of the email address |
-| `expiry` | `string` | Expiry duration for the email address |
-| `token` | `string` | Access token for managing this email address |
-| `username` | `string` | Desired username for the email address. |
 
 #### Example: Create
 

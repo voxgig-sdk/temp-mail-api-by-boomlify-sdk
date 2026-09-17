@@ -24,24 +24,10 @@ type DomainLoadMatch struct {
 
 // Email is the typed data model for the email entity.
 type Email struct {
-	CreatedAt *string `json:"createdAt,omitempty"`
-	Domain *string `json:"domain,omitempty"`
-	Email *string `json:"email,omitempty"`
-	ExpiresAt *string `json:"expiresAt,omitempty"`
-	Expiry *string `json:"expiry,omitempty"`
-	Token *string `json:"token,omitempty"`
-	Username *string `json:"username,omitempty"`
 }
 
 // EmailCreateData is the typed request payload for Email.CreateTyped.
 type EmailCreateData struct {
-	CreatedAt *string `json:"createdAt,omitempty"`
-	Domain *string `json:"domain,omitempty"`
-	Email *string `json:"email,omitempty"`
-	ExpiresAt *string `json:"expiresAt,omitempty"`
-	Expiry *string `json:"expiry,omitempty"`
-	Token *string `json:"token,omitempty"`
-	Username *string `json:"username,omitempty"`
 }
 
 // Inbox is the typed data model for the inbox entity.

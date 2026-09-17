@@ -259,13 +259,6 @@ API path: `/domains`
 
 | Field | Description |
 | --- | --- |
-| `createdAt` | Creation timestamp |
-| `domain` | Domain to use for the email address. |
-| `email` | The generated temporary email address |
-| `expiresAt` | Expiration timestamp of the email address |
-| `expiry` | Expiry duration for the email address |
-| `token` | Access token for managing this email address |
-| `username` | Desired username for the email address. |
 
 Operations: Create.
 
@@ -321,18 +314,6 @@ Create an instance: `email = client.Email()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `createdAt` | `str` | Creation timestamp |
-| `domain` | `str` | Domain to use for the email address. |
-| `email` | `str` | The generated temporary email address |
-| `expiresAt` | `str` | Expiration timestamp of the email address |
-| `expiry` | `str` | Expiry duration for the email address |
-| `token` | `str` | Access token for managing this email address |
-| `username` | `str` | Desired username for the email address. |
 
 #### Example: Create
 
@@ -510,6 +491,7 @@ Use `helpers.to_map()` to safely validate that a value is a dict.
 py/
 ├── tempmailapibyboomlify_sdk.py         -- Main SDK module
 ├── config.py                    -- Configuration
+├── schema.py                    -- Generated option + entity specs
 ├── features.py                  -- Feature factory
 ├── core/                        -- Core types and context
 ├── entity/                      -- Entity implementations

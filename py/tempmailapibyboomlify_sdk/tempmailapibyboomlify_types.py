@@ -24,24 +24,12 @@ class DomainLoadMatch(TypedDict, total=False):
     domains: list
 
 
-class Email(TypedDict, total=False):
-    createdAt: str
-    domain: str
-    email: str
-    expiresAt: str
-    expiry: str
-    token: str
-    username: str
+class Email(TypedDict):
+    pass
 
 
-class EmailCreateData(TypedDict, total=False):
-    createdAt: str
-    domain: str
-    email: str
-    expiresAt: str
-    expiry: str
-    token: str
-    username: str
+class EmailCreateData(TypedDict):
+    pass
 
 
 class Inbox(TypedDict, total=False):

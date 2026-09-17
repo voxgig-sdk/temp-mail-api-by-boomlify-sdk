@@ -13,22 +13,8 @@
 ---@field domains? table
 
 ---@class Email
----@field createdAt? string
----@field domain? string
----@field email? string
----@field expiresAt? string
----@field expiry? string
----@field token? string
----@field username? string
 
 ---@class EmailCreateData
----@field createdAt? string
----@field domain? string
----@field email? string
----@field expiresAt? string
----@field expiry? string
----@field token? string
----@field username? string
 
 ---@class Inbox
 ---@field email? string

@@ -4,54 +4,6 @@ main: kit: entity: email: {
 
   alias: field: {}
 
-  fields: [
-    {
-      format: "date-time"
-      name: "createdAt"
-      req: false
-      short: "Creation timestamp"
-      type: "`$STRING`"
-    }
-    {
-      name: "domain"
-      req: false
-      short: "Domain to use for the email address."
-      type: "`$STRING`"
-    }
-    {
-      format: "email"
-      name: "email"
-      req: false
-      short: "The generated temporary email address"
-      type: "`$STRING`"
-    }
-    {
-      format: "date-time"
-      name: "expiresAt"
-      req: false
-      short: "Expiration timestamp of the email address"
-      type: "`$STRING`"
-    }
-    {
-      name: "expiry"
-      req: false
-      short: "Expiry duration for the email address"
-      type: "`$STRING`"
-    }
-    {
-      name: "token"
-      req: false
-      short: "Access token for managing this email address"
-      type: "`$STRING`"
-    }
-    {
-      name: "username"
-      req: false
-      short: "Desired username for the email address."
-      type: "`$STRING`"
-    }
-  ]
-
   name: "email"
   op: {
     create: {

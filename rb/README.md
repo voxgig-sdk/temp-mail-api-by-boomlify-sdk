@@ -252,13 +252,6 @@ API path: `/domains`
 
 | Field | Description |
 | --- | --- |
-| `createdAt` | Creation timestamp |
-| `domain` | Domain to use for the email address. |
-| `email` | The generated temporary email address |
-| `expiresAt` | Expiration timestamp of the email address |
-| `expiry` | Expiry duration for the email address |
-| `token` | Access token for managing this email address |
-| `username` | Desired username for the email address. |
 
 Operations: Create.
 
@@ -315,18 +308,6 @@ Create an instance: `email = client.Email`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `createdAt` | `String` | Creation timestamp |
-| `domain` | `String` | Domain to use for the email address. |
-| `email` | `String` | The generated temporary email address |
-| `expiresAt` | `String` | Expiration timestamp of the email address |
-| `expiry` | `String` | Expiry duration for the email address |
-| `token` | `String` | Access token for managing this email address |
-| `username` | `String` | Desired username for the email address. |
 
 #### Example: Create
 
@@ -505,6 +486,7 @@ Use `Helpers.to_map()` to safely validate that a value is a hash.
 rb/
 ├── TempMailApiByBoomlify_sdk.rb       -- Main SDK module
 ├── config.rb                  -- Configuration
+├── schema.rb                  -- Generated option + entity specs
 ├── features.rb                -- Feature factory
 ├── core/                      -- Core types and context
 ├── entity/                    -- Entity implementations

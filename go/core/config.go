@@ -81,6 +81,7 @@ func MakeConfig() map[string]any {
 			"base": "https://boomlify.com/api/v1",
 			"auth": map[string]any{
 				"prefix": "",
+				"name": "X-API-Key",
 			},
 			"headers": map[string]any{
 				"content-type": "application/json",
@@ -132,46 +133,7 @@ func MakeConfig() map[string]any {
 				},
 			},
 			"email": map[string]any{
-				"fields": []any{
-					map[string]any{
-						"format": "date-time",
-						"name": "createdAt",
-						"short": "Creation timestamp",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "domain",
-						"short": "Domain to use for the email address.",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"format": "email",
-						"name": "email",
-						"short": "The generated temporary email address",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"format": "date-time",
-						"name": "expiresAt",
-						"short": "Expiration timestamp of the email address",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "expiry",
-						"short": "Expiry duration for the email address",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "token",
-						"short": "Access token for managing this email address",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "username",
-						"short": "Desired username for the email address.",
-						"type": "`$STRING`",
-					},
-				},
+				"fields": []any{},
 				"name": "email",
 				"op": map[string]any{
 					"create": map[string]any{

@@ -67,6 +67,7 @@ declare class Config {
         base: string;
         auth: {
             prefix: string;
+            name: string;
         };
         headers: {
             "content-type": string;
@@ -110,17 +111,7 @@ declare class Config {
             };
         };
         email: {
-            fields: ({
-                format: string;
-                name: string;
-                short: string;
-                type: string;
-            } | {
-                name: string;
-                short: string;
-                type: string;
-                format?: undefined;
-            })[];
+            fields: never[];
             name: string;
             op: {
                 create: {

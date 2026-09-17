@@ -27,25 +27,11 @@ class DomainLoadMatch
 /** Email entity data model. */
 class Email
 {
-    public ?string $createdAt = null;
-    public ?string $domain = null;
-    public ?string $email = null;
-    public ?string $expiresAt = null;
-    public ?string $expiry = null;
-    public ?string $token = null;
-    public ?string $username = null;
 }
 
 /** Request payload for Email#create. */
 class EmailCreateData
 {
-    public ?string $createdAt = null;
-    public ?string $domain = null;
-    public ?string $email = null;
-    public ?string $expiresAt = null;
-    public ?string $expiry = null;
-    public ?string $token = null;
-    public ?string $username = null;
 }
 
 /** Inbox entity data model. */

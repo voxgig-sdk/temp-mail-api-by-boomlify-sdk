@@ -150,18 +150,6 @@ Return the entity name.
 email = client.Email
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `createdAt` | `String` | No | Creation timestamp |
-| `domain` | `String` | No | Domain to use for the email address. |
-| `email` | `String` | No | The generated temporary email address |
-| `expiresAt` | `String` | No | Expiration timestamp of the email address |
-| `expiry` | `String` | No | Expiry duration for the email address |
-| `token` | `String` | No | Access token for managing this email address |
-| `username` | `String` | No | Desired username for the email address. |
-
 ### Operations
 
 #### `create(reqdata, ctrl = nil) -> result`
