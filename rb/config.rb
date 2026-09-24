@@ -105,6 +105,7 @@ module TempMailApiByBoomlifyConfig
           "fields" => [
             {
               "name" => "domains",
+              "title" => "Domains",
               "type" => "`$ARRAY`",
             },
           ],
@@ -115,7 +116,6 @@ module TempMailApiByBoomlifyConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/domains",
@@ -124,14 +124,16 @@ module TempMailApiByBoomlifyConfig
                       "lit" => "domains",
                     },
                   ],
-                  "select" => {},
+                  "parts" => [
+                    "domains",
+                  ],
+                  "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body.data`",
                   },
-                  "parts" => [
-                    "domains",
-                  ],
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -149,7 +151,6 @@ module TempMailApiByBoomlifyConfig
               "name" => "create",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/email/create",
@@ -161,17 +162,19 @@ module TempMailApiByBoomlifyConfig
                       "lit" => "create",
                     },
                   ],
-                  "select" => {
-                    "$action" => "create",
-                  },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body.data`",
-                  },
                   "parts" => [
                     "email",
                     "create",
                   ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body.data`",
+                  },
+                  "args" => {},
+                  "select" => {
+                    "$action" => "create",
+                  },
                 },
               ],
             },
@@ -183,20 +186,24 @@ module TempMailApiByBoomlifyConfig
         "inbox" => {
           "fields" => [
             {
-              "format" => "email",
               "name" => "email",
+              "title" => "Email",
               "type" => "`$STRING`",
+              "format" => "email",
             },
             {
               "name" => "id",
+              "title" => "Id",
               "type" => "`$STRING`",
             },
             {
               "name" => "messageCount",
+              "title" => "Message Count",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "messages",
+              "title" => "Messages",
               "type" => "`$ARRAY`",
             },
           ],
@@ -211,50 +218,9 @@ module TempMailApiByBoomlifyConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "example" => "user123@boomlify.com",
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "email",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                    "query" => [
-                      {
-                        "example" => 20,
-                        "kind" => "query",
-                        "name" => "limit",
-                        "orig" => "limit",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "example" => true,
-                        "kind" => "query",
-                        "name" => "preview",
-                        "orig" => "preview",
-                        "type" => "`$BOOLEAN`",
-                      },
-                      {
-                        "example" => "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-                        "kind" => "query",
-                        "name" => "token",
-                        "orig" => "token",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/inbox/{email}",
-                  "rename" => {
-                    "param" => {
-                      "email" => "id",
-                    },
-                  },
                   "segments" => [
                     {
                       "lit" => "inbox",
@@ -263,6 +229,55 @@ module TempMailApiByBoomlifyConfig
                       "var" => "id",
                     },
                   ],
+                  "parts" => [
+                    "inbox",
+                    "{id}",
+                  ],
+                  "rename" => {
+                    "param" => {
+                      "email" => "id",
+                    },
+                  },
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body.data`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "email",
+                        "type" => "`$STRING`",
+                        "kind" => "param",
+                        "reqd" => true,
+                        "example" => "user123@boomlify.com",
+                      },
+                    ],
+                    "query" => [
+                      {
+                        "name" => "limit",
+                        "orig" => "limit",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "example" => 20,
+                      },
+                      {
+                        "name" => "preview",
+                        "orig" => "preview",
+                        "type" => "`$BOOLEAN`",
+                        "kind" => "query",
+                        "example" => true,
+                      },
+                      {
+                        "name" => "token",
+                        "orig" => "token",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true,
+                        "example" => "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "id",
@@ -271,14 +286,6 @@ module TempMailApiByBoomlifyConfig
                       "token",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body.data`",
-                  },
-                  "parts" => [
-                    "inbox",
-                    "{id}",
-                  ],
                 },
               ],
             },

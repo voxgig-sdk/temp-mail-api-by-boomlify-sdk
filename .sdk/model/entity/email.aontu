@@ -1,0 +1,45 @@
+# Entity: email
+
+main: kit: entity: email: {
+
+  alias: field: {}
+
+  name: "email"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /email/create"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/email/create"
+          q: {
+            "$action": "create"
+          }
+          s: [
+            {
+              lit: "email"
+            }
+            {
+              lit: "create"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

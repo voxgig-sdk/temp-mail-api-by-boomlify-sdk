@@ -19,7 +19,6 @@ import type {
   InboxLoadMatch,
 } from '../TempMailApiByBoomlifyTypes'
 
-// TODO: needs Entity superclass
 class InboxEntity extends TempMailApiByBoomlifyEntityBase<Inbox> {
 
   constructor(client: TempMailApiByBoomlifySDK, entopts: any) {
@@ -130,12 +129,6 @@ class InboxEntity extends TempMailApiByBoomlifyEntityBase<Inbox> {
 
       const out = done(ctx)
 
-      // An operation resolves to the ENTITY, not the raw data — the record
-      // has just been absorbed into this instance and is reached through
-      // data(). `done` still runs: it completes the pipeline and raises on
-      // failure, and when throwing is disabled it hands back the error
-      // payload, which passes through unchanged. See AGENTS.md "Entity
-      // operations return ENTITIES".
       return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {

@@ -16,12 +16,6 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS: Record<string, any[]> = {
   
 }
@@ -32,7 +26,6 @@ class Config {
   makeFeature(this: any, fn: string) {
     const fc = FEATURE_CLASS[fn]
     const fi = new fc()
-    // TODO: errors etc
     return fi
   }
 
@@ -150,6 +143,7 @@ class Config {
       "fields": [
         {
           "name": "domains",
+          "title": "Domains",
           "type": "`$ARRAY`"
         }
       ],
@@ -160,7 +154,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/domains",
@@ -169,14 +162,16 @@ class Config {
                   "lit": "domains"
                 }
               ],
-              "select": {},
+              "parts": [
+                "domains"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
               },
-              "parts": [
-                "domains"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         }
@@ -194,7 +189,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "POST",
               "orig": "/email/create",
@@ -206,17 +200,19 @@ class Config {
                   "lit": "create"
                 }
               ],
-              "select": {
-                "$action": "create"
-              },
+              "parts": [
+                "email",
+                "create"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.data`"
               },
-              "parts": [
-                "email",
-                "create"
-              ]
+              "args": {},
+              "select": {
+                "$action": "create"
+              }
             }
           ]
         }
@@ -228,20 +224,24 @@ class Config {
     "inbox": {
       "fields": [
         {
-          "format": "email",
           "name": "email",
-          "type": "`$STRING`"
+          "title": "Email",
+          "type": "`$STRING`",
+          "format": "email"
         },
         {
           "name": "id",
+          "title": "Id",
           "type": "`$STRING`"
         },
         {
           "name": "messageCount",
+          "title": "Message Count",
           "type": "`$INTEGER`"
         },
         {
           "name": "messages",
+          "title": "Messages",
           "type": "`$ARRAY`"
         }
       ],
@@ -256,50 +256,9 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "example": "user123@boomlify.com",
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "email",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ],
-                "query": [
-                  {
-                    "example": 20,
-                    "kind": "query",
-                    "name": "limit",
-                    "orig": "limit",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "example": true,
-                    "kind": "query",
-                    "name": "preview",
-                    "orig": "preview",
-                    "type": "`$BOOLEAN`"
-                  },
-                  {
-                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-                    "kind": "query",
-                    "name": "token",
-                    "orig": "token",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/inbox/{email}",
-              "rename": {
-                "param": {
-                  "email": "id"
-                }
-              },
               "segments": [
                 {
                   "lit": "inbox"
@@ -308,6 +267,55 @@ class Config {
                   "var": "id"
                 }
               ],
+              "parts": [
+                "inbox",
+                "{id}"
+              ],
+              "rename": {
+                "param": {
+                  "email": "id"
+                }
+              },
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body.data`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "email",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true,
+                    "example": "user123@boomlify.com"
+                  }
+                ],
+                "query": [
+                  {
+                    "name": "limit",
+                    "orig": "limit",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 20
+                  },
+                  {
+                    "name": "preview",
+                    "orig": "preview",
+                    "type": "`$BOOLEAN`",
+                    "kind": "query",
+                    "example": true
+                  },
+                  {
+                    "name": "token",
+                    "orig": "token",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "reqd": true,
+                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "id",
@@ -315,15 +323,7 @@ class Config {
                   "preview",
                   "token"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body.data`"
-              },
-              "parts": [
-                "inbox",
-                "{id}"
-              ]
+              }
             }
           ]
         }

@@ -93,6 +93,7 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "domains",
+            ["title"] = "Domains",
             ["type"] = "`$ARRAY`",
           },
         },
@@ -103,7 +104,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/domains",
@@ -112,14 +112,16 @@ local function make_config()
                     ["lit"] = "domains",
                   },
                 },
-                ["select"] = {},
+                ["parts"] = {
+                  "domains",
+                },
+                ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.data`",
                 },
-                ["parts"] = {
-                  "domains",
-                },
+                ["args"] = {},
+                ["select"] = {},
               },
             },
           },
@@ -137,7 +139,6 @@ local function make_config()
             ["name"] = "create",
             ["points"] = {
               {
-                ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/email/create",
@@ -149,16 +150,18 @@ local function make_config()
                     ["lit"] = "create",
                   },
                 },
-                ["select"] = {
-                  ["$action"] = "create",
+                ["parts"] = {
+                  "email",
+                  "create",
                 },
+                ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.data`",
                 },
-                ["parts"] = {
-                  "email",
-                  "create",
+                ["args"] = {},
+                ["select"] = {
+                  ["$action"] = "create",
                 },
               },
             },
@@ -171,20 +174,24 @@ local function make_config()
       ["inbox"] = {
         ["fields"] = {
           {
-            ["format"] = "email",
             ["name"] = "email",
+            ["title"] = "Email",
             ["type"] = "`$STRING`",
+            ["format"] = "email",
           },
           {
             ["name"] = "id",
+            ["title"] = "Id",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "messageCount",
+            ["title"] = "Message Count",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "messages",
+            ["title"] = "Messages",
             ["type"] = "`$ARRAY`",
           },
         },
@@ -199,56 +206,64 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["params"] = {
-                    {
-                      ["example"] = "user123@boomlify.com",
-                      ["kind"] = "param",
-                      ["name"] = "id",
-                      ["orig"] = "email",
-                      ["reqd"] = true,
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                  ["query"] = {
-                    {
-                      ["example"] = 20,
-                      ["kind"] = "query",
-                      ["name"] = "limit",
-                      ["orig"] = "limit",
-                      ["type"] = "`$INTEGER`",
-                    },
-                    {
-                      ["example"] = true,
-                      ["kind"] = "query",
-                      ["name"] = "preview",
-                      ["orig"] = "preview",
-                      ["type"] = "`$BOOLEAN`",
-                    },
-                    {
-                      ["example"] = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-                      ["kind"] = "query",
-                      ["name"] = "token",
-                      ["orig"] = "token",
-                      ["reqd"] = true,
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/inbox/{email}",
-                ["rename"] = {
-                  ["param"] = {
-                    ["email"] = "id",
-                  },
-                },
                 ["segments"] = {
                   {
                     ["lit"] = "inbox",
                   },
                   {
                     ["var"] = "id",
+                  },
+                },
+                ["parts"] = {
+                  "inbox",
+                  "{id}",
+                },
+                ["rename"] = {
+                  ["param"] = {
+                    ["email"] = "id",
+                  },
+                },
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body.data`",
+                },
+                ["args"] = {
+                  ["params"] = {
+                    {
+                      ["name"] = "id",
+                      ["orig"] = "email",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "param",
+                      ["reqd"] = true,
+                      ["example"] = "user123@boomlify.com",
+                    },
+                  },
+                  ["query"] = {
+                    {
+                      ["name"] = "limit",
+                      ["orig"] = "limit",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "query",
+                      ["example"] = 20,
+                    },
+                    {
+                      ["name"] = "preview",
+                      ["orig"] = "preview",
+                      ["type"] = "`$BOOLEAN`",
+                      ["kind"] = "query",
+                      ["example"] = true,
+                    },
+                    {
+                      ["name"] = "token",
+                      ["orig"] = "token",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                      ["reqd"] = true,
+                      ["example"] = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+                    },
                   },
                 },
                 ["select"] = {
@@ -258,14 +273,6 @@ local function make_config()
                     "preview",
                     "token",
                   },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body.data`",
-                },
-                ["parts"] = {
-                  "inbox",
-                  "{id}",
                 },
               },
             },

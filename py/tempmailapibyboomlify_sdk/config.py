@@ -122,6 +122,7 @@ def make_config():
         "fields": [
           {
             "name": "domains",
+            "title": "Domains",
             "type": "`$ARRAY`",
           },
         ],
@@ -132,7 +133,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/domains",
@@ -141,14 +141,16 @@ def make_config():
                     "lit": "domains",
                   },
                 ],
-                "select": {},
+                "parts": [
+                  "domains",
+                ],
+                "rename": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.data`",
                 },
-                "parts": [
-                  "domains",
-                ],
+                "args": {},
+                "select": {},
               },
             ],
           },
@@ -166,7 +168,6 @@ def make_config():
             "name": "create",
             "points": [
               {
-                "args": {},
                 "kind": "http",
                 "method": "POST",
                 "orig": "/email/create",
@@ -178,17 +179,19 @@ def make_config():
                     "lit": "create",
                   },
                 ],
-                "select": {
-                  "$action": "create",
-                },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body.data`",
-                },
                 "parts": [
                   "email",
                   "create",
                 ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body.data`",
+                },
+                "args": {},
+                "select": {
+                  "$action": "create",
+                },
               },
             ],
           },
@@ -200,20 +203,24 @@ def make_config():
       "inbox": {
         "fields": [
           {
-            "format": "email",
             "name": "email",
+            "title": "Email",
             "type": "`$STRING`",
+            "format": "email",
           },
           {
             "name": "id",
+            "title": "Id",
             "type": "`$STRING`",
           },
           {
             "name": "messageCount",
+            "title": "Message Count",
             "type": "`$INTEGER`",
           },
           {
             "name": "messages",
+            "title": "Messages",
             "type": "`$ARRAY`",
           },
         ],
@@ -228,50 +235,9 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "params": [
-                    {
-                      "example": "user123@boomlify.com",
-                      "kind": "param",
-                      "name": "id",
-                      "orig": "email",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                  "query": [
-                    {
-                      "example": 20,
-                      "kind": "query",
-                      "name": "limit",
-                      "orig": "limit",
-                      "type": "`$INTEGER`",
-                    },
-                    {
-                      "example": True,
-                      "kind": "query",
-                      "name": "preview",
-                      "orig": "preview",
-                      "type": "`$BOOLEAN`",
-                    },
-                    {
-                      "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-                      "kind": "query",
-                      "name": "token",
-                      "orig": "token",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/inbox/{email}",
-                "rename": {
-                  "param": {
-                    "email": "id",
-                  },
-                },
                 "segments": [
                   {
                     "lit": "inbox",
@@ -280,6 +246,55 @@ def make_config():
                     "var": "id",
                   },
                 ],
+                "parts": [
+                  "inbox",
+                  "{id}",
+                ],
+                "rename": {
+                  "param": {
+                    "email": "id",
+                  },
+                },
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body.data`",
+                },
+                "args": {
+                  "params": [
+                    {
+                      "name": "id",
+                      "orig": "email",
+                      "type": "`$STRING`",
+                      "kind": "param",
+                      "reqd": True,
+                      "example": "user123@boomlify.com",
+                    },
+                  ],
+                  "query": [
+                    {
+                      "name": "limit",
+                      "orig": "limit",
+                      "type": "`$INTEGER`",
+                      "kind": "query",
+                      "example": 20,
+                    },
+                    {
+                      "name": "preview",
+                      "orig": "preview",
+                      "type": "`$BOOLEAN`",
+                      "kind": "query",
+                      "example": True,
+                    },
+                    {
+                      "name": "token",
+                      "orig": "token",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                      "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "id",
@@ -288,14 +303,6 @@ def make_config():
                     "token",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body.data`",
-                },
-                "parts": [
-                  "inbox",
-                  "{id}",
-                ],
               },
             ],
           },

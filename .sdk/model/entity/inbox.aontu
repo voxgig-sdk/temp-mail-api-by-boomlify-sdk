@@ -1,0 +1,123 @@
+# Entity: inbox
+
+main: kit: entity: inbox: {
+
+  alias: field: {}
+
+  fields: {
+    email: {
+      fo: "email"
+      h: "Email"
+      n: "email"
+      r: false
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    messageCount: {
+      h: "Message Count"
+      n: "messageCount"
+      r: false
+      t: "`$INTEGER`"
+    }
+    messages: {
+      h: "Messages"
+      n: "messages"
+      r: false
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "inbox"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /inbox/{email}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "user123@boomlify.com"
+                k: "param"
+                n: "id"
+                or: "email"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 20
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: true
+                k: "query"
+                n: "preview"
+                or: "preview"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                ex: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                k: "query"
+                n: "token"
+                or: "token"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/inbox/{email}"
+          q: {
+            exist: [
+              "id"
+              "limit"
+              "preview"
+              "token"
+            ]
+          }
+          r: {
+            param: {
+              email: "id"
+            }
+          }
+          s: [
+            {
+              lit: "inbox"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

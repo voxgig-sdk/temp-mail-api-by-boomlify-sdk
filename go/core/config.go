@@ -97,6 +97,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "domains",
+						"title": "Domains",
 						"type": "`$ARRAY`",
 					},
 				},
@@ -107,7 +108,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/domains",
@@ -116,14 +116,16 @@ func MakeConfig() map[string]any {
 										"lit": "domains",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"domains",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.data`",
 								},
-								"parts": []any{
-									"domains",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -141,7 +143,6 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/email/create",
@@ -153,16 +154,18 @@ func MakeConfig() map[string]any {
 										"lit": "create",
 									},
 								},
-								"select": map[string]any{
-									"$action": "create",
+								"parts": []any{
+									"email",
+									"create",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.data`",
 								},
-								"parts": []any{
-									"email",
-									"create",
+								"args": map[string]any{},
+								"select": map[string]any{
+									"$action": "create",
 								},
 							},
 						},
@@ -175,20 +178,24 @@ func MakeConfig() map[string]any {
 			"inbox": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"format": "email",
 						"name": "email",
+						"title": "Email",
 						"type": "`$STRING`",
+						"format": "email",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "messageCount",
+						"title": "Message Count",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "messages",
+						"title": "Messages",
 						"type": "`$ARRAY`",
 					},
 				},
@@ -203,56 +210,64 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": "user123@boomlify.com",
-											"kind": "param",
-											"name": "id",
-											"orig": "email",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-									"query": []any{
-										map[string]any{
-											"example": 20,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": true,
-											"kind": "query",
-											"name": "preview",
-											"orig": "preview",
-											"type": "`$BOOLEAN`",
-										},
-										map[string]any{
-											"example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-											"kind": "query",
-											"name": "token",
-											"orig": "token",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/inbox/{email}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"email": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "inbox",
 									},
 									map[string]any{
 										"var": "id",
+									},
+								},
+								"parts": []any{
+									"inbox",
+									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"email": "id",
+									},
+								},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.data`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "email",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": "user123@boomlify.com",
+										},
+									},
+									"query": []any{
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 20,
+										},
+										map[string]any{
+											"name": "preview",
+											"orig": "preview",
+											"type": "`$BOOLEAN`",
+											"kind": "query",
+											"example": true,
+										},
+										map[string]any{
+											"name": "token",
+											"orig": "token",
+											"type": "`$STRING`",
+											"kind": "query",
+											"reqd": true,
+											"example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+										},
 									},
 								},
 								"select": map[string]any{
@@ -262,14 +277,6 @@ func MakeConfig() map[string]any {
 										"preview",
 										"token",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.data`",
-								},
-								"parts": []any{
-									"inbox",
-									"{id}",
 								},
 							},
 						},

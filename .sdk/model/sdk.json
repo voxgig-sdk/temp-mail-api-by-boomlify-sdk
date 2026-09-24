@@ -24,20 +24,87 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "domain": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "domains",
-              "req": false,
-              "type": "`$ARRAY`"
+          "fields": {
+            "domains": {
+              "a": true,
+              "h": "Domains",
+              "n": "domains",
+              "r": false,
+              "t": "`$ARRAY`"
             }
-          ],
+          },
           "name": "domain",
           "op": {
             "load": {
@@ -45,24 +112,24 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /domains",
-                    "json": "{\"operationId\":\"getAvailableDomains\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"data\":{\"properties\":{\"domains\":{\"items\":{\"properties\":{\"active\":{\"description\":\"Whether the domain is currently active\",\"example\":true,\"type\":\"boolean\"},\"domain\":{\"description\":\"Domain name\",\"example\":\"boomlify.com\",\"type\":\"string\"},\"type\":{\"description\":\"Type of domain\",\"enum\":[\"default\",\"custom\"],\"example\":\"default\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"success\":{\"example\":true,\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Available domains retrieved successfully\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"description\":\"Error code\",\"example\":\"INVALID_TOKEN\",\"type\":\"string\"},\"message\":{\"description\":\"Human-readable error message\",\"example\":\"The provided token is invalid or has expired\",\"type\":\"string\"}},\"type\":\"object\"},\"success\":{\"example\":false,\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"security\":[{\"ApiKeyAuth\":[]}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication (optional for free tier)\",\"in\":\"header\",\"name\":\"X-API-Key\",\"type\":\"apiKey\"},\"TokenAuth\":{\"description\":\"Email-specific access token obtained when creating a temporary email\",\"in\":\"query\",\"name\":\"token\",\"type\":\"apiKey\"}},\"securitySource\":\"definition\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/domains",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/domains",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "domains"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.data`"
                   }
@@ -79,7 +146,7 @@
           "alias": {
             "field": {}
           },
-          "fields": [],
+          "fields": {},
           "name": "email",
           "op": {
             "create": {
@@ -87,18 +154,21 @@
               "name": "create",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "POST /email/create",
-                    "json": "{\"operationId\":\"createTempEmail\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"domain\":{\"description\":\"Domain to use for the email address. If not provided, a default Boomlify domain will be used.\",\"example\":\"boomlify.com\",\"type\":\"string\"},\"expiry\":{\"description\":\"Expiry duration for the email address\",\"enum\":[\"10m\",\"1h\",\"24h\",\"7d\",\"30d\",\"60d\"],\"example\":\"24h\",\"type\":\"string\"},\"username\":{\"description\":\"Desired username for the email address. If not provided, a random one will be generated.\",\"example\":\"user123\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Configuration for the temporary email to be created\",\"required\":false},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"data\":{\"properties\":{\"createdAt\":{\"description\":\"Creation timestamp\",\"example\":\"2024-01-19T12:00:00Z\",\"format\":\"date-time\",\"type\":\"string\"},\"email\":{\"description\":\"The generated temporary email address\",\"example\":\"user123@boomlify.com\",\"format\":\"email\",\"type\":\"string\"},\"expiresAt\":{\"description\":\"Expiration timestamp of the email address\",\"example\":\"2024-01-20T12:00:00Z\",\"format\":\"date-time\",\"type\":\"string\"},\"token\":{\"description\":\"Access token for managing this email address\",\"example\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\",\"type\":\"string\"}},\"type\":\"object\"},\"success\":{\"example\":true,\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Temporary email address created successfully\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"description\":\"Error code\",\"example\":\"INVALID_TOKEN\",\"type\":\"string\"},\"message\":{\"description\":\"Human-readable error message\",\"example\":\"The provided token is invalid or has expired\",\"type\":\"string\"}},\"type\":\"object\"},\"success\":{\"example\":false,\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Invalid request parameters\"},\"429\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"description\":\"Error code\",\"example\":\"INVALID_TOKEN\",\"type\":\"string\"},\"message\":{\"description\":\"Human-readable error message\",\"example\":\"The provided token is invalid or has expired\",\"type\":\"string\"}},\"type\":\"object\"},\"success\":{\"example\":false,\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Rate limit exceeded\"}},\"security\":[{\"ApiKeyAuth\":[]}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication (optional for free tier)\",\"in\":\"header\",\"name\":\"X-API-Key\",\"type\":\"apiKey\"},\"TokenAuth\":{\"description\":\"Email-specific access token obtained when creating a temporary email\",\"in\":\"query\",\"name\":\"token\",\"type\":\"apiKey\"}},\"securitySource\":\"definition\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "POST",
-                  "orig": "/email/create",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/email/create",
+                  "q": {
+                    "$action": "create"
+                  },
+                  "r": {},
+                  "s": [
                     {
                       "lit": "email"
                     },
@@ -106,10 +176,7 @@
                       "lit": "create"
                     }
                   ],
-                  "select": {
-                    "$action": "create"
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.data`"
                   }
@@ -126,33 +193,37 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "format": "email",
-              "name": "email",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "email": {
+              "a": true,
+              "fo": "email",
+              "h": "Email",
+              "n": "email",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$STRING`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "messageCount",
-              "req": false,
-              "type": "`$INTEGER`"
+            "messageCount": {
+              "a": true,
+              "h": "Message Count",
+              "n": "messageCount",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "messages",
-              "req": false,
-              "type": "`$ARRAY`"
+            "messages": {
+              "a": true,
+              "h": "Messages",
+              "n": "messages",
+              "r": false,
+              "t": "`$ARRAY`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -164,72 +235,58 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /inbox/{email}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "example": "user123@boomlify.com",
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "email",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "user123@boomlify.com",
+                        "k": "param",
+                        "n": "id",
+                        "or": "email",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ],
                     "query": [
                       {
-                        "active": true,
-                        "example": 20,
-                        "kind": "query",
-                        "name": "limit",
-                        "orig": "limit",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 20,
+                        "k": "query",
+                        "n": "limit",
+                        "or": "limit",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "example": true,
-                        "kind": "query",
-                        "name": "preview",
-                        "orig": "preview",
-                        "reqd": false,
-                        "type": "`$BOOLEAN`"
+                        "a": true,
+                        "ex": true,
+                        "k": "query",
+                        "n": "preview",
+                        "or": "preview",
+                        "r": false,
+                        "t": "`$BOOLEAN`"
                       },
                       {
-                        "active": true,
-                        "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-                        "kind": "query",
-                        "name": "token",
-                        "orig": "token",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+                        "k": "query",
+                        "n": "token",
+                        "or": "token",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /inbox/{email}",
-                    "json": "{\"operationId\":\"getInboxMessages\",\"parameters\":[{\"description\":\"The temporary email address to retrieve messages for\",\"in\":\"path\",\"name\":\"email\",\"required\":true,\"schema\":{\"example\":\"user123@boomlify.com\",\"format\":\"email\",\"type\":\"string\"}},{\"description\":\"Access token for the email address\",\"in\":\"query\",\"name\":\"token\",\"required\":true,\"schema\":{\"example\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\",\"type\":\"string\"}},{\"description\":\"Maximum number of messages to return\",\"in\":\"query\",\"name\":\"limit\",\"required\":false,\"schema\":{\"default\":50,\"example\":20,\"maximum\":100,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Enable smart inbox preview mode for quick content viewing\",\"in\":\"query\",\"name\":\"preview\",\"required\":false,\"schema\":{\"default\":false,\"example\":true,\"type\":\"boolean\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"data\":{\"properties\":{\"email\":{\"example\":\"user123@boomlify.com\",\"format\":\"email\",\"type\":\"string\"},\"messageCount\":{\"example\":5,\"type\":\"integer\"},\"messages\":{\"items\":{\"properties\":{\"attachments\":{\"description\":\"List of email attachments\",\"items\":{\"properties\":{\"contentType\":{\"example\":\"application/pdf\",\"type\":\"string\"},\"filename\":{\"example\":\"document.pdf\",\"type\":\"string\"},\"size\":{\"description\":\"Size in bytes\",\"example\":12345,\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"body\":{\"description\":\"Full email body content\",\"example\":\"Click here to verify: https://example.com/verify?token=abc123\",\"type\":\"string\"},\"from\":{\"description\":\"Sender's email address\",\"example\":\"noreply@service.com\",\"format\":\"email\",\"type\":\"string\"},\"fromName\":{\"description\":\"Sender's display name\",\"example\":\"Service Notifications\",\"type\":\"string\"},\"html\":{\"description\":\"HTML version of the email body\",\"example\":\"<html><body><p>Click here to verify...</p></body></html>\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the message\",\"example\":\"msg_abc123xyz\",\"type\":\"string\"},\"preview\":{\"description\":\"Smart preview excerpt of the email content\",\"example\":\"Click here to verify: https://example.com/verify?...\",\"type\":\"string\"},\"read\":{\"description\":\"Whether the message has been read\",\"example\":false,\"type\":\"boolean\"},\"receivedAt\":{\"description\":\"Timestamp when the email was received\",\"example\":\"2024-01-19T12:30:00Z\",\"format\":\"date-time\",\"type\":\"string\"},\"subject\":{\"description\":\"Email subject line\",\"example\":\"Verify your account\",\"type\":\"string\"},\"to\":{\"description\":\"Recipient's email address\",\"example\":\"user123@boomlify.com\",\"format\":\"email\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"},\"success\":{\"example\":true,\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Inbox messages retrieved successfully\"},\"401\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"description\":\"Error code\",\"example\":\"INVALID_TOKEN\",\"type\":\"string\"},\"message\":{\"description\":\"Human-readable error message\",\"example\":\"The provided token is invalid or has expired\",\"type\":\"string\"}},\"type\":\"object\"},\"success\":{\"example\":false,\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Invalid or missing access token\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"properties\":{\"code\":{\"description\":\"Error code\",\"example\":\"INVALID_TOKEN\",\"type\":\"string\"},\"message\":{\"description\":\"Human-readable error message\",\"example\":\"The provided token is invalid or has expired\",\"type\":\"string\"}},\"type\":\"object\"},\"success\":{\"example\":false,\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Email address not found or expired\"}},\"security\":[{\"ApiKeyAuth\":[]}],\"securitySchemes\":{\"ApiKeyAuth\":{\"description\":\"API key for authentication (optional for free tier)\",\"in\":\"header\",\"name\":\"X-API-Key\",\"type\":\"apiKey\"},\"TokenAuth\":{\"description\":\"Email-specific access token obtained when creating a temporary email\",\"in\":\"query\",\"name\":\"token\",\"type\":\"apiKey\"}},\"securitySource\":\"definition\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/inbox/{email}",
-                  "rename": {
-                    "param": {
-                      "email": "id"
-                    }
-                  },
-                  "segments": [
-                    {
-                      "lit": "inbox"
-                    },
-                    {
-                      "var": "id"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/inbox/{email}",
+                  "q": {
                     "exist": [
                       "id",
                       "limit",
@@ -237,7 +294,20 @@
                       "token"
                     ]
                   },
-                  "transform": {
+                  "r": {
+                    "param": {
+                      "email": "id"
+                    }
+                  },
+                  "s": [
+                    {
+                      "lit": "inbox"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.data`"
                   }
@@ -666,17 +736,17 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "domain_ref01",
                 "srcdatavar": "domain_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -696,15 +766,15 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "email_ref01"
               },
-              "match": {},
-              "op": "create",
-              "spec": [],
-              "valid": []
+              "m": {},
+              "o": "create",
+              "s": [],
+              "v": []
             }
           ]
         },
@@ -717,19 +787,19 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "inbox_ref01",
                 "srcdatavar": "inbox_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "inbox01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
