@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 TempMailApiByBoomlifyUtility.registrar = ->(u) {
   u.clean = TempMailApiByBoomlifyUtilities::Clean
+  u.clean_add = TempMailApiByBoomlifyUtilities::CleanAdd
+  u.clean_explain = TempMailApiByBoomlifyUtilities::CleanExplain
   u.done = TempMailApiByBoomlifyUtilities::Done
   u.make_error = TempMailApiByBoomlifyUtilities::MakeError
   u.feature_add = TempMailApiByBoomlifyUtilities::FeatureAdd

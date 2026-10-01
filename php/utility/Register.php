@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 TempMailApiByBoomlifyUtility::setRegistrar(function (TempMailApiByBoomlifyUtility $u): void {
     $u->clean = [TempMailApiByBoomlifyClean::class, 'call'];
+    $u->clean_add = [TempMailApiByBoomlifyClean::class, 'add'];
+    $u->clean_explain = [TempMailApiByBoomlifyDone::class, 'clean_explain'];
     $u->done = [TempMailApiByBoomlifyDone::class, 'call'];
     $u->make_error = [TempMailApiByBoomlifyMakeError::class, 'call'];
     $u->feature_add = [TempMailApiByBoomlifyFeatureAdd::class, 'call'];
