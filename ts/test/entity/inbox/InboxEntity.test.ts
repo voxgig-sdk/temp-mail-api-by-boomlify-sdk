@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { TempMailApiByBoomlifySDK, BaseFeature, stdutil } from '../../..'
+import { TempMailApiByBoomlifySDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,18 @@ describe('InboxEntity', async () => {
   })
 
 
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = TempMailApiByBoomlifySDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.Inbox().load({"id":1,"token":"x"} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.TEMP_MAIL_API_BY_BOOMLIFY_TEST_LIVE
@@ -51,7 +63,7 @@ describe('InboxEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"email":{"a":true,"fo":"email","h":"Email","n":"email","r":false,"t":"`$STRING`","key$":"email","index$":0},"id":{"a":true,"h":"Id","n":"id","r":false,"t":"`$STRING`","key$":"id","index$":1},"messageCount":{"a":true,"h":"Message Count","n":"messageCount","r":false,"t":"`$INTEGER`","key$":"messageCount","index$":2},"messages":{"a":true,"h":"Messages","n":"messages","r":false,"t":"`$ARRAY`","key$":"messages","index$":3}},"id":{"field":"id","name":"id"},"name":"inbox","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /inbox/{email}","source":"openapi3","version":2},"g":{"params":[{"a":true,"ex":"user123@boomlify.com","k":"param","n":"id","or":"email","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"ex":20,"k":"query","n":"limit","or":"limit","r":false,"t":"`$INTEGER`","index$":0},{"a":true,"ex":true,"k":"query","n":"preview","or":"preview","r":false,"t":"`$BOOLEAN`","index$":1},{"a":true,"ex":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...","k":"query","n":"token","or":"token","r":true,"t":"`$STRING`","index$":2}]},"k":"http","m":"GET","o":"/inbox/{email}","q":{"exist":["id","limit","preview","token"]},"r":{"param":{"email":"id"}},"s":[{"lit":"inbox"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body.data`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"inbox","name__orig":"inbox","Name":"Inbox","name_":"inbox","name-":"inbox","NAME":"INBOX","index$":2}, {"active":true,"entity":"inbox","key$":"BasicInboxFlow","kind":"basic","name":"BasicInboxFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"inbox_ref01","srcdatavar":"inbox_ref01_data","suffix":"_dt0"},"m":{"id":"inbox01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-inbox_ref01"}}],"index$":0}]}, 'Inbox', {"GET /inbox/{email}":{"protocol":"http","parameters":[{"name":"email","in":"path","required":true,"description":"The temporary email address to retrieve messages for","schema":{"type":"string","format":"email","example":"user123@boomlify.com"},"index$":0},{"name":"token","in":"query","required":true,"description":"Access token for the email address","schema":{"type":"string","example":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."},"index$":1},{"name":"limit","in":"query","required":false,"description":"Maximum number of messages to return","schema":{"type":"integer","default":50,"minimum":1,"maximum":100,"example":20},"index$":2},{"name":"preview","in":"query","required":false,"description":"Enable smart inbox preview mode for quick content viewing","schema":{"type":"boolean","default":false,"example":true},"index$":3}]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"email":{"a":true,"fo":"email","h":"Email","n":"email","r":false,"t":"`$STRING`","key$":"email","index$":0},"id":{"a":true,"h":"Id","n":"id","r":false,"t":"`$STRING`","key$":"id","index$":1},"messageCount":{"a":true,"h":"Message Count","n":"messageCount","r":false,"t":"`$INTEGER`","key$":"messageCount","index$":2},"messages":{"a":true,"h":"Messages","n":"messages","r":false,"t":"`$ARRAY`","key$":"messages","index$":3}},"id":{"field":"id","name":"id"},"name":"inbox","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /inbox/{email}","source":"openapi3","version":2},"g":{"params":[{"a":true,"ex":"user123@boomlify.com","k":"param","n":"id","or":"email","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"ex":20,"k":"query","n":"limit","or":"limit","r":false,"t":"`$INTEGER`","index$":0},{"a":true,"ex":true,"k":"query","n":"preview","or":"preview","r":false,"t":"`$BOOLEAN`","index$":1},{"a":true,"ex":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...","k":"query","n":"token","or":"token","r":true,"t":"`$STRING`","index$":2}]},"k":"http","m":"GET","o":"/inbox/{email}","q":{"exist":["id","token"]},"r":{"param":{"email":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"inbox"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body.data`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"inbox","name__orig":"inbox","Name":"Inbox","name_":"inbox","name-":"inbox","NAME":"INBOX","index$":2}, {"active":true,"entity":"inbox","key$":"BasicInboxFlow","kind":"basic","name":"BasicInboxFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"inbox_ref01","srcdatavar":"inbox_ref01_data","suffix":"_dt0"},"m":{"id":"inbox01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-inbox_ref01"}}],"index$":0}]}, 'Inbox', {"GET /inbox/{email}":{"protocol":"http","parameters":[{"name":"email","in":"path","required":true,"description":"The temporary email address to retrieve messages for","schema":{"type":"string","format":"email","example":"user123@boomlify.com"},"index$":0},{"name":"token","in":"query","required":true,"description":"Access token for the email address","schema":{"type":"string","example":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."},"index$":1},{"name":"limit","in":"query","required":false,"description":"Maximum number of messages to return","schema":{"type":"integer","default":50,"minimum":1,"maximum":100,"example":20},"index$":2},{"name":"preview","in":"query","required":false,"description":"Enable smart inbox preview mode for quick content viewing","schema":{"type":"boolean","default":false,"example":true},"index$":3}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -73,6 +85,12 @@ describe('InboxEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

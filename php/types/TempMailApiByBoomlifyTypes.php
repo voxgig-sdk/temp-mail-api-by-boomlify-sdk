@@ -32,6 +32,9 @@ class Email
 /** Request payload for Email#create. */
 class EmailCreateData
 {
+    public mixed $domain = null;
+    public mixed $expiry = null;
+    public mixed $username = null;
 }
 
 /** Inbox entity data model. */

@@ -1,6 +1,18 @@
 # Temp Mail API by Boomlify
 
-Boomlify is a powerful temporary email service that goes beyond ordinary temp mail tools. It offers unlimited free temporary emails, custom domain support, and a free Temp Mail API, making it perfect for individuals, developers, and businesses who want full control over email creation and management. With Boomlify&#39;s API, you can automate the creation and management of temporary emails, integrate them into apps or websites, and handle email workflows efficiently, all without restrictions. Its custom domain feature allows users to generate temp emails under their own domain or choose from Boomlify&#39;s domains, offering complete flexibility and professionalism. Key Features: - Unlimited Free Temporary Emails - Custom Domain Support - Free Temp Mail API - Centralized Dashboard - Smart Inbox Preview - Extended Expiry Options (10 minutes to months) - Privacy &amp; Security - Cross-Device Access
+> Boomlify is a powerful temporary email service that goes beyond ordinary temp mail tools. It offers unlimited free temporary emails, custom domain support, and a free Temp Mail API, making it perfect for individuals, developers, and businesses who want full control over email creation and management.
+>
+> With Boomlify&#39;s API, you can automate the creation and management of temporary emails, integrate them into apps or websites, and handle email workflows efficiently, all without restrictions. Its custom domain feature allows users to generate temp emails under their own domain or choose from Boomlify&#39;s domains, offering complete flexibility and professionalism.
+>
+> Key Features:
+> - Unlimited Free Temporary Emails
+> - Custom Domain Support
+> - Free Temp Mail API
+> - Centralized Dashboard
+> - Smart Inbox Preview
+> - Extended Expiry Options (10 minutes to months)
+> - Privacy &amp; Security
+> - Cross-Device Access
 
 ## Start here
 

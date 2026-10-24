@@ -93,6 +93,7 @@ class TempMailApiByBoomlifyConfig
           ],
           'optspec' => [
             'clearTimer' => '`$FUNCTION`',
+            'now' => '`$FUNCTION`',
             'setTimer' => '`$FUNCTION`',
           ],
           'strict' => false,
@@ -148,6 +149,10 @@ class TempMailApiByBoomlifyConfig
                   ],
                   'args' => [],
                   'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
+                  ],
                 ],
               ],
             ],
@@ -188,6 +193,10 @@ class TempMailApiByBoomlifyConfig
                   'args' => [],
                   'select' => [
                     '$action' => 'create',
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -295,10 +304,12 @@ class TempMailApiByBoomlifyConfig
                   'select' => [
                     'exist' => [
                       'id',
-                      'limit',
-                      'preview',
                       'token',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],

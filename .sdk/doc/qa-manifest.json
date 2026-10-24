@@ -3,5 +3,17 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "> Boomlify is a powerful temporary email service that goes beyond ordinary temp mail tools. It offers unlimited free temporary emails, custom domain support, and a free Temp Mail API, making it perfect for individuals, developers, and businesses who want full control over email creation and management.\n>\n> With Boomlify&#39;s API, you can automate the creation and management of temporary emails, integrate them into apps or websites, and handle email workflows efficiently, all without restrictions. Its custom domain feature allows users to generate temp emails under their own domain or choose from Boomlify&#39;s domains, offering complete flexibility and professionalism.\n>\n> Key Features:\n> - Unlimited Free Temporary Emails\n> - Custom Domain Support\n> - Free Temp Mail API\n> - Centralized Dashboard\n> - Smart Inbox Preview\n> - Extended Expiry Options (10 minutes to months)\n> - Privacy &amp; Security\n> - Cross-Device Access",
+      "API key for authentication (optional for free tier)",
+      "Available domains retrieved successfully",
+      "Email-specific access token obtained when creating a temporary email",
+      "Inbox messages retrieved successfully",
+      "Production API Server",
+      "Temporary email address created successfully",
+      "Unique identifier for the message"
+    ]
+  }
 }

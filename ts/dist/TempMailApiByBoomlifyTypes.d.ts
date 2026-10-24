@@ -7,6 +7,9 @@ export interface DomainLoadMatch {
 export interface Email {
 }
 export interface EmailCreateData {
+    domain?: any;
+    expiry?: any;
+    username?: any;
     $action?: string;
     [action: string]: any;
 }

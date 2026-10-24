@@ -27,6 +27,9 @@ type Email struct {
 
 // EmailCreateData is the typed request payload for Email.CreateTyped.
 type EmailCreateData struct {
+	Domain *any `json:"domain,omitempty"`
+	Expiry *any `json:"expiry,omitempty"`
+	Username *any `json:"username,omitempty"`
 }
 
 // Inbox is the typed data model for the inbox entity.

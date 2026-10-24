@@ -15,6 +15,9 @@
 ---@class Email
 
 ---@class EmailCreateData
+---@field domain? any
+---@field expiry? any
+---@field username? any
 
 ---@class Inbox
 ---@field email? string

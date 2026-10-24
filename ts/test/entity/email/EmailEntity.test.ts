@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { TempMailApiByBoomlifySDK, BaseFeature, stdutil } from '../../..'
+import { TempMailApiByBoomlifySDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,8 @@ describe('EmailEntity', async () => {
   })
 
 
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.TEMP_MAIL_API_BY_BOOMLIFY_TEST_LIVE
@@ -51,7 +53,7 @@ describe('EmailEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"email","op":{"create":{"input":"data","name":"create","points":[{"a":true,"co":{"id":"POST /email/create","source":"openapi3","version":2},"g":{},"k":"http","m":"POST","o":"/email/create","q":{"$action":"create"},"r":{},"s":[{"lit":"email"},{"lit":"create"}],"t":{"req":"`reqdata`","res":"`body.data`"},"index$":0}],"key$":"create"}},"relations":{"ancestors":[]},"key$":"email","name__orig":"email","Name":"Email","name_":"email","name-":"email","NAME":"EMAIL","index$":1}, {"active":true,"entity":"email","key$":"BasicEmailFlow","kind":"basic","name":"BasicEmailFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"email_ref01"},"m":{},"o":"create","s":[],"v":[],"index$":0}]}, 'Email', {"POST /email/create":{"protocol":"http","requestBody":{"description":"Configuration for the temporary email to be created","required":false,"content":{"application/json":{"schema":{"type":"object","properties":{"username":{"type":"string","description":"Desired username for the email address. If not provided, a random one will be generated.","example":"user123"},"domain":{"type":"string","description":"Domain to use for the email address. If not provided, a default Boomlify domain will be used.","example":"boomlify.com"},"expiry":{"type":"string","description":"Expiry duration for the email address","enum":["10m","1h","24h","7d","30d","60d"],"example":"24h"}}}}}},"parameters":[]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"email","op":{"create":{"input":"data","name":"create","points":[{"a":true,"bf":["domain","expiry","username"],"co":{"id":"POST /email/create","source":"openapi3","version":2},"g":{},"k":"http","m":"POST","o":"/email/create","q":{"$action":"create"},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"email"},{"lit":"create"}],"t":{"req":"`reqdata`","res":"`body.data`"},"index$":0}],"key$":"create"}},"relations":{"ancestors":[]},"key$":"email","name__orig":"email","Name":"Email","name_":"email","name-":"email","NAME":"EMAIL","index$":1}, {"active":true,"entity":"email","key$":"BasicEmailFlow","kind":"basic","name":"BasicEmailFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"email_ref01"},"m":{},"o":"create","s":[],"v":[],"index$":0}]}, 'Email', {"POST /email/create":{"protocol":"http","requestBody":{"description":"Configuration for the temporary email to be created","required":false,"content":{"application/json":{"schema":{"type":"object","properties":{"username":{"type":"string","description":"Desired username for the email address. If not provided, a random one will be generated.","example":"user123"},"domain":{"type":"string","description":"Domain to use for the email address. If not provided, a default Boomlify domain will be used.","example":"boomlify.com"},"expiry":{"type":"string","description":"Expiry duration for the email address","enum":["10m","1h","24h","7d","30d","60d"],"example":"24h"}}}}}},"parameters":[]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -72,6 +74,12 @@ describe('EmailEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

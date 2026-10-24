@@ -102,6 +102,7 @@ class Config {
       },
       "optspec": {
         "clearTimer": "`$FUNCTION`",
+        "now": "`$FUNCTION`",
         "setTimer": "`$FUNCTION`"
       },
       "strict": false,
@@ -171,7 +172,11 @@ class Config {
                 "res": "`body.data`"
               },
               "args": {},
-              "select": {}
+              "select": {},
+              "response": {
+                "kind": "json",
+                "media": "application/json"
+              }
             }
           ]
         }
@@ -212,6 +217,10 @@ class Config {
               "args": {},
               "select": {
                 "$action": "create"
+              },
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]
@@ -319,10 +328,12 @@ class Config {
               "select": {
                 "exist": [
                   "id",
-                  "limit",
-                  "preview",
                   "token"
                 ]
+              },
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]

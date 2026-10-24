@@ -17,6 +17,9 @@ export interface Email {
 }
 
 export interface EmailCreateData {
+  domain?: any
+  expiry?: any
+  username?: any
 
   // Selects a custom action instead of the plain create:
   //   'create'

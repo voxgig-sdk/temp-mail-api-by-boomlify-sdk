@@ -3,11 +3,16 @@ declare(strict_types=1);
 
 // TempMailApiByBoomlify SDK utility: prepare_body
 
+require_once __DIR__ . '/Media.php';
+
 class TempMailApiByBoomlifyPrepareBody
 {
     public static function call(TempMailApiByBoomlifyContext $ctx): mixed
     {
         if ($ctx->op->input === 'data') {
+            if (TempMailApiByBoomlifyMedia::isRawRequest($ctx->point)) {
+                return TempMailApiByBoomlifyMedia::rawBody($ctx->reqdata);
+            }
             $body = ($ctx->utility->transform_request)($ctx);
             // PHP cannot tell an empty map from an empty list, and this
             // vendored struct answers [] where the canonical transform

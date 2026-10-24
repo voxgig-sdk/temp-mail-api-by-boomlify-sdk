@@ -17,7 +17,12 @@ const PLAN = [
         "args": [],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": [
             [
                 {
@@ -32,9 +37,9 @@ const PLAN = [
             "data": {
                 "domains": [
                     {
-                        "active": true,
                         "domain": "boomlify.com",
-                        "type": "default"
+                        "type": "default",
+                        "active": true
                     }
                 ]
             }
@@ -51,7 +56,12 @@ const PLAN = [
         "args": [],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": [
             [
                 {
@@ -86,15 +96,33 @@ const PLAN = [
             }
         ],
         "select": {
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
             "limit": 20,
-            "preview": "v1",
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+            "preview": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "token",
             "limit",
             "preview"
+        ],
+        "queryArgs": [
+            {
+                "name": "limit",
+                "wire": "limit"
+            },
+            {
+                "name": "preview",
+                "wire": "preview"
+            },
+            {
+                "name": "token",
+                "wire": "token"
+            }
         ],
         "auth": [
             [

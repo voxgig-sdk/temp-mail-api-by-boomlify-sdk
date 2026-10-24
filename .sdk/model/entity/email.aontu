@@ -10,6 +10,11 @@ main: kit: entity: email: {
       name: "create"
       points: [
         {
+          bf: [
+            "domain"
+            "expiry"
+            "username"
+          ]
           co: {
             id: "POST /email/create"
             source: "openapi3"
@@ -19,6 +24,10 @@ main: kit: entity: email: {
           o: "/email/create"
           q: {
             "$action": "create"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

@@ -28,8 +28,10 @@ class Email(TypedDict):
     pass
 
 
-class EmailCreateData(TypedDict):
-    pass
+class EmailCreateData(TypedDict, total=False):
+    domain: Any
+    expiry: Any
+    username: Any
 
 
 class Inbox(TypedDict, total=False):

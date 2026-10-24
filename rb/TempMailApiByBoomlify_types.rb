@@ -31,8 +31,21 @@ class Email
 end
 
 # Request payload for Email#create.
-class EmailCreateData
-end
+#
+# @!attribute [rw] domain
+#   @return [Object, nil]
+#
+# @!attribute [rw] expiry
+#   @return [Object, nil]
+#
+# @!attribute [rw] username
+#   @return [Object, nil]
+EmailCreateData = Struct.new(
+  :domain,
+  :expiry,
+  :username,
+  keyword_init: true
+)
 
 # Inbox entity data model.
 #
